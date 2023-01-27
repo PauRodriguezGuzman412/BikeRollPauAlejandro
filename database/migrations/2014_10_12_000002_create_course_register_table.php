@@ -8,16 +8,15 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('admin', function (Blueprint $table) {
+        Schema::create('courses_register', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('password');
-            $table->rememberToken();
+            $table->foreign('id_courses')->references('id')->on('courses');
+            $table->foreign('id_runners')->references('id')->on('runners');
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('admin');
+        Schema::dropIfExists('courses_register');
     }
 };
