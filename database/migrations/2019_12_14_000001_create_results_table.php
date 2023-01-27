@@ -10,7 +10,9 @@ return new class extends Migration
     {
         Schema::create('results', function (Blueprint $table) {
             $table->id();
+            $table->unsignedBigInteger('id_courses');
             $table->foreign('id_courses')->references('id')->on('courses');
+            $table->unsignedBigInteger('id_runners');
             $table->foreign('id_runners')->references('id')->on('runners');
             $table->integer('points');
             // $table->foreign('dorsal')->references('dorsal')->on('runners');

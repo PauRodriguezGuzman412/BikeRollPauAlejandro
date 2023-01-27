@@ -6,11 +6,6 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
-    /**
-     * Run the migrations.
-     *
-     * @return void
-     */
     public function up()
     {
         Schema::create('insurances', function (Blueprint $table) {
@@ -19,14 +14,10 @@ return new class extends Migration
             $table->string('name');
             $table->string('address');
             $table->float('price');
+            //TODO: Faltan relaciones
         });
     }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
     public function down()
     {
         Schema::dropIfExists('insurances');

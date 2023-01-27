@@ -16,7 +16,6 @@ return new class extends Migration
             $table->dateTime('date_of_birth');
             $table->enum('federated',["open","pro"]);
             $table->integer('federated_num')->nullable();
-            $table->string('dorsal')->nullable();
         });
     }
 
