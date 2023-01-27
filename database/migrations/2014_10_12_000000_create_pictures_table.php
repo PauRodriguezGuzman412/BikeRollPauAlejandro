@@ -6,18 +6,18 @@ use Illuminate\Support\Facades\Schema;
 
 return new class extends Migration
 {
+
     public function up()
     {
-        Schema::create('admin', function (Blueprint $table) {
+        Schema::create('pictures', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('password');
-            $table->rememberToken();
+            $table->foreign('course_id')->references('id')->on('courses')->onDelete('cascade');
+            $table->string('image_path');
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('admin');
+        Schema::dropIfExists('pictures');
     }
 };
