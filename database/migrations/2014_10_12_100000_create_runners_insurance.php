@@ -8,22 +8,19 @@ return new class extends Migration
 {
     public function up()
     {
-        Schema::create('courses_register', function (Blueprint $table) {
-            $table->id();
+        Schema::create('runners_insurance', function (Blueprint $table) {
+            $table->unsignedBigInteger('insurance');
+            $table->foreign('insurance')->references('id')->on('insurances');
             $table->unsignedBigInteger('id_courses');
             $table->foreign('id_courses')->references('id')->on('courses');
             $table->unsignedBigInteger('id_runners');
             $table->foreign('id_runners')->references('id')->on('runners');
-            $table->Integer('dorsal');
-            $table->unsignedBigInteger('insurance');
-            $table->foreign('insurance')->references('id')->on('insurances');
-            //TODO: Se necesita un campo más, pero no sé cual
-            // $table->foreign('dorsal')->references('dorsal')->on('runners');
+            //TODO: Faltan relaciones
         });
     }
 
     public function down()
     {
-        Schema::dropIfExists('courses_register');
+        Schema::dropIfExists('runners_insurance');
     }
 };
