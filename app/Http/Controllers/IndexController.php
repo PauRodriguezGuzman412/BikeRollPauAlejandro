@@ -7,6 +7,6 @@ use Illuminate\Routing\Controller as BaseController;
 class IndexController extends BaseController
 {
     public function index(){
-        dd("hola");
+        return view('index');
     }
 }

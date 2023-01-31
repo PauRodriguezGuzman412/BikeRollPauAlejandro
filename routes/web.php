@@ -21,4 +21,4 @@ Route::get('/peliculas/{titulo}', function ($titulo) {
 });
 
 
-Route::get("/index",[IndexController::class, 'index'])->name("index.index");
+Route::get("/",[IndexController::class, 'index'])->name("index.index");
