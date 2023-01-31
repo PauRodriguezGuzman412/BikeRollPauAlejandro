@@ -6,7 +6,7 @@ use Illuminate\Routing\Controller as BaseController;
 
 class IndexController extends BaseController
 {
-    public function index(){
+    public function __invoke(){
         return view('index');
     }
 }
