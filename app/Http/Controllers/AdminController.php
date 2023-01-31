@@ -11,7 +11,32 @@ class AdminController extends BaseController
         return view('adminIndex');
     }
 
-    public function store()
+    public function indexCourses()
+    {
+        return view('adminCourses');
+    }
+
+    public function storeCourses()
+    {
+
+    }
+
+    public function indexAseguradoras()
+    {
+        return view('adminAseguradores');
+    }
+
+    public function storeAseguradoras()
+    {
+
+    }
+
+    public function indexSponsors()
+    {
+        return view('adminSponsors');
+    }
+
+    public function storeSponsors()
     {
 
     }
