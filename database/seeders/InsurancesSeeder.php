@@ -39,6 +39,12 @@ class InsurancesSeeder extends Seeder
                 'name' => 'AXA',
                 'address' => 'CALLE EMILIO VARGAS, 6, EDIFICIO AXA, 28043, MADRID',
                 'price' => 90,
+            ],
+            [
+                'CIF' => 'V28027118',
+                'name' => 'MUTUA MADRILEÑA',
+                'address' => 'P.º CASTELLANA, 33 28046, MADRID',
+                'price' => 120,
             ]
         ]);
     }

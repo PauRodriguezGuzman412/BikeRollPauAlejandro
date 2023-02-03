@@ -12,10 +12,11 @@ return new class extends Migration
             $table->id();
             // $table->string('dni')->primary();
             $table->string('name');
+            $table->string('surname');
             $table->string('address');
-            $table->dateTime('date_of_birth');
-            $table->enum('federated',["open","pro"]);
-            $table->integer('federated_num')->nullable();
+            $table->date('date_of_birth');
+            $table->enum('federated',["OPEN","PRO"]);
+            $table->integer('federated_num')->unique();
         });
     }
 
