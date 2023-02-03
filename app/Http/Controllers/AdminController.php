@@ -18,26 +18,25 @@ class AdminController extends BaseController
         return view('adminCourses');
     }
 
-    public function storeCourses(Request $request)
+    public function storeCourses(Request $request, Courses $courses)
     {
-        $courses= new Courses();
+        // $data = $request->validate([
+        //     'description'        => 'required',
+        //     'slope'              => 'required',
+        //     'map_image'          => 'required',
+        //     'maxim_participants' => 'required',
+        //     'km'                 => 'required',
+        //     'start_date'         => 'required',
+        //     'start_point'        => 'required',
+        //     'promotion_banner'   => 'required',
+        //     'sponsoring_money'   => 'required',
+        //     'course_duration'    => 'required',
+        //     ]);
+        $coursesDataValidated = $request->validate($courses->validationRules());
 
-        $data = $request->validate([
-            'description'        => 'required',
-            'slope'              => 'required',
-            'map_image'          => 'required',
-            'maxim_participants' => 'required',
-            'km'                 => 'required',
-            'start_date'         => 'required',
-            'start_point'        => 'required',
-            'promotion_banner'   => 'required',
-            'sponsoring_money'   => 'required',
-            'course_duration'    => 'required',
-            ]);
-        
-            // dd($data);
+        $courses->create($coursesDataValidated);
 
-        $courses->save($data);
+        return view('adminCourses');
     }
 
     public function indexAseguradoras()

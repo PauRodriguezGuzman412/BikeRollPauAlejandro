@@ -17,6 +17,7 @@ return new class extends Migration
             $table->boolean('principal_page');
             $table->longText('exception');
             $table->timestamp('failed_at')->useCurrent();
+            $table->timestamps();
         });
     }
 

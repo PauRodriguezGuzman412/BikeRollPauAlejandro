@@ -15,6 +15,7 @@ return new class extends Migration
             $table->unsignedBigInteger('id_runners');
             $table->foreign('id_runners')->references('id')->on('runners');
             $table->integer('points');
+            $table->timestamps();
             // $table->foreign('dorsal')->references('dorsal')->on('runners');
         });
     }

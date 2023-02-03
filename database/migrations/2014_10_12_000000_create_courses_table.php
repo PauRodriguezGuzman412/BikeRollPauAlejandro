@@ -20,8 +20,9 @@ return new class extends Migration
             $table->string('start_point');
             $table->string('promotion_banner');
             $table->integer('sponsoring_money');
-            $table->timestamp('course_duration');
-            $table->boolean('active');
+            $table->time('course_duration');
+            $table->boolean('active')->default(true);
+            $table->timestamps();
         });
     }
 
