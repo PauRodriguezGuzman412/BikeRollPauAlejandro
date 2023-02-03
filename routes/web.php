@@ -10,8 +10,12 @@ Route::get("/",IndexController::class)->name("index.index");
 Route::get("/admin",AdminController::class)->name("admin");
 
 
-Route::get("/admin/courses",[AdminController::class,'indexCourses'])->name("admin.courses.index");
-Route::post("/admin/courses",[AdminController::class, 'storeCourses'])->name("admin.courses.store");
+Route::get("/courses",CoursesController::class)->name("courses");
+Route::get("/courses/create",[CoursesController::class,'create'])->name("courses.create");
+Route::post("/courses",[CoursesController::class, 'store'])->name("courses.store");
+Route::get("/courses/edit",[CoursesController::class,'edit'])->name("courses.edit");
+Route::put("/courses",[CoursesController::class, 'update'])->name("courses.update");
+Route::delete("/courses",[CoursesController::class, 'deletes'])->name("courses.delete");
 
 Route::get("/admin/aseguradoras",[AdminController::class,'indexAseguradoras'])->name("admin.aseguradoras.index");
 Route::post("/admin/aseguradoras",[AdminController::class, 'storeAseguradoras'])->name("admin.aseguradoras.store");
