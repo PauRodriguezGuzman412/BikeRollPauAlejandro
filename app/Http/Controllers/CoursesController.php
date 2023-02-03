@@ -10,26 +10,29 @@ class CoursesController extends Controller
 {
     public function __invoke()
     {
-        return view('index');
+        $courses= Courses::get();
+        return view('Courses.index',[
+            'courses' => $courses,
+        ]);
     }
 
     public function create()
     {
-        return view('create');
+        return view('Courses.create');
     }
 
     public function store(Request $request, Courses $courses)
     {
-        $coursesDataValidated = $request->validate($courses->validationRules());
+        $coursesDataValidated= $request->validate($courses->validationRules());
 
         $courses->create($coursesDataValidated);
 
-        return view('adminCourses');
+        return view('Courses.create');
     }
 
     public function edit()
     {
-        return view('edit');
+        return view('Courses.edit');
     }
 
     public function update(Request $request, Courses $courses)

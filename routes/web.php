@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CoursesController;
 
 Route::get("/",IndexController::class)->name("index.index");
 
