@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\CoursesController;
+use App\Http\Controllers\SponsorsController;
 
 Route::get("/",IndexController::class)->name("index.index");
 
@@ -20,5 +22,9 @@ Route::delete("/courses",[CoursesController::class, 'deletes'])->name("courses.d
 Route::get("/admin/aseguradoras",[AdminController::class,'indexAseguradoras'])->name("admin.aseguradoras.index");
 Route::post("/admin/aseguradoras",[AdminController::class, 'storeAseguradoras'])->name("admin.aseguradoras.store");
 
-Route::get("/admin/sponsors",[AdminController::class,'indexSponsors'])->name("admin.sponsors.index");
-Route::post("/admin/sponsors",[AdminController::class, 'storeSponsors'])->name("admin.sponsors.store");
+Route::get("/sponsors",SponsorsController::class)->name("sponsors");
+Route::get("/sponsors/create",[SponsorsController::class,'create'])->name("sponsors.create");
+Route::post("/sponsors",[SponsorsController::class, 'store'])->name("sponsors.store");
+Route::get("/sponsors/edit",[SponsorsController::class,'edit'])->name("sponsors.edit");
+Route::put("/sponsors",[SponsorsController::class, 'update'])->name("sponsors.update");
+Route::delete("/sponsors",[SponsorsController::class, 'deletes'])->name("sponsors.delete");

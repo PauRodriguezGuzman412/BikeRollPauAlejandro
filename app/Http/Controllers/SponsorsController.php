@@ -8,7 +8,7 @@ use Illuminate\Http\Request;
 
 class SponsorsController extends Controller
 {
-    public function indexSponsors()
+    public function __invoke()
     {
         return view('adminSponsors');
     }
@@ -26,6 +26,20 @@ class SponsorsController extends Controller
         $sponsor->create($sponsorStored);
 
         return view('adminSponsors');
+
+    }
+    public function edit()
+    {
+        return view('edit');
+    }
+
+    public function update(Request $request, Sponsors $sponsor)
+    {
+        
+    }
+
+    public function delete(Request $request, Sponsors $sponsor)
+    {
 
     }
 }
