@@ -7,7 +7,7 @@
 
 @section('component')
 
-    <form action="{{ route('admin.courses.store') }}" method="POST">
+    <form action="{{ route('courses.store') }}" method="POST">
         @csrf
         
         @foreach ($errors->all() as $error)
@@ -15,12 +15,12 @@
                 <li class="alert alert-danger">{{ $error }}</li>
             </div>
         @endforeach
-            {{-- test --}}
-        <textarea name="description"     type="textarea" value="{{ old('description','') }}"        ></textarea><br>
+
+        <textarea name="description"     type="textarea" >{{ old('description','') }}</textarea>    <br>
         <input name="slope"              type="number"   value="{{ old('slope','') }}"              ><br>
         <input name="map_image"          type="file"     value="{{ old('map_image','') }}"          ><br>
         <input name="maxim_participants" type="number"   value="{{ old('maxim_participants','') }}" ><br>
-        <input name="km"                 type="number" step="0.01"    value="{{ old('km','') }}"                 ><br>
+        <input name="km"                 type="number"   value="{{ old('km','') }}"                 ><br>
         <input name="start_date"         type="date"     value="{{ old('start_date','') }}"         ><br>
         <input name="start_point"        type="text"     value="{{ old('start_point','') }}"        ><br>
         <input name="promotion_banner"   type="file"     value="{{ old('promotion_banner','') }}"   ><br>
