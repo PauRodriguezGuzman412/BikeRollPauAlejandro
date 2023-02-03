@@ -8,6 +8,11 @@ class AdminController extends BaseController
 {
     public function __invoke()
     {
+        return view('logAdmin');
+    }
+
+    public function jose()
+    {
         return view('adminIndex');
     }
 

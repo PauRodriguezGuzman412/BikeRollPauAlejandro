@@ -15,11 +15,11 @@ return new class extends Migration
             $table->foreign('id_courses')->references('id')->on('courses');
             $table->unsignedBigInteger('id_runners');
             $table->foreign('id_runners')->references('id')->on('runners');
-            //TODO: Faltan relaciones
+            //TODO: Faltan relaciones   
         });
     }
 
-    public function down()
+    public function down()  
     {
         Schema::dropIfExists('runners_insurance');
     }
