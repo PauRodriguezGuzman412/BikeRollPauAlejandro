@@ -16,16 +16,10 @@
             </div>
         @endforeach
             {{-- test --}}
-        <input name="CIF"                type="text"     value="{{ old('CIF','') }}"                ><br>
-        <input name="logo"               type="file"     value="{{ old('logo','') }}"               ><br>
-        <textarea name="address"         type="textarea" value="{{ old('address','') }}"        ></textarea><br>
-        <input name="maxim_participants" type="number"   value="{{ old('maxim_participants','') }}" ><br>
-        <input name="km"                 type="float"    value="{{ old('km','') }}"                 ><br>
-        <input name="start_date"         type="date"     value="{{ old('start_date','') }}"         ><br>
-        <input name="start_point"        type="text"     value="{{ old('start_point','') }}"        ><br>
-        <input name="promotion_banner"   type="file"     value="{{ old('promotion_banner','') }}"   ><br>
-        <input name="sponsoring_money"   type="number"   value="{{ old('sponsoring_money','') }}"   ><br>
-        <input name="course_duration"    type="time"     value="{{ old('course_duration','') }}"    ><br>
+        <span>CIF</span>        <input name="CIF"                type="text"     value="{{ old('CIF','') }}"                ><br>
+        <span>Logo</span>       <input name="logo"               type="file"     value="{{ old('logo','') }}"               ><br>
+        <span>Dirección</span>  <textarea name="address"         type="textarea" value="{{ old('address','') }}"            ></textarea><br>
+        <span>1ª página</span>  <input name="principal_page"     type="boleean"  value="{{ old('principal_page','') }}"     ><br>
         <button class="btn btn-info">Submit</button>
     </form>
     

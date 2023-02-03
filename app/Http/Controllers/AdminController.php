@@ -49,13 +49,5 @@ class AdminController extends BaseController
 
     }
 
-    public function indexSponsors()
-    {
-        return view('adminSponsors');
-    }
 
-    public function storeSponsors()
-    {
-
-    }
 }
