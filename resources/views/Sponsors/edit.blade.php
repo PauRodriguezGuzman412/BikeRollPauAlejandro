@@ -7,7 +7,7 @@
 
 @section('component')
 
-    <form action="{{ route('sponsors.store') }}" method="POST">
+    <form action="{{ route('admin.sponsors.store') }}" method="POST">
         @csrf
         
         @foreach ($errors->all() as $error)
