@@ -1,0 +1,47 @@
+h5{
+    background-color: red;
+}
+
+body { 
+    background-color: beige !important;
+    background-image: linear-gradient(to top right, rgb(67, 150, 92), rgb(62, 201, 85));
+}
+
+.adminFormDiv {
+    min-width: 550px;
+    width:30%;
+    height:50%;
+    background-color: white !important;
+}
+
+.logAdminTitle {
+    margin:5%;
+    margin-bottom:10%;
+    font-size:24px;
+    font-family:'Poppins', sans-serif;
+}
+
+form {
+    width:65%;
+}
+
+input {
+    border:none;
+    background-color: gainsboro;
+    border-radius:8px;
+    width:100%;
+    padding:4% 0 4% 2%;
+}
+
+.submitLogAdminButton {
+    background-image: linear-gradient(to top right, rgb(67, 150, 92), rgb(62, 201, 85));
+    color:white;
+    border:none;
+    width:75%;
+    padding:4% 0 4% 2%;
+    margin-left:13%;
+}
+
+.submitLogAdminButton:focus {
+    opacity:0.7;
+}
