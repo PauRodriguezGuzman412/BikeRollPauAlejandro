@@ -3,6 +3,7 @@ h5{
 }
 
 body { 
+    height:100vh;
     background-color: beige !important;
     background-image: linear-gradient(to top right, rgb(67, 150, 92), rgb(62, 201, 85));
 }

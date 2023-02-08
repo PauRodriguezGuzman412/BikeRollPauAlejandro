@@ -10,7 +10,7 @@ Route::get("/",IndexController::class)->name("index.index");
 
 
 Route::get("/admin",AdminController::class)->name("admin");
-Route::post('/admin/validate', AdminController::class,'validateAdminCredentials')->name('admin.validate');
+Route::post('/admin/validate',[AdminController::class,'validateAdminCredentials'])->name('admin.validate');
 
 Route::get("/courses",CoursesController::class)->name("courses");
 Route::get("/courses/create",[CoursesController::class,'create'])->name("courses.create");
