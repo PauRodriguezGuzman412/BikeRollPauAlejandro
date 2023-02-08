@@ -15,8 +15,8 @@ Route::get("/admin",AdminController::class)->name("admin");
 Route::get("/courses",CoursesController::class)->name("courses");
 Route::get("/courses/create",[CoursesController::class,'create'])->name("courses.create");
 Route::post("/courses",[CoursesController::class, 'store'])->name("courses.store");
-Route::get("/courses/edit",[CoursesController::class,'edit'])->name("courses.edit");
-Route::put("/courses",[CoursesController::class, 'update'])->name("courses.update");
+Route::get("/courses/edit/{id}",[CoursesController::class,'edit'])->name("courses.edit");
+Route::put("/courses/update/{id}",[CoursesController::class, 'update'])->name("courses.update");
 Route::delete("/courses",[CoursesController::class, 'deletes'])->name("courses.delete");
 
 Route::get("/admin/aseguradoras",[AdminController::class,'indexAseguradoras'])->name("admin.aseguradoras.index");
