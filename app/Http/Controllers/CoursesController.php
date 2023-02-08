@@ -30,18 +30,34 @@ class CoursesController extends Controller
         return view('Courses.create');
     }
 
-    public function edit()
+    public function edit($id)
     {
-        return view('Courses.edit');
+        $course= Courses::where('id', $id)->first();
+
+        return view('Courses.edit', [
+            'course' => $course,
+        ]);
     }
 
-    public function update(Request $request, Courses $courses)
+    public function update(Request $request, Courses $courses, $id)
     {
+        $coursesDataValidated= $request->validate($courses->validationRules());
+
+        Courses::where('id', $id)->update($coursesDataValidated);
+
+        $courses= Courses::get();
+        return view('Courses.index',[
+            'courses' => $courses,
+        ]);
+    }
+
+    public function delete(Request $request, Courses $courses, $id)
+    {
+        Courses::where('id', $id)->delete();
         
-    }
-
-    public function delete(Request $request, Courses $courses)
-    {
-
+        $courses= Courses::get();
+        return view('Courses.index',[
+            'courses' => $courses,
+        ]);
     }
 }

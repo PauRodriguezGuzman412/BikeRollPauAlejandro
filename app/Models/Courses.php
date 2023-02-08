@@ -11,6 +11,8 @@ class Courses extends Model
 
     protected $table= 'courses';
 
+    private $id;
+
     protected $fillable = [
         'description',
         'slope',
@@ -38,6 +40,9 @@ class Courses extends Model
             'sponsoring_money'   => 'required',
             'course_duration'    => 'required',
         ];
-        
+    }
+
+    public function id(){
+        return $this->id;
     }
 }
