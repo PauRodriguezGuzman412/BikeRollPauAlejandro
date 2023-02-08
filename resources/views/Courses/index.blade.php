@@ -23,6 +23,7 @@
             <th>Course Duration</th>
             <th>Active</th>
             <th>Editar</th>
+            <th>Borrar</th>
         </tr>
         @foreach ($courses as $course)
             <tr>
@@ -39,6 +40,7 @@
                 <td>{{ $course['course_duration'] }}</td>
                 <td>{{ $course['active'] }}</td>
                 <td><a href="{{ route('courses.edit', $course['id']) }}">Editar carrera</a></td>
+                <td><a href="{{ route('courses.delete', $course['id']) }}">Borrar carrera</a></td>
 
             </tr>
         @endforeach

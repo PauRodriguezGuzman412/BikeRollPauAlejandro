@@ -43,8 +43,7 @@ class CoursesController extends Controller
     {
         $coursesDataValidated= $request->validate($courses->validationRules());
 
-        // $course= $courses->update($coursesDataValidated);
-        $course= Courses::where('id', $id)->update($coursesDataValidated);
+        Courses::where('id', $id)->update($coursesDataValidated);
 
         $courses= Courses::get();
         return view('Courses.index',[
@@ -54,6 +53,11 @@ class CoursesController extends Controller
 
     public function delete(Request $request, Courses $courses, $id)
     {
+        Courses::where('id', $id)->delete();
         
+        $courses= Courses::get();
+        return view('Courses.index',[
+            'courses' => $courses,
+        ]);
     }
 }

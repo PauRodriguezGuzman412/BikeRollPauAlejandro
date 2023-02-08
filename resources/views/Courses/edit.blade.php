@@ -16,7 +16,6 @@
                 <li class="alert alert-danger">{{ $error }}</li>
             </div>
         @endforeach
-        {{-- <input hidden name="id" type="text" value="{{ $course['id'] }}"/> --}}
 
         <label for="description">Description: </label>
         <textarea name="description" type="textarea" >{{ old('description',$course['description']) }}</textarea> <br>
