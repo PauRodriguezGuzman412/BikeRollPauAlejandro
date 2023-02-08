@@ -7,7 +7,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 class CoursesController extends Controller
-{
+{    
     public function __invoke()
     {
         $courses= Courses::get();
