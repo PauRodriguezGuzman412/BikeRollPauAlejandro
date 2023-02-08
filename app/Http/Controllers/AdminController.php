@@ -25,10 +25,9 @@ class AdminController extends Controller
             'username' => ['required'],
             'password' => ['required'],
         ]);
-
         if(Auth::attempt($credentials)) {
-            $request->session()->regenerate();
- 
+           $token = $request->session();
+            
             return view('adminIndex');
         }
         return back()->withErrors([
