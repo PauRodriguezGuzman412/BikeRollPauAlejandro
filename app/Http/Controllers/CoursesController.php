@@ -52,8 +52,8 @@ class CoursesController extends Controller
         ]);
     }
 
-    public function delete(Request $request, Courses $courses)
+    public function delete(Request $request, Courses $courses, $id)
     {
-
+        
     }
 }
