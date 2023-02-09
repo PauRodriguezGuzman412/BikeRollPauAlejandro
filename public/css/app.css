@@ -19,9 +19,15 @@ body {
     background-color: white !important;
 }
 
-.logAdminTitle {
+.createRunnerformDiv {
+    min-width: 550px;
+    width:30%;
+    height:70%;
+    background-color: white !important;
+}
+
+.formTitle {
     margin:5%;
-    margin-bottom:10%;
     font-size:24px;
     font-family:'Poppins', sans-serif;
 }
@@ -30,12 +36,28 @@ form {
     width:65%;
 }
 
-input {
+.logAdminInput input {
     border:none;
     background-color: gainsboro;
     border-radius:8px;
     width:100%;
     padding:4% 0 4% 2%;
+}
+
+.runnerInput input {
+    border:none;
+    background-color: gainsboro;
+    border-radius:8px;
+    width:100%;
+    padding:3% 0 3% 2%;
+}
+
+.runnerInput select {
+    border:none;
+    background-color: gainsboro;
+    border-radius:8px;
+    width:100%;
+    padding:3% 0 3% 2%;
 }
 
 .submitLogAdminButton {

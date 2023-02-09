@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('address');
             $table->date('date_of_birth');
             $table->enum('federated',["OPEN","PRO"]);
-            $table->integer('federated_num')->unique();
+            $table->integer('federated_num')->unique()->nullable();
             $table->timestamps();
         });
     }

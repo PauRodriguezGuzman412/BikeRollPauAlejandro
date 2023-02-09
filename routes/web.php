@@ -5,6 +5,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\SponsorsController;
+use App\Http\Controllers\RunnersController;
 
 Route::get("/",IndexController::class)->name("index.index");
 
@@ -28,3 +29,10 @@ Route::post("/sponsors",[SponsorsController::class, 'store'])->name("sponsors.st
 Route::get("/sponsors/edit",[SponsorsController::class,'edit'])->name("sponsors.edit");
 Route::put("/sponsors",[SponsorsController::class, 'update'])->name("sponsors.update");
 Route::delete("/sponsors",[SponsorsController::class, 'deletes'])->name("sponsors.delete");
+
+Route::get("/runners",RunnersController::class)->name("runners");
+Route::get("/runners/create",[RunnersController::class,'create'])->name("runners.create");
+Route::post("/runners",[RunnersController::class, 'store'])->name("runners.store");
+Route::get("/runners/edit",[RunnersController::class,'edit'])->name("runners.edit");
+Route::put("/runners",[RunnersController::class, 'update'])->name("runners.update");
+Route::delete("/runners",[RunnersController::class, 'deletes'])->name("runners.delete");

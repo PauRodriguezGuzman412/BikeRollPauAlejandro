@@ -21,7 +21,7 @@
         <img class="sponsorsImg" src="{{ asset('img/sponsors-icon.png') }}">
     </div>
     </a>
-    <a href="" class="adminLinks">
+    <a href="{{ route('runners') }}" class="adminLinks">
         <div class= "d-flex flex-column align-items-center sectionDiv">
             <p class="sectionTitle">RUNNERS</p>
             <img class="runnersImg" src="{{ asset('img/runners-icon.png') }}">

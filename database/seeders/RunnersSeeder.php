@@ -38,6 +38,7 @@ class RunnersSeeder extends Seeder
                 'address' => 'C/ Andalucía 57, 04560, Almería',
                 'date_of_birth' => '1972-02-15',
                 'federated' => 'OPEN',
+                'federated_num' => NULL, 
             ],
         ]);
 
