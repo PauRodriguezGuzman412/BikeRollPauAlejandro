@@ -12,6 +12,7 @@ Route::get("/",IndexController::class)->name("index.index");
 
 Route::get("/admin",AdminController::class)->name("admin");
 Route::post('/admin/validate',[AdminController::class,'validateAdminCredentials'])->name('admin.validate');
+Route::get("/admin/index",[AdminController::class, 'index'])->name("admin.index");
 
 Route::get("/courses",CoursesController::class)->name("courses");
 Route::get("/courses/create",[CoursesController::class,'create'])->name("courses.create");
