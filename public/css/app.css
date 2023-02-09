@@ -1,3 +1,7 @@
+* {
+    font-family:'Poppins', sans-serif;
+}
+
 h5{
     background-color: red;
 }
@@ -45,4 +49,41 @@ input {
 
 .submitLogAdminButton:focus {
     opacity:0.7;
+}
+
+/*página principal administrador*/
+
+a {
+    text-decoration: none;
+    color:gray;
+}
+
+.adminLinks {
+    width: 30%;
+    height:100%;
+}
+
+.sectionTitle {
+    font-size:48px;
+    font-weight: bolder;
+}
+
+.sectionDiv {
+    max-height:320px;
+    height:100%;
+    background-color: white;
+    padding:7%;
+    padding:5% 25% 5% 25%;
+}
+
+.coursesImg {
+    width:135%;
+}
+
+.runnersImg {
+    width:100%;
+}
+
+.sponsorsImg {
+    width:100%;
 }
