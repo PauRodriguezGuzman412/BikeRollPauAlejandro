@@ -34,4 +34,8 @@ class AdminController extends Controller
             'username' => 'The provided credentials do not match our records.',
         ])->onlyInput('username');
     }
+
+    public function index() {
+        return view('adminIndex');
+    }
 }

@@ -34,6 +34,6 @@ Route::delete("/sponsors",[SponsorsController::class, 'deletes'])->name("sponsor
 Route::get("/runners",RunnersController::class)->name("runners");
 Route::get("/runners/create",[RunnersController::class,'create'])->name("runners.create");
 Route::post("/runners",[RunnersController::class, 'store'])->name("runners.store");
-Route::get("/runners/edit",[RunnersController::class,'edit'])->name("runners.edit");
-Route::put("/runners",[RunnersController::class, 'update'])->name("runners.update");
-Route::delete("/runners",[RunnersController::class, 'deletes'])->name("runners.delete");
+Route::get("/runners/edit/{id}",[RunnersController::class,'edit'])->name("runners.edit");
+Route::put("/runners/update/{id}",[RunnersController::class, 'update'])->name("runners.update");
+Route::get("/runners/delete/{id}/{active}",[RunnersController::class, 'delete'])->name("runners.delete");

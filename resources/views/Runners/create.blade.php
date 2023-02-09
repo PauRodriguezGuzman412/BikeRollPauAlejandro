@@ -26,7 +26,7 @@
         </div>
 
         <div class="mb-4 runnerInput">
-            <input name="date_of_birth" type="text" value="{{ old('date_of_birth','') }}" placeholder="Fecha de nacimiento" onfocus="(this.type='date')" onfocusout="checkBirthDate(this)"><br>
+            <input name="date_of_birth" type="text" value="{{ old('date_of_birth','') }}" placeholder="Fecha de nacimiento" onfocus="(this.type='date')" onblur="checkBirthDate(this)"><br>
         </div>
 
         <div class="mb-4 runnerInput">
