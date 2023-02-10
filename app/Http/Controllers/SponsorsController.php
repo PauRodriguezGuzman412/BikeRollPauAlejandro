@@ -10,7 +10,10 @@ class SponsorsController extends Controller
 {
     public function __invoke()
     {
-        return view('Sponsors.index');
+        $sponsor= Sponsors::get();
+        return view('Sponsors.index',[
+            'sponsor' => $sponsor,
+        ]);
     }
 
     public function create()
