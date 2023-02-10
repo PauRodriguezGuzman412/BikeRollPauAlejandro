@@ -10,17 +10,11 @@
     <table style="text-align: center">
         <thead>
             <th>ID</th>
-            <th>Description</th>
-            <th>Slope</th>
-            <th>Map Image</th>
-            <th>Maxim participants</th>
-            <th>Kilometres</th>
-            <th>Start date</th>
-            <th>Start point</th>
-            <th>Promotion Banner</th>
-            <th>Sponsoring Money</th>
-            <th>Course Duration</th>
-            <th>Active</th>
+            <th>CIF</th>
+            <th>Logo</th>
+            <th>Dirección</th>
+            <th>Página principal </th>
+            <th>Activo</th>
             <th>Editar</th>
             <th>Borrar</th>
         </thead>
