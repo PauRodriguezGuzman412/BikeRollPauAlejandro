@@ -15,7 +15,7 @@
             <th>Slope</th>
             <th>Map Image</th>
             <th>Maxim participants</th>
-            <th>Kilometres</th>
+            <th>Kilometers</th>
             <th>Start date</th>
             <th>Start point</th>
             <th>Promotion Banner</th>
