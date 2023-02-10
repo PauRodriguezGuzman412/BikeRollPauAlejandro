@@ -7,14 +7,16 @@
 
 @section('component')
 
-    <form action="{{ route('admin.sponsors.store') }}" method="POST">
+    <form action="{{ route('Sponsors.update', $sponsor['id']) }}" method="POST">
         @csrf
-        
+        @method('PUT')
+
         @foreach ($errors->all() as $error)
             <div class="container">
                 <li class="alert alert-danger">{{ $error }}</li>
             </div>
         @endforeach
+        
             {{-- test --}}
         <span>CIF</span>        <input name="CIF"                type="text"     value="{{ old('CIF','') }}"                ><br>
         <span>Logo</span>       <input name="logo"               type="file"     value="{{ old('logo','') }}"               ><br>
