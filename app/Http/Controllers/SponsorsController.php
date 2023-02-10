@@ -18,7 +18,7 @@ class SponsorsController extends Controller
 
     public function create()
     {
-        return view('Sponsor.create');
+        return view('Sponsors.create');
     }
 
     public function storeSponsors(Request $request, Sponsors $sponsor)

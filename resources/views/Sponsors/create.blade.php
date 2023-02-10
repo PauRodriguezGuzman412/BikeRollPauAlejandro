@@ -7,7 +7,7 @@
 
 @section('component')
 
-    <form action="{{ route('Sponsors.store') }}" method="POST">
+    <form action="{{ route('sponsors.store') }}" method="POST">
         @csrf
             {{-- test --}}
         <span>CIF</span>        <input name="CIF"                type="text"     value="{{ old('CIF','') }}"                ><br>

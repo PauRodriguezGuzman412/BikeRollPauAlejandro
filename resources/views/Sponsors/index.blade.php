@@ -31,7 +31,7 @@
             </tr>
         @endforeach
     </table>
-</div>>
+</div>
     
 @section('footer')
 @include('layout.footer')
