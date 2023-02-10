@@ -7,7 +7,6 @@
 
 @section('component')
 
-<link rel="stylesheet" href="{{ asset('css/app.css') }}" />
 <div class="container d-flex flex-row justify-content-around align-items-center adminIndexDiv">
     <a href="{{ route('courses') }}" class="adminLinks">
         <div class= "d-flex flex-column align-items-center sectionDiv">

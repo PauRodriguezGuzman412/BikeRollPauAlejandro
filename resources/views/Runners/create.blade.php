@@ -6,7 +6,6 @@
     @include('layout.header')
 
 @section('component')
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <script src="{{ asset('js/components/createRunner.js')}}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <div class="container d-flex flex-column justify-content-around align-items-center createRunnerformDiv">

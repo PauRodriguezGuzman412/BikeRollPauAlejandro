@@ -7,7 +7,6 @@
 
 @section('component')
 
-    <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 <div class="container d-flex flex-column justify-content-center align-items-center runnersTable">
     <a class="createRunnerButton" href="{{ route('runners.create') }}">CREAR CORREDOR</a>
     <table style="text-align: center">

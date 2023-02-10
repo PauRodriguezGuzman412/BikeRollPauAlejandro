@@ -34,6 +34,14 @@ header {
     background-color: white !important;
 }
 
+.createCourseformDiv {
+    min-width: 900px;
+    width:30%;
+    height:70%;
+    background-color: white !important;
+}
+
+
 .formTitle {
     margin:5%;
     font-size:24px;
@@ -66,6 +74,13 @@ form {
     border-radius:8px;
     width:100%;
     padding:3% 0 3% 2%;
+}
+
+textArea {
+    border:none;
+    background-color: gainsboro;
+    border-radius:8px;
+    width:100%;
 }
 
 .submitLogAdminButton {
@@ -174,4 +189,10 @@ a {
 
 .returnButton:focus {
     opacity:0.7;
+}
+
+/*create courses page*/
+
+.formTitleDiv {
+    margin-left: 28%;
 }

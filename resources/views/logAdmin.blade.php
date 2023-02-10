@@ -6,7 +6,6 @@
     @include('layout.header')
 
 @section('component')
-<link rel="stylesheet" href="{{ asset('css/app.css') }}" />
 <div class="container d-flex flex-column justify-content-start align-items-center adminFormDiv">
     <h1 class="formTitle">LOGIN ADMIN</h1>
         <form class="mt-4 logAdminForm" method="POST" action="{{ route('admin.validate') }}" >

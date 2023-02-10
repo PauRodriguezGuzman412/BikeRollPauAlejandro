@@ -6,10 +6,10 @@
     @include('layout.header')
 
 @section('component')
-
+<div class="container d-flex flex-column justify-content-center align-items-center runnersTable">
    <a href="{{ route('courses.create') }}">Crear carrera</a>
    <table style="text-align: center">
-        <tr>
+        <thead>
             <th>ID</th>
             <th>Description</th>
             <th>Slope</th>
@@ -24,7 +24,7 @@
             <th>Active</th>
             <th>Editar</th>
             <th>Borrar</th>
-        </tr>
+        </thead>
         @foreach ($courses as $course)
             <tr>
                 <td>{{ $course['id'] }}</td>
@@ -45,5 +45,6 @@
             </tr>
         @endforeach
     </table>
+</div>
 @section('footer')
 @include('layout.footer')
