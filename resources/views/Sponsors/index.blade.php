@@ -6,7 +6,7 @@
 @include('layout.header')
 
 <div class="container d-flex flex-column justify-content-center align-items-center runnersTable">
-    <a href="{{ route('courses.create') }}">Crear carrera</a>
+    <a href="{{ route('Sponsors.create') }}">Listar Sponsors</a>
     <table style="text-align: center">
         <thead>
             <th>ID</th>
@@ -18,15 +18,15 @@
             <th>Editar</th>
             <th>Borrar</th>
         </thead>
-        @foreach ($courses as $course)
+        @foreach ($sponsors as $sponsor)
             <tr>
-                <td>{{ $course['id'] }}</td>
-                <td>{{ $course['CIF'] }}</td>
-                <td>{{ $course['address'] }}</td>
-                <td>{{ $course['principal_page'] }}</td>
-                <td>{{ $course['active'] }}</td>
-                <td><a href="{{ route('courses.edit', $course['id']) }}">Editar sponsor</a></td>
-                <td><a href="{{ route('courses.delete', $course['id']) }}">Borrar sponsor</a></td>
+                <td>{{ $sponsor['id'] }}</td>
+                <td>{{ $sponsor['CIF'] }}</td>
+                <td>{{ $sponsor['address'] }}</td>
+                <td>{{ $sponsor['principal_page'] }}</td>
+                <td>{{ $sponsor['active'] }}</td>
+                <td><a href="{{ route('sponsors.edit', $sponsor['id']) }}">Editar sponsor</a></td>
+                <td><a href="{{ route('sponsors.delete', $sponsor['id']) }}">Borrar sponsor</a></td>
 
             </tr>
         @endforeach
