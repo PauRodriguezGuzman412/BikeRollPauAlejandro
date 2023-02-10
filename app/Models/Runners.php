@@ -13,6 +13,7 @@ class Runners extends Model
 
     private $id;
 
+
     protected $fillable = [
         'name',
         'surname',

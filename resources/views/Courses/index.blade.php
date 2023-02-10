@@ -7,7 +7,7 @@
 
 @section('component')
 <div class="container d-flex flex-column justify-content-center align-items-center runnersTable">
-   <a href="{{ route('courses.create') }}">Crear carrera</a>
+    <a class="createRunnerButton" href="{{ route('courses.create') }}">CREAR CARRERA</a>
    <table style="text-align: center">
         <thead>
             <th>ID</th>
@@ -38,13 +38,14 @@
                 <td>{{ $course['promotion_banner'] }}</td>
                 <td>{{ $course['sponsoring_money'] }}</td>
                 <td>{{ $course['course_duration'] }}</td>
-                <td>{{ $course['active'] }}</td>
-                <td><a href="{{ route('courses.edit', $course['id']) }}">Editar carrera</a></td>
-                <td><a href="{{ route('courses.delete', $course['id']) }}">Borrar carrera</a></td>
+                <td><a href="{{ route('courses.edit', $course['id']) }}"><img class="editIcon" src="{{ asset('img/editIcon.png') }}"></a></td>
+                <td><a href="{{ route('courses.delete',$course['id']) }}"><img class="statusIcon" src="{{ asset('img/deleteIcon.png') }}"></a></td>
 
             </tr>
         @endforeach
     </table>
+    <a class="returnButton" href="{{ route('admin.index') }}">VOLVER A PÁGINA PRINCIPAL</a>
+
 </div>
 @section('footer')
 @include('layout.footer')
