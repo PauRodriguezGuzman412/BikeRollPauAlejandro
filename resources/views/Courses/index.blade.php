@@ -6,7 +6,7 @@
     @include('layout.header')
 
 @section('component')
-<div class="container d-flex flex-column justify-content-center align-items-center runnersTable">
+<div class="container d-flex flex-column justify-content-center align-items-center">
     <a class="createRunnerButton" href="{{ route('courses.create') }}">CREAR CARRERA</a>
    <table style="text-align: center">
         <thead>
