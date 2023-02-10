@@ -10,7 +10,7 @@ class SponsorsController extends Controller
 {
     public function __invoke()
     {
-        return view('adminSponsors');
+        return view('Sponsors.index');
     }
 
     public function create()
