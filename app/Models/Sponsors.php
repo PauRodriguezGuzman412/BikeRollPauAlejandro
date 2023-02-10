@@ -11,6 +11,8 @@ class Sponsors extends Model
 
     protected $table= 'sponsors';
 
+    private $id;
+
     protected $fillable = [
         'CIF',
         'logo',
@@ -26,5 +28,9 @@ class Sponsors extends Model
             'principal_page'     => 'required',
         ];
         
+    }
+
+    public function id(){
+        return $this->id;
     }
 }
