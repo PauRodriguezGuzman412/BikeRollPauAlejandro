@@ -7,21 +7,20 @@
 
 @section('component')
 <div class="container d-flex flex-column justify-content-center align-items-center runnersTable">
-   <a href="{{ route('courses.create') }}">Crear carrera</a>
+    <a class="createRunnerButton" href="{{ route('courses.create') }}">CREAR CARRERA</a>
    <table style="text-align: center">
         <thead>
             <th>ID</th>
-            <th>Description</th>
-            <th>Slope</th>
-            <th>Map Image</th>
-            <th>Maxim participants</th>
-            <th>Kilometres</th>
-            <th>Start date</th>
-            <th>Start point</th>
-            <th>Promotion Banner</th>
-            <th>Sponsoring Money</th>
-            <th>Course Duration</th>
-            <th>Active</th>
+            <th>Descripción</th>
+            <th>Desnivel</th>
+            <th>Imagen Mapa</th>
+            <th>Maximo participantes</th>
+            <th>Kilometros</th>
+            <th>Fecha inicio</th>
+            <th>Punto de salida</th>
+            <th>Banner promoción</th>
+            <th>Dinero sponsors</th>
+            <th>Duración carrera</th>
             <th>Editar</th>
             <th>Borrar</th>
         </thead>
@@ -38,13 +37,14 @@
                 <td>{{ $course['promotion_banner'] }}</td>
                 <td>{{ $course['sponsoring_money'] }}</td>
                 <td>{{ $course['course_duration'] }}</td>
-                <td>{{ $course['active'] }}</td>
-                <td><a href="{{ route('courses.edit', $course['id']) }}">Editar carrera</a></td>
-                <td><a href="{{ route('courses.delete', $course['id']) }}">Borrar carrera</a></td>
+                <td><a href="{{ route('courses.edit', $course['id']) }}"><img class="editIcon" src="{{ asset('img/editIcon.png') }}"></a></td>
+                <td><a href="{{ route('courses.delete',$course['id']) }}"><img class="statusIcon" src="{{ asset('img/deleteIcon.png') }}"></a></td>
 
             </tr>
         @endforeach
     </table>
+    <a class="returnButton" href="{{ route('admin.index') }}">VOLVER A PÁGINA PRINCIPAL</a>
+
 </div>
 @section('footer')
 @include('layout.footer')

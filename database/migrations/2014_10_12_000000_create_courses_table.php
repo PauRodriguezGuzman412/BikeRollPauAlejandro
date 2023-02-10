@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('promotion_banner');
             $table->integer('sponsoring_money');
             $table->time('course_duration');
-            $table->boolean('active')->default(true);
+            $table->softDeletes();
             $table->timestamps();
         });
     }

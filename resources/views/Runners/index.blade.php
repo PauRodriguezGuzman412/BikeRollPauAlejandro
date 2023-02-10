@@ -33,8 +33,9 @@
                 <td><a href="{{ route('runners.edit', $runner['id']) }}"><img class="editIcon" src="{{ asset('img/editIcon.png') }}"></a></td>
                 @if ($runner['active'] == 1) 
                     <td><a href="{{ route('runners.delete', ['id' => $runner['id'], 'active' => $runner['active']]) }}"><img class="statusIcon" src="{{ asset('img/onIcon.png') }}"></a></td>
-                @else
+                    @else
                     <td><a href="{{ route('runners.delete', ['id' => $runner['id'], 'active' => $runner['active']]) }}"><img class="statusIcon" src="{{ asset('img/offIcon.png') }}"></a></td>
+                
                 @endif
 
             </tr>

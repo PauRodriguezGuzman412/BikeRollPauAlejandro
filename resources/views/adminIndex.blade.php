@@ -10,7 +10,7 @@
 <div class="container d-flex flex-row justify-content-around align-items-center adminIndexDiv">
     <a href="{{ route('courses') }}" class="adminLinks">
         <div class= "d-flex flex-column align-items-center sectionDiv">
-            <p class="sectionTitle">COURSES</p>
+            <p class="sectionTitle">CARRERAS</p>
             <img class="coursesImg" src="{{ asset('img/courses-icon.png') }}">
         </div>
     </a>
@@ -22,7 +22,7 @@
     </a>
     <a href="{{ route('runners') }}" class="adminLinks">
         <div class= "d-flex flex-column align-items-center sectionDiv">
-            <p class="sectionTitle">RUNNERS</p>
+            <p class="sectionTitle">CORREDORES</p>
             <img class="runnersImg" src="{{ asset('img/runners-icon.png') }}">
         </div>
     </a>
