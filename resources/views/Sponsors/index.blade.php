@@ -21,19 +21,12 @@
         @foreach ($courses as $course)
             <tr>
                 <td>{{ $course['id'] }}</td>
-                <td>{{ $course['description'] }}</td>
-                <td>{{ $course['slope'] }}</td>
-                <td>{{ $course['map_image'] }}</td>
-                <td>{{ $course['maxim_participants'] }}</td>
-                <td>{{ $course['km'] }}</td>
-                <td>{{ $course['start_date'] }}</td>
-                <td>{{ $course['start_point'] }}</td>
-                <td>{{ $course['promotion_banner'] }}</td>
-                <td>{{ $course['sponsoring_money'] }}</td>
-                <td>{{ $course['course_duration'] }}</td>
+                <td>{{ $course['CIF'] }}</td>
+                <td>{{ $course['address'] }}</td>
+                <td>{{ $course['principal_page'] }}</td>
                 <td>{{ $course['active'] }}</td>
-                <td><a href="{{ route('courses.edit', $course['id']) }}">Editar carrera</a></td>
-                <td><a href="{{ route('courses.delete', $course['id']) }}">Borrar carrera</a></td>
+                <td><a href="{{ route('courses.edit', $course['id']) }}">Editar sponsor</a></td>
+                <td><a href="{{ route('courses.delete', $course['id']) }}">Borrar sponsor</a></td>
 
             </tr>
         @endforeach
