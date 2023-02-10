@@ -11,17 +11,16 @@
    <table style="text-align: center">
         <thead>
             <th>ID</th>
-            <th>Description</th>
-            <th>Slope</th>
-            <th>Map Image</th>
-            <th>Maxim participants</th>
-            <th>Kilometers</th>
-            <th>Start date</th>
-            <th>Start point</th>
-            <th>Promotion Banner</th>
-            <th>Sponsoring Money</th>
-            <th>Course Duration</th>
-            <th>Active</th>
+            <th>Descripción</th>
+            <th>Desnivel</th>
+            <th>Imagen mapa</th>
+            <th>Máximo participantes</th>
+            <th>Kilómetros</th>
+            <th>Fecha inicio</th>
+            <th>Punto de salida</th>
+            <th>Banner promoción</th>
+            <th>Dinero sponsor</th>
+            <th>Duración Carrera</th>
             <th>Editar</th>
             <th>Borrar</th>
         </thead>

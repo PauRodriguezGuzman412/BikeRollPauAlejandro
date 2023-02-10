@@ -33,7 +33,7 @@ class SponsorsController extends Controller
 
         $sponsor->create($sponsorStored);
 
-        return view('Sponsors.create');
+        return redirect()->route('sponsors');
 
     }
     public function edit($id)

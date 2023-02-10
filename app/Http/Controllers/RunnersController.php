@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Runners;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Route;
 
 class RunnersController extends Controller
 {
@@ -27,7 +28,7 @@ class RunnersController extends Controller
 
         $runners->create($runnersDataValidated);
 
-        return view('Runners.create');
+        return redirect()->route('runners');
     }
 
     public function edit($id)
@@ -45,10 +46,8 @@ class RunnersController extends Controller
 
         Runners::where('id', $id)->update($runnersDataValidated);
 
-        $runners= Runners::get();
-        return view('Runners.index',[
-            'runners' => $runners,
-        ]);
+        return redirect()->route('runners');
+
     }
 
     public function delete(Request $request, Runners $courses, $id,$active)
@@ -56,15 +55,13 @@ class RunnersController extends Controller
         if($active == 0) {
             Runners::where('id', $id)->update(['active' => '1']);
             $runners= Runners::get();
-            return view('Runners.index',[
-                'runners' => $runners,
-            ]);
+            return redirect()->route('runners');
+
         }
         Runners::where('id', $id)->update(['active' => '0']);
         $runners= Runners::get();
-        return view('Runners.index',[
-            'runners' => $runners,
-        ]);
+        return redirect()->route('runners');
+
         
     }
 }

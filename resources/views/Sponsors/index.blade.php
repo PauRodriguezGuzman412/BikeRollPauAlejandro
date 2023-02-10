@@ -6,7 +6,7 @@
 @include('layout.header')
 
 <div class="container d-flex flex-column justify-content-center align-items-center runnersTable">
-    <a href="{{ route('sponsors.create') }}">Listar Sponsors</a>
+    <a class="createRunnerButton" href="{{ route('sponsors.create') }}">CREAR SPONSOR</a>
     <table style="text-align: center">
         <thead>
             <th>ID</th>
@@ -14,7 +14,6 @@
             <th>Logo</th>
             <th>Dirección</th>
             <th>Página principal </th>
-            <th>Activo</th>
             <th>Editar</th>
             <th>Borrar</th>
         </thead>
@@ -25,12 +24,18 @@
                 <td>{{ $value['address'] }}</td>
                 <td>{{ $value['principal_page'] }}</td>
                 <td>{{ $value['active'] }}</td>
-                <td><a href="{{ route('sponsors.edit', $value['id']) }}">Editar sponsor</a></td>
-                <td><a href="{{ route('sponsors.delete', $value['id']) }}">Borrar sponsor</a></td>
-
+                <td><a href="{{ route('sponsors.edit', $value['id']) }}"><img class="editIcon" src="{{ asset('img/editIcon.png') }}"></a></td>
+                @if ($value['active'] == 1) 
+                    <td><a href="{{ route('sponsors.delete', ['id' => $value['id'], 'active' => $value['active']]) }}"><img class="statusIcon" src="{{ asset('img/onIcon.png') }}"></a></td>
+                    @else
+                    <td><a href="{{ route('sponsors.delete', ['id' => $value['id'], 'active' => $value['active']]) }}"><img class="statusIcon" src="{{ asset('img/offIcon.png') }}"></a></td>
+                
+                @endif
             </tr>
         @endforeach
     </table>
+    <a class="returnButton" href="{{ route('admin.index') }}">VOLVER A PÁGINA PRINCIPAL</a>
+
 </div>
     
 @section('footer')
