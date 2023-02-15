@@ -1,1 +1,1 @@
-<header>Soy el footer</header>
+<footer>Soy el footer</footer>

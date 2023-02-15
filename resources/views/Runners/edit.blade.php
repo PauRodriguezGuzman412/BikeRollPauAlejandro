@@ -47,7 +47,8 @@
             @endif
             <button type="submit" class="submitLogAdminButton">EDITAR CORREDOR</button>
         </form>
-    </div>
+        <a class="returnFormButton" href="{{ route('runners') }}">VOLVER A PÁGINA PRINCIPAL</a>
+</div>
     @foreach ($errors->all() as $error)
             <div class="container">
                 <li class="alert alert-danger">{{ $error }}</li>

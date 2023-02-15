@@ -7,16 +7,29 @@
 
 @section('component')
 
-    <form action="{{ route('sponsors.store') }}" method="POST">
+<div class="container d-flex flex-column justify-content-start align-items-center createRunnerformDiv">
+    <h1 class="formTitle">CREAR SPONSOR</h1>
+    <form action="{{ route('sponsors.store') }}" method="POST" enctype='multipart/form-data'>
         @csrf
-            {{-- test --}}
-        <span>CIF</span>        <input name="CIF"                type="text"     value="{{ old('CIF','') }}"                ><br>
-        <span>Logo</span>       <input name="logo"               type="file"     value="{{ old('logo','') }}"               ><br>
-        <span>Dirección</span>  <textarea name="address"         type="textarea" value="{{ old('address','') }}"            ></textarea><br>
-        <span>1ª página</span>  <input name="principal_page"     type="boleean"  value="{{ old('principal_page','') }}"     ><br>
-        <button class="btn btn-info">Submit</button>
+        <div class="mb-4 runnerInput">
+            <input name="CIF" type="text" value="{{ old('CIF','') }}" placeholder="CIF">
+        </div>
+        <div class="mb-4 runnerInput">
+            <span>Logo</span>
+            <input name="logo" type="file" value="{{ old('logo','') }}" placeholder="Logo">
+        </div>
+        <div class="mb-4 runnerInput">
+            <textarea name="address" type="text" value="{{ old('address','') }}" placeholder="Direccion"></textarea>
+        </div>
+        <div class="d-flex flex-column mb-4 checkBoxSponsorInput">
+            <span>1ª página</span> 
+            <input type="hidden" name="principal_page" value="0">
+            <input name="principal_page" type="checkbox">
+        </div>
+        <button type="submit" class="submitLogAdminButton">AÑADIR SPONSOR</button>
     </form>
-    @foreach ($errors->all() as $error)
+</div>
+@foreach ($errors->all() as $error)
         <div class="container">
             <li class="alert alert-danger">{{ $error }}</li>
         </div>

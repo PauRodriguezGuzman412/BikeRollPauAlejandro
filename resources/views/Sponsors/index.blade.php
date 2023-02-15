@@ -17,18 +17,18 @@
             <th>Editar</th>
             <th>Borrar</th>
         </thead>
-        @foreach ($sponsor as $value)
+        @foreach ($sponsors as $sponsor)
             <tr>
-                <td>{{ $value['id'] }}</td>
-                <td>{{ $value['CIF'] }}</td>
-                <td>{{ $value['address'] }}</td>
-                <td>{{ $value['principal_page'] }}</td>
-                <td>{{ $value['active'] }}</td>
-                <td><a href="{{ route('sponsors.edit', $value['id']) }}"><img class="editIcon" src="{{ asset('img/editIcon.png') }}"></a></td>
-                @if ($value['active'] == 1) 
-                    <td><a href="{{ route('sponsors.delete', ['id' => $value['id'], 'active' => $value['active']]) }}"><img class="statusIcon" src="{{ asset('img/onIcon.png') }}"></a></td>
+                <td>{{ $sponsor['id'] }}</td>
+                <td>{{ $sponsor['CIF'] }}</td>
+                <td><img src={{ $sponsor['logo'] }} alt='Logo sponsor' style="width:100px;"></td>
+                <td>{{ $sponsor['address'] }}</td>
+                <td>{{ $sponsor['principal_page'] }}</td>
+                <td><a href="{{ route('sponsors.edit', $sponsor['id']) }}"><img class="editIcon" src="{{ asset('img/editIcon.png') }}"></a></td>
+                @if ($sponsor['active'] == 1) 
+                    <td><a href="{{ route('sponsors.delete', ['id' => $sponsor['id'], 'active' => $sponsor['active']]) }}"><img class="statusIcon" src="{{ asset('img/onIcon.png') }}"></a></td>
                     @else
-                    <td><a href="{{ route('sponsors.delete', ['id' => $value['id'], 'active' => $value['active']]) }}"><img class="statusIcon" src="{{ asset('img/offIcon.png') }}"></a></td>
+                    <td><a href="{{ route('sponsors.delete', ['id' => $sponsor['id'], 'active' => $sponsor['active']]) }}"><img class="statusIcon" src="{{ asset('img/offIcon.png') }}"></a></td>
                 
                 @endif
             </tr>

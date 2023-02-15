@@ -27,9 +27,9 @@ Route::post("/admin/aseguradoras",[AdminController::class, 'storeAseguradoras'])
 Route::get("/sponsors",SponsorsController::class)->name("sponsors");
 Route::get("/sponsors/create",[SponsorsController::class,'create'])->name("sponsors.create");
 Route::post("/sponsors",[SponsorsController::class, 'store'])->name("sponsors.store");
-Route::get("/sponsors/edit",[SponsorsController::class,'edit'])->name("sponsors.edit");
-Route::put("/sponsors",[SponsorsController::class, 'update'])->name("sponsors.update");
-Route::delete("/sponsors",[SponsorsController::class, 'deletes'])->name("sponsors.delete");
+Route::get("/sponsors/edit/{id}",[SponsorsController::class,'edit'])->name("sponsors.edit");
+Route::put("/sponsors/update/{id}",[SponsorsController::class, 'update'])->name("sponsors.update");
+Route::get("/sponsors/delete/{id}/{active}",[SponsorsController::class, 'delete'])->name("sponsors.delete");
 
 Route::get("/runners",RunnersController::class)->name("runners");
 Route::get("/runners/create",[RunnersController::class,'create'])->name("runners.create");

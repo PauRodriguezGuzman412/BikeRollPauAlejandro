@@ -19,6 +19,10 @@ header {
     height:20%;
 }
 
+footer {
+
+}
+
 .webLogo {
     max-width:300px;
 }
@@ -33,14 +37,14 @@ header {
 .createRunnerformDiv {
     min-width: 550px;
     width:30%;
-    height:70%;
+    height:75%;
     background-color: white !important;
 }
 
 .createCourseformDiv {
     min-width: 900px;
     width:30%;
-    height:70%;
+    height:75%;
     background-color: white !important;
 }
 
@@ -185,9 +189,25 @@ a {
     color:white;
     background:rgb(80, 177, 223);
     border:none;
+    max-width:324px;
     width:25%;
     padding:2% 0 2% 0;
     margin:2% 0 0 0;
+}
+
+.returnFormButton {
+    border-radius:15px;
+    text-align: center;
+    color:white;
+    background:rgb(80, 177, 223);
+    border:none;
+    max-width:324px;
+    padding:2% 1% 2% 1%;
+    margin:2% 50% 2% 0;
+}
+
+.returnRunnerButton:focus {
+    opacity:0.7;
 }
 
 .returnButton:focus {
@@ -198,4 +218,14 @@ a {
 
 .formTitleDiv {
     margin-left: 28%;
+}
+
+/* create sponsors page */
+
+.checkBoxSponsorInput {
+    text-align:center;
+}
+
+input[type="checkbox"] {
+    padding:5%;
 }
