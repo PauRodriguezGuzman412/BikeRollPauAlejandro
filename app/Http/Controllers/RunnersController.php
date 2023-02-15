@@ -34,10 +34,8 @@ class RunnersController extends Controller
     public function edit($id)
     {
         $runner= Runners::where('id', $id)->first();
-
-        return view('Runners.edit', [
-            'runner' => $runner,
-        ]);
+        
+        return redirect()->route('runners.edit', ['id' => $id]);
     }
 
     public function update(Request $request, Runners $runners, $id)
