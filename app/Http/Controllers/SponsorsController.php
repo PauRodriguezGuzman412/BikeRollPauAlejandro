@@ -29,6 +29,12 @@ class SponsorsController extends Controller
         $path = Storage::putFile('sponsorsImg', $request->file('logo'));
         $sponsorStored['logo'] = $path;
 
+        if($sponsorStored['principal_page']=='on'){
+            $sponsorStored['principal_page']=true;
+        }
+        else{
+            $sponsorStored['principal_page']=false;
+        }
         $sponsor->create($sponsorStored);
 
         return redirect()->route('sponsors');

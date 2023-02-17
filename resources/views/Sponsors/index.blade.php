@@ -12,6 +12,7 @@
         <thead>
             <th>ID</th>
             <th>CIF</th>
+            <th>Nombre</th>
             <th>Logo</th>
             <th>Dirección</th>
             <th>Página principal </th>
@@ -22,6 +23,7 @@
             <tr>
                 <td>{{ $sponsor['id'] }}</td>
                 <td>{{ $sponsor['CIF'] }}</td>
+                <td>{{ $sponsor['nombre'] }}</td>
                 <td><img src={{ $sponsor['logo'] }} alt='Logo sponsor' style="width:100px;"></td>
                 <td>{{ $sponsor['address'] }}</td>
                 <td>{{ $sponsor['principal_page'] }}</td>

@@ -16,6 +16,7 @@ return new class extends Migration
             $table->string('logo');
             $table->string('address');
             $table->boolean('principal_page');
+            $table->boolean('active')->default(1);
             $table->timestamp('failed_at')->useCurrent();
             $table->timestamps();
         });
