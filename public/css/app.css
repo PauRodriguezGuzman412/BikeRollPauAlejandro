@@ -19,10 +19,6 @@ header {
     height:20%;
 }
 
-footer {
-
-}
-
 .webLogo {
     max-width:300px;
 }
@@ -228,4 +224,12 @@ a {
 
 input[type="checkbox"] {
     padding:5%;
+}
+
+.NavHover:hover{
+    border: 1px solid red;
+}
+
+input:hover{
+    border: 1px solid blue;
 }
