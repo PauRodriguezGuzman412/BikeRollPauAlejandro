@@ -15,6 +15,7 @@ class Sponsors extends Model
 
     protected $fillable = [
         'CIF',
+        'nombre',
         'logo',
         'address',
         'principal_page',
@@ -23,6 +24,7 @@ class Sponsors extends Model
     public function validationSponsor(){
         return [
             'CIF'                => 'required',
+            'nombre'             => 'required',
             'logo'               => 'required',
             'address'            => 'required',
             'principal_page'     => 'required',
