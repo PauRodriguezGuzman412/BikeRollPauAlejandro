@@ -6,6 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\SponsorsController;
 use App\Http\Controllers\RunnersController;
+use App\Http\Controllers\FileUploadController;
 
 Route::get("/",IndexController::class)->name("index.index");
 
@@ -20,6 +21,9 @@ Route::post("/courses",[CoursesController::class, 'store'])->name("courses.store
 Route::get("/courses/edit/{id}",[CoursesController::class,'edit'])->name("courses.edit");
 Route::put("/courses/update/{id}",[CoursesController::class, 'update'])->name("courses.update");
 Route::get("/courses/delete/{id}",[CoursesController::class, 'delete'])->name("courses.delete");
+
+Route::get('/courses/upload-ui', [FileUploadController::class, 'dropzoneUi' ])->name('file.dropzoneView');
+Route::post('/courses/file-upload', [FileUploadController::class, 'dropzoneFileUpload' ])->name('file.dropzoneFileUpload');
 
 Route::get("/admin/aseguradoras",[AdminController::class,'indexAseguradoras'])->name("admin.aseguradoras.index");
 Route::post("/admin/aseguradoras",[AdminController::class, 'storeAseguradoras'])->name("admin.aseguradoras.store");
