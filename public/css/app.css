@@ -226,8 +226,9 @@ input[type="checkbox"] {
     padding:5%;
 }
 
-.NavHover:hover{
-    border: 1px solid red;
+.active:hover{
+    background-color: rgb(0, 0, 163)!important;
+    transition: 500ms;
 }
 
 input:hover{
