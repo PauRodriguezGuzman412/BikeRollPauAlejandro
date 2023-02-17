@@ -16,6 +16,9 @@
             <input name="CIF" type="text" value="{{ old('CIF','') }}" placeholder="CIF">
         </div>
         <div class="mb-4 runnerInput">
+            <textarea name="nombre" type="text" value="{{ old('nombre','') }}" placeholder="nombre"></textarea>
+        </div>
+        <div class="mb-4 runnerInput">
             <span>Logo</span>
             <input name="logo" type="file" value="{{ old('logo','') }}" placeholder="Logo">
         </div>

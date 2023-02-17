@@ -18,6 +18,7 @@
         @endforeach
             {{-- test --}}
         <span>CIF</span>        <input name="CIF"                type="text"     value="{{ old('CIF','') }}"                ><br>
+        <span>Nombre</span>        <input name="nombre"          type="text"     value="{{ old('nombre','') }}"             ><br>
         <span>Logo</span>       <input name="logo"               type="file"     value="{{ old('logo','') }}"               ><br>
         <span>Dirección</span>  <textarea name="address"         type="textarea" value="{{ old('address','') }}"            ></textarea><br>
         <span>1ª página</span>  <input name="principal_page"     type="boleean"  value="{{ old('principal_page','') }}"     ><br>
