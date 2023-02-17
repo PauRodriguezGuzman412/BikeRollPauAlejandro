@@ -35,11 +35,7 @@
             </tr>
         @endforeach
     </table>
-<<<<<<< Updated upstream
-    <a class="returnButton" href="{{ route('admin.index') }}">VOLVER A PÁGINA PRINCIPAL</a>
 
-=======
->>>>>>> Stashed changes
 </div>
     
 @section('footer')

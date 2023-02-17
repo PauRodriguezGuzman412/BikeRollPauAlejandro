@@ -65,5 +65,5 @@
                 <li class="alert alert-danger">{{ $error }}</li>
             </div>
         @endforeach
-@section('footer')
+@section('layout.footer')
 @include('layout.footer')
