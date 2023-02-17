@@ -4,6 +4,7 @@
 
 @section('header')
     @include('layout.header')
+    @include('layout.nav')
 
 @section('component')
 <div class="container d-flex flex-column justify-content-center align-items-center">

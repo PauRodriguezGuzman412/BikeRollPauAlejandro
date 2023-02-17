@@ -4,6 +4,7 @@
 
 @section('header')
 @include('layout.header')
+@include('layout.nav')
 
 <div class="container d-flex flex-column justify-content-center align-items-center runnersTable">
     <a class="createRunnerButton" href="{{ route('sponsors.create') }}">CREAR SPONSOR</a>

@@ -4,6 +4,7 @@
 
 @section('header')
     @include('layout.header')
+    @include('layout.nav')
 
 @section('component')
     <script src="{{ asset('js/components/createRunner.js')}}"></script>
