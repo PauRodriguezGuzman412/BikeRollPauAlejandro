@@ -4,6 +4,7 @@
 
 @section('header')
     @include('layout.header')
+    @include('layout.nav')
 
 @section('component')
 
@@ -64,5 +65,5 @@
                 <li class="alert alert-danger">{{ $error }}</li>
             </div>
         @endforeach
-@section('footer')
+@section('layout.footer')
 @include('layout.footer')
