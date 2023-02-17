@@ -35,6 +35,7 @@
             </tr>
         @endforeach
     </table>
+    <a class="returnButton" href="{{ route('admin.index') }}">VOLVER A PÁGINA PRINCIPAL</a>
 
 </div>
     

@@ -12,6 +12,7 @@ return new class extends Migration
         Schema::create('sponsors', function (Blueprint $table) {
             $table->id();
             $table->string('CIF')->unique();
+            $table->string('nombre');
             $table->string('logo');
             $table->string('address');
             $table->boolean('principal_page');
