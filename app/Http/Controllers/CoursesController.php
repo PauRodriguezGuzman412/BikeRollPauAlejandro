@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Courses;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
 
 class CoursesController extends Controller
 {    
@@ -25,10 +26,14 @@ class CoursesController extends Controller
     {
         $coursesDataValidated= $request->validate($courses->validationRules());
 
+        $path1 = Storage::putFile('coursesImg', $request->file('map_image'));
+        $path2 = Storage::putFile('coursesImg', $request->file('promotion_banner'));
+        $coursesDataValidated['map_image'] = $path1;
+        $coursesDataValidated['promotion_banner'] = $path2;
+
         $courses->create($coursesDataValidated);
-
+        
         return redirect()->route('courses');
-
     }
 
     public function edit($id)
@@ -44,6 +49,11 @@ class CoursesController extends Controller
     {
         $coursesDataValidated= $request->validate($courses->validationRules());
 
+        $path1 = Storage::putFile('coursesImg', $request->file('map_image'));
+        $path2 = Storage::putFile('coursesImg', $request->file('promotion_banner'));
+        $coursesDataValidated['map_image'] = $path1;
+        $coursesDataValidated['promotion_banner'] = $path2;
+            
         Courses::where('id', $id)->update($coursesDataValidated);
 
         return redirect()->route('courses');

@@ -10,7 +10,7 @@
 
 <div class="container d-flex flex-column justify-content-center align-items-center createCourseformDiv">
 
-    <form action="{{ route('courses.store') }}" method="POST">
+    <form action="{{ route('courses.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="formTitleDiv">
             <h1 class="formTitle">CREAR CARRERA</h1>
@@ -57,6 +57,9 @@
         </div>
         <div>
             <button class="submitLogAdminButton">AÑADIR CARRERA</button>
+        </div>
+        <div>
+            <a class="returnFormButton" href="{{ route('courses') }}">VOLVER</a>
         </div>
     </form>
 </div>

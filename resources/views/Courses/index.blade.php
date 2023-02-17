@@ -30,12 +30,12 @@
                 <td>{{ $course['id'] }}</td>
                 <td>{{ $course['description'] }}</td>
                 <td>{{ $course['slope'] }}</td>
-                <td>{{ $course['map_image'] }}</td>
+                <td><img src="{{ $course['map_image'] }}" alt="Mapa" width="50px"></td>
                 <td>{{ $course['maxim_participants'] }}</td>
                 <td>{{ $course['km'] }}</td>
                 <td>{{ $course['start_date'] }}</td>
                 <td>{{ $course['start_point'] }}</td>
-                <td>{{ $course['promotion_banner'] }}</td>
+                <td><img src="{{ $course['promotion_banner'] }}" alt="Banner de promoción" width="50px"></td>
                 <td>{{ $course['sponsoring_money'] }}</td>
                 <td>{{ $course['course_duration'] }}</td>
                 <td><a href="{{ route('courses.edit', $course['id']) }}"><img class="editIcon" src="{{ asset('img/editIcon.png') }}"></a></td>

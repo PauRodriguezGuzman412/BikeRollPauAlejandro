@@ -16,7 +16,7 @@ return new class extends Migration
             $table->string('map_image');
             $table->string('maxim_participants');
             $table->float('km');
-            $table->datetime('start_date');
+            $table->date('start_date');
             $table->string('start_point');
             $table->string('promotion_banner');
             $table->integer('sponsoring_money');

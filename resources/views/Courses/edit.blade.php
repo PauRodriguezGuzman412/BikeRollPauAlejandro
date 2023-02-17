@@ -10,13 +10,14 @@
 
 <div class="container d-flex flex-column justify-content-center align-items-center createCourseformDiv">
 
-    <form action="{{ route('courses.update',$course['id']) }}" method="POST">
+    <form action="{{ route('courses.update',$course['id']) }}" method="POST" enctype="multipart/form-data">
         @csrf
         @method('PUT')
 
         <div class="formTitleDiv">
             <h1 class="formTitle">MODIFICAR CARRERA</h1>
         </div>
+
         <div class="d-flex flex-row justify-content-around me-4 runnerInput">
             <div class="col-sm-8 mb-4 runnerInput">
                 <textarea name="description" type="textarea" >{{ old('description',$course['description']) }}</textarea>
@@ -59,6 +60,9 @@
         </div>
         <div>
             <button class="submitLogAdminButton">MODIFICAR CARRERA</button>
+        </div>
+        <div>
+            <a class="returnFormButton" href="{{ route('courses') }}">VOLVER</a>
         </div>
     </form>
 </div>
