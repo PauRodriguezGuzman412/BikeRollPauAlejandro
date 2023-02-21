@@ -9,7 +9,7 @@
 @section('component')
 <div class="container d-flex flex-column justify-content-center align-items-center">
     <a class="createRunnerButton" href="{{ route('courses.create') }}">CREAR CARRERA</a>
-   <table style="text-align: center">
+    <table style="text-align: center">
         <thead>
             <th>ID</th>
             <th>Descripción</th>
@@ -31,12 +31,12 @@
                 <td>{{ $course['id'] }}</td>
                 <td>{{ $course['description'] }}</td>
                 <td>{{ $course['slope'] }}</td>
-                <td><img src="{{ $course['map_image'] }}" alt="Mapa" width="50px"></td>
+                <td><img src="{{ asset($course['map_image']) }}" alt="Mapa" width="50px"></td>
                 <td>{{ $course['maxim_participants'] }}</td>
                 <td>{{ $course['km'] }}</td>
                 <td>{{ $course['start_date'] }}</td>
                 <td>{{ $course['start_point'] }}</td>
-                <td><img src="{{ $course['promotion_banner'] }}" alt="Banner de promoción" width="50px"></td>
+                <td><img src="{{ asset($course['promotion_banner']) }}" alt="Banner de promoción" width="50px"></td>
                 <td>{{ $course['sponsoring_money'] }}</td>
                 <td>{{ $course['course_duration'] }}</td>
                 <td><a href="{{ route('courses.edit', $course['id']) }}"><img class="editIcon" src="{{ asset('img/editIcon.png') }}"></a></td>

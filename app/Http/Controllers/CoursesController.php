@@ -66,20 +66,20 @@ class CoursesController extends Controller
         return redirect()->route('courses');
     }
 
-    public function showAvailable($id)
+    public function showAvailable()
     {
-        $course= Courses::where('id', $id)->first();
+        $courses= Courses::where('start_date', '<', date('Y-m-d'))->get();
 
-        return view('Courses.edit', [
-            'course' => $course,
+        return view('Courses.showAvailable', [
+            'courses' => $courses,
         ]);
     }
-    
-    public function showFinished($id)
-    {
-        $course= Courses::where('id', $id)->first();
 
-        return view('Courses.edit', [
+    public function showFinished()
+    {
+        $courses= Courses::where('start_date', '<', date('Y-m-d'))->first();
+
+        return view('Courses.showFinished', [
             'course' => $course,
         ]);
     }
