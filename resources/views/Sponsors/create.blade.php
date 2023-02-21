@@ -4,7 +4,9 @@
 
 @section('header')
     @include('layout.header')
-    @include('layout.nav')
+
+@section('nav')
+@include('layout.nav')
 
 @section('component')
 

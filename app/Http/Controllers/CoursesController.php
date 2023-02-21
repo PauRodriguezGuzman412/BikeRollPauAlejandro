@@ -57,7 +57,6 @@ class CoursesController extends Controller
         Courses::where('id', $id)->update($coursesDataValidated);
 
         return redirect()->route('courses');
-
     }
 
     public function delete(Request $request, Courses $courses, $id)
@@ -65,5 +64,23 @@ class CoursesController extends Controller
         Courses::where('id', $id)->delete();
         
         return redirect()->route('courses');
+    }
+
+    public function showAvailable($id)
+    {
+        $course= Courses::where('id', $id)->first();
+
+        return view('Courses.edit', [
+            'course' => $course,
+        ]);
+    }
+    
+    public function showFinished($id)
+    {
+        $course= Courses::where('id', $id)->first();
+
+        return view('Courses.edit', [
+            'course' => $course,
+        ]);
     }
 }

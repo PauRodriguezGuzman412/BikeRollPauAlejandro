@@ -1,10 +1,10 @@
 <div class="container">
   <ul class="nav nav-pills nav-fill">
     <li class="nav-item">
-      <a class="nav-link active" aria-current="page" href="#">Carreras</a>
+      <a class="nav-link active" aria-current="page" href="{{ route(courses.available) }}">Carreras</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link active" href="#">Galería de imágenes</a>
+      <a class="nav-link active" href="{{ route(courses.finished) }}">Galería de imágenes</a>
     </li>
     <li class="nav-item">
       <a class="nav-link active" href="#">Clasificaciones</a>
