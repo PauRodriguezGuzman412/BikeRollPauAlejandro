@@ -23,6 +23,7 @@
             <th>Dinero sponsor</th>
             <th>Duración Carrera</th>
             <th>Editar</th>
+            <th>Subir Fotos</th>
             <th>Borrar</th>
         </thead>
         @foreach ($courses as $course)
@@ -39,6 +40,11 @@
                 <td>{{ $course['sponsoring_money'] }}</td>
                 <td>{{ $course['course_duration'] }}</td>
                 <td><a href="{{ route('courses.edit', $course['id']) }}"><img class="editIcon" src="{{ asset('img/editIcon.png') }}"></a></td>
+                @if($course['course_duration'] != "00:00:00")
+                <td><a href="{{ route('file.dropzoneView') }}"><img class="editIcon" src="{{ asset('img/fileUpload.png') }}"></a></td>
+                @else
+                <td>No disponible</td>
+                @endif
                 <td><a href="{{ route('courses.delete',$course['id']) }}"><img class="statusIcon" src="{{ asset('img/deleteIcon.png') }}"></a></td>
 
             </tr>
