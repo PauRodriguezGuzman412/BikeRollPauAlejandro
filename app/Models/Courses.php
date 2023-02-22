@@ -4,17 +4,17 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletes;
 
 class Courses extends Model
 {
-    use HasFactory,SoftDeletes;
+    use HasFactory;
 
     protected $table= 'courses';
 
     private $id;
 
     protected $fillable = [
+        'name',
         'description',
         'slope',
         'map_image',
@@ -30,6 +30,7 @@ class Courses extends Model
 
     public function validationRules(){
         return [
+            'name'               => 'required',
             'description'        => 'required',
             'slope'              => 'required',
             'map_image'          => 'required',
