@@ -17,7 +17,11 @@
         <div class="formTitleDiv">
             <h1 class="formTitle">MODIFICAR CARRERA</h1>
         </div>
-
+        <div class="d-flex flex-row justify-content-around me-4 runnerInput">
+            <div class="col-sm-8 mb-4 runnerInput">
+                <input name="name" type="text" value="{{ old('name',$course['name']) }}" placeholder="Nombre">
+            </div>
+        </div>
         <div class="d-flex flex-row justify-content-around me-4 runnerInput">
             <div class="col-sm-8 mb-4 runnerInput">
                 <textarea name="description" type="textarea" >{{ old('description',$course['description']) }}</textarea>
