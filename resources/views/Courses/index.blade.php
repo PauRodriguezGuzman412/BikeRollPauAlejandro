@@ -24,7 +24,7 @@
             <th>Duración Carrera</th>
             <th>Editar</th>
             <th>Subir Fotos</th>
-            <th>Borrar</th>
+            <th>Desactivar</th>
         </thead>
         @foreach ($courses as $course)
             <tr>
@@ -45,7 +45,11 @@
                 @else
                 <td>No disponible</td>
                 @endif
-                <td><a href="{{ route('courses.delete',$course['id']) }}"><img class="statusIcon" src="{{ asset('img/deleteIcon.png') }}"></a></td>
+                @if ($course['active'] == 1) 
+                    <td><a href="{{ route('courses.delete', ['id' => $course['id'], 'active' => $course['active']]) }}"><img class="statusIcon" src="{{ asset('img/onIcon.png') }}"></a></td>
+                    @else
+                    <td><a href="{{ route('courses.delete', ['id' => $course['id'], 'active' => $course['active']]) }}"><img class="statusIcon" src="{{ asset('img/offIcon.png') }}"></a></td>        
+                @endif
 
             </tr>
         @endforeach

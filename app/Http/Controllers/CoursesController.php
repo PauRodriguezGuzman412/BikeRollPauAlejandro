@@ -8,10 +8,10 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 
 class CoursesController extends Controller
-{    
+{
     public function __invoke()
     {
-        $courses= Courses::get();
+        $courses = Courses::get();
         return view('Courses.index',[
             'courses' => $courses,
         ]);
@@ -59,10 +59,16 @@ class CoursesController extends Controller
         return redirect()->route('courses');
     }
 
-    public function delete(Request $request, Courses $courses, $id)
+    public function delete(Request $request, Courses $courses, $id, $active)
     {
-        Courses::where('id', $id)->delete();
-        
+        if($active == 0) {
+            Courses::where('id', $id)->update(['active' => '1']);
+            $runners= Courses::get();
+            return redirect()->route('courses');
+
+        }
+        Courses::where('id', $id)->update(['active' => '0']);
+        $courses= Courses::get();
         return redirect()->route('courses');
     }
 

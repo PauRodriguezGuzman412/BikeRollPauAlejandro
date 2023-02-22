@@ -20,7 +20,7 @@ Route::get("/admin/courses/create",[CoursesController::class,'create'])->name("c
 Route::post("/admin/courses",[CoursesController::class, 'store'])->name("courses.store");
 Route::get("/admin/courses/edit/{id}",[CoursesController::class,'edit'])->name("courses.edit");
 Route::put("/admin/courses/update/{id}",[CoursesController::class, 'update'])->name("courses.update");
-Route::get("/admin/courses/delete/{id}",[CoursesController::class, 'delete'])->name("courses.delete");
+Route::get("/admin/courses/delete/{id}/{active}",[CoursesController::class, 'delete'])->name("courses.delete");
 
 Route::get('dropzone', [DropzoneController::class, 'dropzone']);
 Route::post('dropzone/store', [DropzoneController::class, 'dropzoneStore'])->name('dropzone.store');

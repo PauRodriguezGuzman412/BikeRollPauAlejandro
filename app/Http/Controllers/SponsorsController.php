@@ -51,6 +51,12 @@ class SponsorsController extends Controller
 
     public function update(Request $request, Sponsors $sponsors, $id)
     {
+        var_dump($request['principal_page']);
+        if($request['principal_page']== "on"){
+            $request['principal_page']= true;
+        }else{
+            $request['principal_page']= false;
+        }
         $sponsorStored = $request->validate($sponsors->validationSponsor());
 
         $path = Storage::putFile('sponsorsImg', $request->file('logo'));
