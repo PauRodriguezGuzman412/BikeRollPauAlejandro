@@ -41,7 +41,7 @@
                 <td>{{ $course['course_duration'] }}</td>
                 <td><a href="{{ route('courses.edit', $course['id']) }}"><img class="editIcon" src="{{ asset('img/editIcon.png') }}"></a></td>
                 @if($course['course_duration'] != "00:00:00")
-                <td><a href="{{ route('file.dropzoneView') }}"><img class="editIcon" src="{{ asset('img/fileUpload.png') }}"></a></td>
+                <td><a href="{{ route('file.dropzoneView', $course['id']) }}"><img class="editIcon" src="{{ asset('img/fileUpload.png') }}"></a></td>
                 @else
                 <td>No disponible</td>
                 @endif

@@ -64,4 +64,16 @@ class RunnersController extends Controller
 
         
     }
+
+    public function search(Request $request)
+    {
+
+        $filter = $request->input('filter');
+        $searchText = $request->input('searchText');
+        $runners= Runners::where($filter,'LIKE', '%'.$searchText.'%')->get();
+
+        return view('Runners.index', [
+            'runners' => $runners,
+        ]);
+    }
 }

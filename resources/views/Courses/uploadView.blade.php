@@ -7,87 +7,90 @@
     @include('layout.nav')
 
 @section('component')
-<link href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.2/dropzone.min.css" rel="stylesheet">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.7.2/min/dropzone.min.js"></script>
-    <script>
-        var dropzone = new Dropzone('#file-upload', {
-            previewTemplate: document.querySelector('#preview-template').innerHTML,
-            parallelUploads: 3,
-            thumbnailHeight: 150,
-            thumbnailWidth: 150,
-            maxFilesize: 5,
-            filesizeBase: 1500,
-            thumbnail: function (file, dataUrl) {
-                if (file.previewElement) {
-                    file.previewElement.classList.remove("dz-file-preview");
-                    var images = file.previewElement.querySelectorAll("[data-dz-thumbnail]");
-                    for (var i = 0; i < images.length; i++) {
-                        var thumbnailElement = images[i];
-                        thumbnailElement.alt = file.name;
-                        thumbnailElement.src = dataUrl;
-                    }
-                    setTimeout(function () {
-                        file.previewElement.classList.add("dz-image-preview");
-                    }, 1);
-                }
-            }
-        });
-        
-        var minSteps = 6,
-            maxSteps = 60,
-            timeBetweenSteps = 100,
-            bytesPerStep = 100000;
-        dropzone.uploadFiles = function (files) {
-            var self = this;
-            for (var i = 0; i < files.length; i++) {
-                var file = files[i];
-                totalSteps = Math.round(Math.min(maxSteps, Math.max(minSteps, file.size / bytesPerStep)));
-                for (var step = 0; step < totalSteps; step++) {
-                    var duration = timeBetweenSteps * (step + 1);
-                    setTimeout(function (file, totalSteps, step) {
-                        return function () {
-                            file.upload = {
-                                progress: 100 * (step + 1) / totalSteps,
-                                total: file.size,
-                                bytesSent: (step + 1) * file.size / totalSteps
-                            };
-                            self.emit('uploadprogress', file, file.upload.progress, file.upload
-                                .bytesSent);
-                            if (file.upload.progress == 100) {
-                                file.status = Dropzone.SUCCESS;
-                                self.emit("success", file, 'success', null);
-                                self.emit("complete", file);
-                                self.processQueue();
-                            }
-                        };
-                    }(file, totalSteps, step), duration);
-                }
-            }
-        }
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.0/min/dropzone.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dropzone/5.5.0/dropzone.js"></script>
+
+    <!-- Font Awesome JS -->
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/solid.js"
+        integrity="sha384-tzzSw1/Vo+0N5UhStP3bvwWPq+uvzCMfrN1fEFe+xBmv1C/AtVX5K0uZtmcHitFZ" crossorigin="anonymous">
     </script>
-    <style>
-        .dropzone {
-            background: #e3e6ff;
-            border-radius: 13px;
-            max-width: 550px;
-            margin-left: auto;
-            margin-right: auto;
-            border: 2px dotted #1833FF;
-            margin-top: 50px;
+    <script defer src="https://use.fontawesome.com/releases/v5.0.13/js/fontawesome.js"
+        integrity="sha384-6OIrr52G08NpOFSZdxxz1xdNSndlD4vdcf/q2myIUVO0VsqaGHJsB0RaBE01VTOY" crossorigin="anonymous">
+    </script>
+           <style>
+        .footer {
+            position: fixed;
+            left: 0;
+            bottom: 0;
+            width: 100%;
+            background-color: #9C27B0;
+            color: white;
+            text-align: center;
         }
+
+        body {
+            background-color: #EDF7EF
+        }
+
     </style>
-<div class="container d-flex flex-column justify-content-center align-items-center">
-    <div id="dropzone">
-        <form action="{{ route('file.dropzoneFileUpload') }}" class="dropzone" id="file-upload" enctype="multipart/form-data" method="POST">
-            @csrf
-            <div class="dz-message">
-                Drag and Drop Single/Multiple Files Here<br>
-            </div>
-        <button type="submit" class="submitLogAdminButton">AÑADIR FOTOS</button>
-    </form>
+<div class="row mb-3">
+    <div class="col-lg-12 margin-tb">
     </div>
-    
 </div>
+
+<div class="container">
+<div class="row">
+
+</div>        
+<form method="post" action="{{ route('file.dropzoneFileUpload') }}" enctype="multipart/form-data"
+      class="dropzone" id="dropzone">
+    @csrf
+    </form>
+</div>
+   <div class="row mt-3">
+    <div class="col-lg-12 margin-tb">
+        <div class="text-center">
+            <a class="btn btn-success" href="{{ route('courses') }}" title="return to index"> <i class="fas fa-backward fa-2x"></i>
+            </a>
+        </div>
+    </div>
+</div>
+<script type="text/javascript">
+    Dropzone.options.dropzone =
+    {
+        maxFilesize: 12,
+        resizeQuality: 1.0,
+        acceptedFiles: ".jpeg,.jpg,.png,.gif",
+        addRemoveLinks: true,
+        timeout: 60000,
+        removedfile: function(file) 
+        {
+            var name = file.upload.filename;
+            $.ajax({
+                headers: {
+                            'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                        },
+                type: 'POST',
+                url: '{{ url("files/destroy") }}',
+                data: {filename: name},
+                success: function (data){
+                    console.log("File has been successfully removed!!");
+                },
+                error: function(e) {
+                    console.log(e);
+                }});
+                var fileRef;
+                return (fileRef = file.previewElement) != null ? 
+                fileRef.parentNode.removeChild(file.previewElement) : void 0;
+        },
+        success: function (file, response) {
+            console.log(response);
+        },
+        error: function (file, response) {
+            return false;
+        }
+    };
+</script>
 
 @section('footer')
 @include('layout.footer')
