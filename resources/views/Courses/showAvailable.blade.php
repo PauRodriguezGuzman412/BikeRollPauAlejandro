@@ -20,7 +20,8 @@
                 <td><img src="{{ asset($course['map_image']) }}" alt="Mapa" width="50px"></td>
                 <td>{{ $course['description'] }}</td>
                 <td>{{ $course['start_date'] }}</td>
-                <td><a href="{{ route('courses.registerForm',$course['id']) }}">Registrarse</a></td>
+                <td><a href="{{ route('courses.registerFormID',$course['id']) }}">Registrarse con ID</a></td>
+                <td><a href="{{ route('courses.registerForms',$course['id']) }}">Registrarse</a></td>
             </tr>
         @endforeach
     </table>

@@ -6,6 +6,15 @@ use App\Models\Courses;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use Endroid\QrCode\Color\Color;
+use Endroid\QrCode\Encoding\Encoding;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelLow;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\Label\Label;
+use Endroid\QrCode\Logo\Logo;
+use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
+use Endroid\QrCode\Writer\PngWriter;
+use Endroid\QrCode\Writer\ValidationException;
 
 class CoursesController extends Controller
 {
@@ -74,7 +83,7 @@ class CoursesController extends Controller
 
     public function showAvailable()
     {
-        $courses= Courses::where('start_date', '<', date('Y-m-d'))->get();
+        $courses= Courses::where('start_date', '<', date('Y-m-d'))->where('active', 1)->get();
 
         return view('Courses.showAvailable', [
             'courses' => $courses,
@@ -88,5 +97,22 @@ class CoursesController extends Controller
         return view('Courses.showFinished', [
             'course' => $course,
         ]);
+    }
+
+    public function registerForm($id)
+    {
+        return view('Courses.Register', [
+            'idCourse' => $id,
+        ]);
+    }
+
+    public function register()
+    {
+        
+    }
+    
+    public function qr_qenerate()
+    {
+        return view('qrCode');
     }
 }

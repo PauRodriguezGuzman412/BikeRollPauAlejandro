@@ -17,6 +17,7 @@ return new class extends Migration
             $table->Integer('dorsal');
             $table->unsignedBigInteger('insurance');
             $table->foreign('insurance')->references('id')->on('insurances');
+            $table->string('QR');
             //TODO: Se necesita un campo más, pero no sé cual
             // $table->foreign('dorsal')->references('dorsal')->on('runners');
         });
