@@ -6,7 +6,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\SponsorsController;
 use App\Http\Controllers\RunnersController;
-use App\Http\Controllers\FileUploadController;
+use App\Http\Controllers\DropzoneController;
 
 Route::get("/",IndexController::class)->name("index.index");
 
@@ -22,8 +22,8 @@ Route::get("/admin/courses/edit/{id}",[CoursesController::class,'edit'])->name("
 Route::put("/admin/courses/update/{id}",[CoursesController::class, 'update'])->name("courses.update");
 Route::get("/admin/courses/delete/{id}/{active}",[CoursesController::class, 'delete'])->name("courses.delete");
 
-Route::get('/courses/upload-ui', [FileUploadController::class, 'dropzoneUi' ])->name('file.dropzoneView');
-Route::post('/courses/file-upload', [FileUploadController::class, 'dropzoneFileUpload' ])->name('file.dropzoneFileUpload');
+Route::get('dropzone', [DropzoneController::class, 'dropzone']);
+Route::post('dropzone/store', [DropzoneController::class, 'dropzoneStore'])->name('dropzone.store');
 
 Route::get("/admin/aseguradoras",[AdminController::class,'indexAseguradoras'])->name("admin.aseguradoras.index");
 Route::post("/admin/aseguradoras",[AdminController::class, 'storeAseguradoras'])->name("admin.aseguradoras.store");
@@ -39,6 +39,7 @@ Route::get("/admin/runners",RunnersController::class)->name("runners");
 Route::get("/admin/runners/create",[RunnersController::class,'create'])->name("runners.create");
 Route::post("/admin/runners",[RunnersController::class, 'store'])->name("runners.store");
 Route::get("/admin/runners/edit/{id}",[RunnersController::class,'edit'])->name("runners.edit");
+Route::post("/admin/runners/search",[RunnersController::class,'search'])->name("runners.search");
 Route::put("/admin/runners/update/{id}",[RunnersController::class, 'update'])->name("runners.update");
 Route::get("/admin/runners/delete/{id}/{active}",[RunnersController::class, 'delete'])->name("runners.delete");
 
