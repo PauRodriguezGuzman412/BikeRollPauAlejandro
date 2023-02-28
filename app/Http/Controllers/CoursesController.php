@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Courses;
+use App\Models\Insurances;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -41,7 +42,7 @@ class CoursesController extends Controller
         $coursesDataValidated['promotion_banner'] = $path2;
 
         $courses->create($coursesDataValidated);
-        
+
         return redirect()->route('courses');
     }
 
@@ -62,7 +63,7 @@ class CoursesController extends Controller
         $path2 = Storage::putFile('coursesImg', $request->file('promotion_banner'));
         $coursesDataValidated['map_image'] = $path1;
         $coursesDataValidated['promotion_banner'] = $path2;
-            
+
         Courses::where('id', $id)->update($coursesDataValidated);
 
         return redirect()->route('courses');
@@ -101,16 +102,43 @@ class CoursesController extends Controller
 
     public function registerForm($id)
     {
+        $insurances = Insurances::get();
+
         return view('Courses.Register', [
-            'idCourse' => $id,
+            'idCourse'   => $id,
+            'insurances' => $insurances,
         ]);
     }
 
-    public function register()
+    public function register(Request $request, Runners $runners)
     {
-        
+        $runnersDataValidated= $request->validate($runners->validationRules());
+
+        $runners->create($runnersDataValidated);
+
+        return redirect()->route('courses.available');
     }
-    
+
+
+    public function registerWithIDForm($id)
+    {
+        $insurances = Insurances::get();
+
+        return view('Courses.Register', [
+            'idCourse'   => $id,
+            'insurances' => $insurances,
+        ]);
+    }
+
+    public function registerWithID(Request $request, Runners $runners)
+    {
+        $runnersDataValidated= $request->validate($runners->validationRules());
+
+        $runners->create($runnersDataValidated);
+
+        return redirect()->route('runners');
+    }
+
     public function qr_qenerate()
     {
         return view('qrCode');
