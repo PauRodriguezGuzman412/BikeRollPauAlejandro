@@ -52,3 +52,5 @@ Route::post("/courses/registerWithID/",[CoursesController::class, 'registerWithI
 Route::get("/courses/registerWithID/{idCourse}",[CoursesController::class, 'registerWithIDForm'])->name("courses.registerWithIDForm");
 
 Route::get("/qrcode",[CoursesController::class, 'qr_qenerate'])->name("courses.qrcode");
+
+Route::get("/runners/rankingMain",RunnersController::class)->name("rankingMain");
