@@ -9,7 +9,7 @@
 @section('component')
 
 <div class="container d-flex flex-column justify-content-center align-items-center runnersTable">
-    <form action="{{ route('runners.search') }}" method="POST">
+    <form action="{{ route('Runners.lookInto') }}" method="POST">
         @csrf
         <div class="mb-4">
             <select name="filter">

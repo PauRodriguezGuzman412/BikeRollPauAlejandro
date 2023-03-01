@@ -54,3 +54,4 @@ Route::get("/courses/registerWithID/{idCourse}",[CoursesController::class, 'regi
 Route::get("/qrcode",[CoursesController::class, 'qr_qenerate'])->name("courses.qrcode");
 
 Route::get("/runners/rankingMain",RunnersController::class)->name("rankingMain");
+Route::post("/runners/lookInto",[RunnersController::class,'lookInto'])->name("runners.LookInto");
