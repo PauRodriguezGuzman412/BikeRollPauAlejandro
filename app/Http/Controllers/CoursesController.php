@@ -3,19 +3,22 @@
 namespace App\Http\Controllers;
 
 use App\Models\Courses;
+use App\Models\CoursesRegister;
+use App\Models\Runners;
 use App\Models\Insurances;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-use Endroid\QrCode\Color\Color;
-use Endroid\QrCode\Encoding\Encoding;
-use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelLow;
-use Endroid\QrCode\QrCode;
-use Endroid\QrCode\Label\Label;
-use Endroid\QrCode\Logo\Logo;
-use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
-use Endroid\QrCode\Writer\PngWriter;
-use Endroid\QrCode\Writer\ValidationException;
+// use Endroid\QrCode\Color\Color;
+// use Endroid\QrCode\Encoding\Encoding;
+// use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelLow;
+// use SimpleSoftwareIO\QrCode\Facades\QrCode;
+// use Endroid\QrCode\Label\Label;
+// use Endroid\QrCode\QrCode;
+// use Endroid\QrCode\Logo\Logo;
+// use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
+// use Endroid\QrCode\Writer\PngWriter;
+// use Endroid\QrCode\Writer\ValidationException;
 
 class CoursesController extends Controller
 {
@@ -110,11 +113,22 @@ class CoursesController extends Controller
         ]);
     }
 
-    public function register(Request $request, Runners $runners)
+    public function register($id, Request $request, Runners $runners, CoursesRegister $register)
     {
-        $runnersDataValidated= $request->validate($runners->validationRules());
+        $runnersDataValited = $request->validate($runners->validationRules());
 
-        $runners->create($runnersDataValidated);
+        $runners->create($runnersDataValited);
+
+        $idInsurance = Insurances::where('CIF', $request['insurance'])->first();
+
+        // $qr = QrCode::generate($id,$runnersDataValited['dni']);
+
+        $register->create([
+            'id_courses' => $id,
+            'dni_runners' => $runnersDataValited['dni'],
+            'dorsal'     => 1,
+            'insurance'  => $idInsurance['id'],
+        ]);
 
         return redirect()->route('courses.available');
     }

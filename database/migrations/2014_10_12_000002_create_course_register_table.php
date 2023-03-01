@@ -12,13 +12,13 @@ return new class extends Migration
             $table->id();
             $table->unsignedBigInteger('id_courses');
             $table->foreign('id_courses')->references('id')->on('courses');
-            $table->unsignedBigInteger('id_runners');
-            $table->foreign('id_runners')->references('id')->on('runners');
+            $table->string('dni_runners');
+            $table->foreign('dni_runners')->references('dni')->on('runners');
             $table->Integer('dorsal');
             $table->unsignedBigInteger('insurance');
             $table->foreign('insurance')->references('id')->on('insurances');
-            $table->string('QR');
             $table->integer('points')->nullable();
+            $table->timestamps();
             //TODO: Se necesita un campo más, pero no sé cual
             // $table->foreign('dorsal')->references('dorsal')->on('runners');
         });

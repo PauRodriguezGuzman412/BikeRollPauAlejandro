@@ -22,7 +22,7 @@ class RunnersSeeder extends Seeder
                 'address' => 'Pl. Virgen Blanca 3, 08740, Sant Andreu De La Barca',
                 'date_of_birth' => '1982-12-06',
                 'federated' => 'PRO',
-                'federated_num' => '54862', 
+                'federated_num' => '54862',
             ],
             [
                 'name' => 'Alejandro',
@@ -30,7 +30,7 @@ class RunnersSeeder extends Seeder
                 'address' => 'C/ Pablo Iglesias 4, 26350, La Rioja',
                 'date_of_birth' => '1984-04-24',
                 'federated' => 'PRO',
-                'federated_num' => '62985', 
+                'federated_num' => '62985',
             ],
             [
                 'name' => 'Federico',
@@ -38,7 +38,7 @@ class RunnersSeeder extends Seeder
                 'address' => 'C/ Andalucía 57, 04560, Almería',
                 'date_of_birth' => '1972-02-15',
                 'federated' => 'OPEN',
-                'federated_num' => NULL, 
+                'federated_num' => NULL,
             ],
         ]);
 

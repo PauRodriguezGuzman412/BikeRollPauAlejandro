@@ -11,9 +11,12 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <div class="container d-flex flex-column justify-content-around align-items-center createRunnerformDiv">
     <h1 class="formTitle">REGISTRAR CORREDOR</h1>
-    <form action="{{ route('courses.register') }}" method="POST">
+    <form action="{{ route('courses.register', ['id' => $idCourse]) }}" method="POST">
         @csrf
 
+        <div class="mb-4 runnerInput">
+            <input name="dni" type="text" value="{{ old('dni','') }}" placeholder="DNI"><br>
+        </div>
         <div class="mb-4 runnerInput">
             <input name="name" type="text" value="{{ old('name','') }}" placeholder="Nombre"><br>
         </div>
@@ -38,7 +41,7 @@
         </div>
 
         <div class="mb-4 runnerInput">
-            <select name="federated" type="number" value="{{ old('federated','') }}" onchange="enableFederatedNumber(this);">
+            <select name="insurance" type="number" value="{{ old('insurance','') }}">
                 <option value="" selected disabled >Selecciona una aseguradora</option>
                 {{-- TODO: Hacer que cada carrera eliga sus aseguradoras --}}
                 @foreach ($insurances as $insurance)
