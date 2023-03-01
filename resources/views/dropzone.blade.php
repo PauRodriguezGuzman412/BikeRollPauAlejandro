@@ -17,7 +17,7 @@
         <div class="col-md-12">
             <h1 class="mt-2 mb-2">Drag & Drop File Uploading using Laravel 9 Dropzone JS</h1>
    
-            <form action="{{ route('dropzone.store') }}" method="post" enctype="multipart/form-data" id="image-upload" class="dropzone">
+            <form action="{{ route('dropzone.store',$id) }}" method="post" enctype="multipart/form-data" id="image-upload" class="dropzone">
                 @csrf
                 <div>
                     <h3>Upload Multiple Image By Click On Box</h3>
