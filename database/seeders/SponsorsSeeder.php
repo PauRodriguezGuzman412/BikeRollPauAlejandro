@@ -17,6 +17,7 @@ class SponsorsSeeder extends Seeder
     {
         DB::table('sponsors')->insert([
             [
+                'nombre' => 'Movistar',
                 'CIF' => 'A78923125',
                 'logo' => 'movistar.png',
                 'address' => 'Ronda de la Comunicación s/n, Distrito C, Edificio Sur 3, 28050 Madrid',

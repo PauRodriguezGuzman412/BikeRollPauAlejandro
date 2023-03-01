@@ -31,9 +31,8 @@ header {
 }
 
 .createRunnerformDiv {
-    min-width: 550px;
+    min-width: 900px;
     width:30%;
-    height:75%;
     background-color: white !important;
 }
 
@@ -234,3 +233,20 @@ input[type="checkbox"] {
 input:hover{
     outline: 1px solid blue;
 }
+
+<<<<<<< Updated upstream
+=======
+  
+  /* Create four equal columns that sits next to each other */
+  .column {
+    flex: 25%;
+    max-width: 25%;
+    padding: 0 4px;
+  }
+  
+  .column img {
+    margin-top: 8px;
+    vertical-align: middle;
+    width: 100%;
+  }
+>>>>>>> Stashed changes

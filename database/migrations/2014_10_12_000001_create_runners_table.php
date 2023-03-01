@@ -19,6 +19,7 @@ return new class extends Migration
             $table->enum('federated',["OPEN","PRO"]);
             $table->integer('federated_num')->unique()->nullable();
             $table->boolean('active')->default(1);
+            $table->integer('ranking_points')->default(0);
             $table->timestamps();
         });
     }

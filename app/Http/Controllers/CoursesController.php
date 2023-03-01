@@ -7,6 +7,7 @@ use App\Models\CoursesRegister;
 use App\Models\Runners;
 use App\Models\Insurances;
 use App\Http\Controllers\Controller;
+use App\Models\FileUpload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 // use Endroid\QrCode\Color\Color;
@@ -95,11 +96,13 @@ class CoursesController extends Controller
     }
 
     public function showFinished()
-    {
-        $courses= Courses::where('start_date', '<', date('Y-m-d'))->first();
-
+    {   
+        $courses = new Courses();
+        $courses = $courses->whereNotNull('course_duration')->get();
+        $pictures = new FileUpload();
         return view('Courses.showFinished', [
-            'course' => $course,
+            'courses' => $courses,
+            'pictures' => $pictures,
         ]);
     }
 

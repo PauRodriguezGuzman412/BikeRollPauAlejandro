@@ -76,4 +76,24 @@ class RunnersController extends Controller
             'runners' => $runners,
         ]);
     }
+
+    public function lookInto(Request $request)
+    {
+
+        $filter = $request->input('filter');
+        $searchText = $request->input('searchText');
+        $runners= Runners::where($filter,'LIKE', '%'.$searchText.'%')->get();
+
+        return view('Runners.rankingMain', [
+            'runners' => $runners,
+        ]);
+    }
+
+    public function rankingMain()
+    {
+        $runners= Runners::get();
+        return view('Runners.rankingMain',[
+            'runners' => $runners,
+        ]);
+    }
 }

@@ -12,7 +12,7 @@ return new class extends Migration
         Schema::create('courses', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->string('description');
+            $table->longText('description');
             $table->float('slope');
             $table->string('map_image');
             $table->string('maxim_participants');
@@ -21,7 +21,7 @@ return new class extends Migration
             $table->string('start_point');
             $table->string('promotion_banner');
             $table->integer('sponsoring_money');
-            $table->time('course_duration');
+            $table->time('course_duration')->nullable();
             $table->boolean('active')->default(1);
             $table->timestamps();
         });

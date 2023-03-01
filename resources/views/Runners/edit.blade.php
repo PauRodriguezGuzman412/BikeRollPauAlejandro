@@ -46,6 +46,9 @@
                     <input name="federated_num" type="text" value="{{ old('federated_num',$runner['federated_num']) }}" placeholder="Nº Federado" disabled><br>
                 </div>
             @endif
+            <div class="mb-4 runnerInput">
+                <input name="ranking_points" type="number" value="{{ old('ranking_points',$runner['ranking_points']) }}" placeholder="puntos"><br>
+            </div>
             <button type="submit" class="submitLogAdminButton">EDITAR CORREDOR</button>
         </form>
         <a class="returnFormButton" href="{{ route('runners') }}">VOLVER A PÁGINA PRINCIPAL</a>

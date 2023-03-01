@@ -9,7 +9,7 @@
 @section('component')
     <script src="{{ asset('js/components/createRunner.js')}}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<div class="container d-flex flex-column justify-content-around align-items-center createRunnerformDiv">
+<div class="container d-flex flex-column justify-content-around align-items-center createRunnerformDiv ">
     <h1 class="formTitle">CREAR CORREDOR</h1>
     <form action="{{ route('runners.store') }}" method="POST">
         @csrf

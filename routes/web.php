@@ -22,8 +22,8 @@ Route::get("/admin/courses/edit/{id}",[CoursesController::class,'edit'])->name("
 Route::put("/admin/courses/update/{id}",[CoursesController::class, 'update'])->name("courses.update");
 Route::get("/admin/courses/delete/{id}/{active}",[CoursesController::class, 'delete'])->name("courses.delete");
 
-Route::get('dropzone', [DropzoneController::class, 'dropzone']);
-Route::post('dropzone/store', [DropzoneController::class, 'dropzoneStore'])->name('dropzone.store');
+Route::get('dropzone/{id}', [DropzoneController::class, 'dropzone'])->name('dropzone');
+Route::post('dropzone/store/{id}', [DropzoneController::class, 'dropzoneStore'])->name('dropzone.store');
 
 Route::get("/admin/aseguradoras",[AdminController::class,'indexAseguradoras'])->name("admin.aseguradoras.index");
 Route::post("/admin/aseguradoras",[AdminController::class, 'storeAseguradoras'])->name("admin.aseguradoras.store");
@@ -52,3 +52,6 @@ Route::post("/courses/registerWithID/",[CoursesController::class, 'registerWithI
 Route::get("/courses/registerWithID/{idCourse}",[CoursesController::class, 'registerWithIDForm'])->name("courses.registerWithIDForm");
 
 Route::get("/qrcode",[CoursesController::class, 'qr_qenerate'])->name("courses.qrcode");
+
+Route::get("/runners/rankingMain",RunnersController::class)->name("rankingMain");
+Route::post("/runners/lookInto",[RunnersController::class,'lookInto'])->name("runners.LookInto");

@@ -7,7 +7,7 @@
       <a class="nav-link active" href="{{ route('courses.finished') }}">Galería de imágenes</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link active" href="#">Clasificaciones</a>
+      <a class="nav-link active" href="{{ route('rankingMain') }}">Clasificaciones</a>
     </li>
     <li class="nav-item">
       <a class="nav-link disabled">Disabled</a>

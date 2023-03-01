@@ -13,9 +13,11 @@ class DropzoneController extends Controller
      *
      * @return void
      */
-    public function dropzone()
+    public function dropzone($id)
     {
-        return view('dropzone');
+        return view('dropzone',[
+            'id' => $id,
+        ]);
     }
      
     /**
@@ -23,13 +25,19 @@ class DropzoneController extends Controller
      *
      * @return void
      */
-    public function dropzoneStore(Request $request, FileUpload $upload)
+    public function dropzoneStore(Request $request, FileUpload $upload, $id)
     {
+        $fileUpload = new FileUpload();
         $image = $request->file('file');
-    
-        $imageName = time().'.'.$image->extension();
-        $image->move(public_path('images'),$imageName);
-        $upload->create('id','ola');
+        
+
+        $imageName = $image->getClientOriginalName();
+        $imagePath = $image->move(public_path('coursesImg'),$imageName);
+
+        $fileUpload = FileUpload::create([
+            'course_id' => $id,
+            'image_path'=> 'coursesImg/' . $imageName,
+        ]);
         return response()->json(['success'=>$imageName]);
     }
 }
