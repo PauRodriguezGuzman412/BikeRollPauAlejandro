@@ -27,7 +27,7 @@ class DropzoneController extends Controller
     {
         $image = $request->file('file');
     
-        $imageName = time().'.'.$image->extension();
+        $imageName = time().'.'.$image->getClientOriginalName();
         $image->move(public_path('images'),$imageName);
         $upload->create('id','ola');
         return response()->json(['success'=>$imageName]);

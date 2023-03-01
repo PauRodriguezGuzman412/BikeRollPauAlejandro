@@ -23,7 +23,7 @@ Route::put("/admin/courses/update/{id}",[CoursesController::class, 'update'])->n
 Route::get("/admin/courses/delete/{id}/{active}",[CoursesController::class, 'delete'])->name("courses.delete");
 
 Route::get('dropzone', [DropzoneController::class, 'dropzone']);
-Route::post('dropzone/store', [DropzoneController::class, 'dropzoneStore'])->name('dropzone.store');
+Route::post('dropzone/store/{id}', [DropzoneController::class, 'dropzoneStore'])->name('dropzone.store');
 
 Route::get("/admin/aseguradoras",[AdminController::class,'indexAseguradoras'])->name("admin.aseguradoras.index");
 Route::post("/admin/aseguradoras",[AdminController::class, 'storeAseguradoras'])->name("admin.aseguradoras.store");
