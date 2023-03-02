@@ -17,6 +17,7 @@ class RunnersSeeder extends Seeder
     {
         DB::table('runners')->insert([
             [
+                'dni' => '51066615Z',
                 'name' => 'Alberto',
                 'surname' => 'Contador',
                 'address' => 'Pl. Virgen Blanca 3, 08740, Sant Andreu De La Barca',
@@ -25,6 +26,7 @@ class RunnersSeeder extends Seeder
                 'federated_num' => '54862',
             ],
             [
+                'dni' => '03516936Y',
                 'name' => 'Alejandro',
                 'surname' => 'Valverde',
                 'address' => 'C/ Pablo Iglesias 4, 26350, La Rioja',
@@ -33,6 +35,7 @@ class RunnersSeeder extends Seeder
                 'federated_num' => '62985',
             ],
             [
+                'dni' => '79665656G',
                 'name' => 'Federico',
                 'surname' => 'Rodríguez',
                 'address' => 'C/ Andalucía 57, 04560, Almería',
