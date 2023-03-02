@@ -16,6 +16,7 @@ class Runners extends Model
 
     protected $fillable = [
         'name',
+        'dni',
         'surname',
         'address',
         'date_of_birth',
@@ -26,6 +27,7 @@ class Runners extends Model
     public function validationRules(){
         return [
             'name'                  => 'required',
+            'dni'                   => 'required',
             'surname'               => 'required',
             'address'               => 'required',
             'date_of_birth'         => 'required',

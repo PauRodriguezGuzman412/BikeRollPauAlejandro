@@ -9,8 +9,9 @@ return new class extends Migration
     public function up()
     {
         Schema::create('runners', function (Blueprint $table) {
-            $table->id();
+            // $table->id();
             // $table->string('dni')->primary();
+            $table->string('dni')->unique()->primary();
             $table->string('name');
             $table->string('surname');
             $table->string('address');
