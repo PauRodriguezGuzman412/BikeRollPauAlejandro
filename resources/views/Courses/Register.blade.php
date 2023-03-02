@@ -53,9 +53,9 @@
         <div class="mb-4 runnerInput">
             <input name="federated_num" type="text" value="{{ old('federated_num','') }}" placeholder="Nº Federado" disabled><br>
         </div>
-        <button type="submit" class="submitLogAdminButton">AÑADIR CORREDOR</button>
+        <button type="submit" class="submitLogAdminButton">REGISTRARSE</button>
     </form>
-    <a class="returnFormButton" href="{{ route('runners') }}">VOLVER A PÁGINA PRINCIPAL</a>
+    <a class="returnFormButton" href="{{ route('courses.available') }}">VOLVER A PÁGINA PRINCIPAL</a>
 </div>
 @foreach ($errors->all() as $error)
     <div class="container">
