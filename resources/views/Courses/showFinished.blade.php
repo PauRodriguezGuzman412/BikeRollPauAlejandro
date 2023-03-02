@@ -8,7 +8,6 @@
 
 @section('component')
 <div class="container d-flex flex-column justify-content-center align-items-center">
-    <a class="createRunnerButton" href="{{ route('courses.create') }}">CREAR CARRERA</a>
     @foreach ($courses as $course)
         <?php
             $pictures = $pictures->where('course_id', $course['id'])->get();
@@ -19,7 +18,7 @@
             <h3>Fotos de {{ $course['name'] }}</h3>
             <div class="row justify-content-center">
                 @foreach($pictures as $picture) 
-                <div class="col-6 column">
+                <div class="col-3 column">
                     <img src="{{ asset($picture['image_path'])}}" alt="foto" class="img-fluid mx-auto d-block">
                 </div>
             @endforeach
