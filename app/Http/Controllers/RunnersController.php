@@ -97,6 +97,9 @@ class RunnersController extends Controller
         ]);
     }
 
+    public function checkIfRegistered(Request $request) {
+        $runners = Runners::where('dni', $request->input('dni'))->get();
+    }
     public function ranking20()
     {   
         $today= date("Y-m-d");
