@@ -8,26 +8,24 @@
 
 @section('component')
 <div class="container d-flex flex-column justify-content-center align-items-center">
-    @foreach ($courses as $course)
-        <?php
-            $pictures = $pictures->where('course_id', $course['id'])->get();
-        ?>
-        @if (count($pictures) == 0)
-            <h3>¡Oh no! No hay fotos de esta carrera :(</h3>
-        @else
-            <h3>Fotos de {{ $course['name'] }}</h3>
-            <div class="row justify-content-center">
-                @foreach($pictures as $picture) 
-                <div class="col-3 column">
-                    <img src="{{ asset($picture['image_path'])}}" alt="foto" class="img-fluid mx-auto d-block">
-                </div>
-            @endforeach
-            </div>
-        @endif
-    @endforeach
-    <a class="returnButton" href="{{ route('admin.index') }}">VOLVER A PÁGINA PRINCIPAL</a>
+    <table style="text-align: center">
+        <thead>
+            <th>Imagen mapa</th>
+            <th>Descripción</th>
+            <th>Fecha inicio</th>
+            <th>Mostrar Imágenes</th>
+        </thead>
+        @foreach ($courses as $course)
+            <tr>
+                <td><img src="{{ asset($course['map_image']) }}" alt="Mapa" width="50px"></td>
+                <td>{{ $course['description'] }}</td>
+                <td>{{ $course['start_date'] }}</td>
+                <td><a href="{{ route('courses.pictures',$course['id']) }}">Imágenes</a></td>
+            </tr>
+        @endforeach
+    </table>
+    <a class="returnButton" href="{{ route('index.index') }}">VOLVER A PÁGINA PRINCIPAL</a>
 
 </div>
-
 @section('footer')
 @include('layout.footer')
