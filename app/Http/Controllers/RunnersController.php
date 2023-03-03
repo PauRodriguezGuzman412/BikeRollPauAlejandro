@@ -96,4 +96,9 @@ class RunnersController extends Controller
             'runners' => $runners,
         ]);
     }
+
+    public function checkIfRegistered(Request $request) {
+        $runners = Runners::where('dni', $request->input('dni'))->get();
+        dd($runners);
+    }
 }

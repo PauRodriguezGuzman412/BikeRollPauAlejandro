@@ -7,14 +7,16 @@
     @include('layout.nav')
 
 @section('component')
-    <script src="{{ asset('js/components/createRunner.js')}}"></script>
+<meta name="csrf-token" content="{{ csrf_token() }}">    
+
+    <script src="{{ asset('js/components/checkIfRegistered.js')}}"></script>
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <div class="container d-flex flex-column justify-content-around align-items-center createRunnerformDiv">
     <h1 class="formTitle">REGISTRAR CORREDOR CON ID</h1>
-    <form action="{{ route('courses.registerWithID', ['id' => $idCourse]) }}" method="POST">
+    <form id="registerWithIdForm" action="{{ route('courses.registerWithID', ['id' => $idCourse]) }}" method="POST">
         @csrf
         <div class="mb-4 runnerInput">
-            <input name="dni" type="text" value="{{ old('dni','') }}" placeholder="DNI"><br>
+            <input id="dni" name="dni" type="text" value="{{ old('dni','') }}" placeholder="DNI" onblur="checkIfRegistered();"><br>
         </div>
         <div class="mb-4 runnerInput">
             <select name="insurance" type="number" value="{{ old('insurance','') }}">
@@ -25,7 +27,10 @@
                 @endforeach
             </select><br>
         </div>
-        <button type="submit" class="submitLogAdminButton">REGISTRARSE</button
+        <button type="submit" class="submitLogAdminButton">REGISTRARSE</button>
+        <div id="notRegistered" class="invisible notRegistered">
+            No se ha encontrado el DNI introducido. Quieres <a href="{{ route('courses.registerForm', ['idCourse' => $idCourse]) }}">masturbarte</a>?
+        </div>
     </form>
     <a class="returnFormButton" href="{{ route('courses.available') }}">VOLVER A PÁGINA PRINCIPAL</a>
 </div>
