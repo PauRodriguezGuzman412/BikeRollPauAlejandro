@@ -100,8 +100,9 @@ class RunnersController extends Controller
     public function ranking20()
     {   
         $today= date("Y-m-d");
-        $date = $today - 7300;
-        $runners= Runners::where('date_of_birth' <= $date)->get();
+        $date = strtotime('-20 year',strtotime($today));
+        $date = date("Y-m-d", $date);
+        $runners= Runners::where('date_of_birth', '>=', $date)->get();
 
         return view('Runners.ranking20', [
             'runners' => $runners,
@@ -110,9 +111,10 @@ class RunnersController extends Controller
     public function ranking30()
     {   
         $today= date("Y-m-d");
-        $date = $today - 10950;
-        $runners= Runners::where('date_of_birth' <= $date)->get();
-
+        $date = strtotime('-30 year',strtotime($today));
+        $date = date("Y-m-d", $date);
+        $runners= Runners::where('date_of_birth' , '>=', $date)->get();
+        
         return view('Runners.ranking30', [
             'runners' => $runners,
         ]);
@@ -120,8 +122,9 @@ class RunnersController extends Controller
     public function ranking40()
     {   
         $today= date("Y-m-d");
-        $date = $today - 14600;
-        $runners= Runners::where('date_of_birth' <= $date)->get();
+        $date = strtotime('-40 year',strtotime($today));
+        $date = date("Y-m-d", $date);
+        $runners= Runners::where('date_of_birth' , '>=', $date)->get();
 
         return view('Runners.ranking40', [
             'runners' => $runners,
@@ -130,8 +133,9 @@ class RunnersController extends Controller
     public function ranking50()
     {   
         $today= date("Y-m-d");
-        $date = $today - 18250;
-        $runners= Runners::where('date_of_birth' <= $date)->get();
+        $date = strtotime('-50 year',strtotime($today));
+        $date = date("Y-m-d", $date);
+        $runners= Runners::where('date_of_birth', '>=',$date)->get();
 
         return view('Runners.ranking50', [
             'runners' => $runners,
@@ -140,8 +144,9 @@ class RunnersController extends Controller
     public function ranking60()
     {   
         $today= date("Y-m-d");
-        $date = $today - 21900;
-        $runners= Runners::where('date_of_birth' <= $date)->get();
+        $date = strtotime('-60 year',strtotime($today));
+        $date = date("Y-m-d", $date);
+        $runners= Runners::where('date_of_birth', '>=',$date)->get();
 
         return view('Runners.ranking60', [
             'runners' => $runners,
