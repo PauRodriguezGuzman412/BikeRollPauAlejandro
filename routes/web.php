@@ -45,7 +45,8 @@ Route::get("/admin/runners/delete/{id}/{active}",[RunnersController::class, 'del
 
 
 Route::get("/courses/available",[CoursesController::class, 'showAvailable'])->name("courses.available");
-Route::get("/courses/finished",[CoursesController::class, 'showFinished'])->name("courses.finished");
+Route::get("/courses/finished/",[CoursesController::class, 'showFinished'])->name("courses.finished");
+Route::get("/courses/finished/pictures/{id}",[CoursesController::class, 'showPictures'])->name("courses.pictures");
 Route::post("/courses/register/{id}",[CoursesController::class, 'register'])->name("courses.register");
 Route::get("/courses/register/{idCourse}",[CoursesController::class, 'registerForm'])->name("courses.registerForm");
 Route::post("/courses/registerWithID/{id}",[CoursesController::class, 'registerWithID'])->name("courses.registerWithID");

@@ -97,11 +97,27 @@ class CoursesController extends Controller
 
     public function showFinished()
     {
-        $courses = new Courses();
-        $courses = $courses->whereNotNull('course_duration')->get();
-        $pictures = new FileUpload();
+        $courses= Courses::whereNotNull('course_duration')->get();
+
         return view('Courses.showFinished', [
             'courses' => $courses,
+        ]);
+    }
+
+    public function showPictures($id)
+    {
+        // $courses = new Courses();
+        // $courses = $courses->where('course_id', $id)->first();
+        // $pictures = new FileUpload();
+
+        // foreach ($courses as $course){
+            // $pictures = FileUpload::where('course_id', 2)->get();
+        // }
+        $course = Courses::where('id', $id)->first();
+        $pictures = FileUpload::where('course_id', $id)->get();
+
+        return view('Courses.showPictures', [
+            'course' => $course,
             'pictures' => $pictures,
         ]);
     }
