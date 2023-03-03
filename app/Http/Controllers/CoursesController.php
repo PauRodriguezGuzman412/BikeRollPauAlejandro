@@ -106,13 +106,6 @@ class CoursesController extends Controller
 
     public function showPictures($id)
     {
-        // $courses = new Courses();
-        // $courses = $courses->where('course_id', $id)->first();
-        // $pictures = new FileUpload();
-
-        // foreach ($courses as $course){
-            // $pictures = FileUpload::where('course_id', 2)->get();
-        // }
         $course = Courses::where('id', $id)->first();
         $pictures = FileUpload::where('course_id', $id)->get();
 
