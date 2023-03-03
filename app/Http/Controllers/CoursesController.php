@@ -157,37 +157,47 @@ class CoursesController extends Controller
 
         return view('Courses.RegisterWithId', [
             'idCourse'   => $id,
+            'userExists' => 1,
             'insurances' => $insurances,
         ]);
     }
 
     public function registerWithID($id, Request $request, Runners $runners, CoursesRegister $register)
     {
-        $runners = Runners::where('dni',$request['dni'])->first();
-        $coursesRegister = CoursesRegister::where('dni_runners',$request['dni'])->first();
+        $runners = Runners::where('dni',$request['dni'])->get();
+        if(count($runners) > 0) {
+            $runners = Runners::where('dni',$request['dni'])->first();
+            $coursesRegister = CoursesRegister::where('dni_runners',$request['dni'])->first();
 
-        if($runners && !$coursesRegister){
-            $idInsurance = Insurances::where('CIF', $request['insurance'])->first();
-            // $qr = QrCode::generate($id,$runnersDataValited['dni']);
-
-            $register->create([
-                'id_courses' => $id,
-                'dni_runners' => $request['dni'],
-                'dorsal'     => 1,
-                'insurance'  => $idInsurance['id'],
-            ]);
-
-            $route = redirect()->route('courses.available');
-        }else{
+            if($runners && !$coursesRegister){
+                $idInsurance = Insurances::where('CIF', $request['insurance'])->first();
+                // $qr = QrCode::generate($id,$runnersDataValited['dni']);
+    
+                $register->create([
+                    'id_courses' => $id,
+                    'dni_runners' => $request['dni'],
+                    'dorsal'     => 1,
+                    'insurance'  => $idInsurance['id'],
+                ]);
+    
+                $route = redirect()->route('courses.available');
+            }else{
+                $insurances = Insurances::get();
+    
+                $route = view('Courses.RegisterWithId', [
+                    'idCourse'   => $id,
+                    'insurances' => $insurances,
+                ]);
+            }
+            return $route;
+        }   
+        else {
             $insurances = Insurances::get();
-
-            $route = view('Courses.RegisterWithId', [
-                'idCourse'   => $id,
-                'insurances' => $insurances,
-            ]);
+            
+            return redirect()->route('courses.registerWithIDForm',['idCourse' => $id, 'userExists' => 1]);
         }
+        
 
-        return $route;
     }
 
     public function qr_qenerate()
