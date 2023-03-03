@@ -50,9 +50,16 @@ Route::get("/courses/finished/pictures/{id}",[CoursesController::class, 'showPic
 Route::post("/courses/register/{id}",[CoursesController::class, 'register'])->name("courses.register");
 Route::get("/courses/register/{idCourse}",[CoursesController::class, 'registerForm'])->name("courses.registerForm");
 Route::post("/courses/registerWithID/{id}",[CoursesController::class, 'registerWithID'])->name("courses.registerWithID");
+Route::post("/courses/checkIfRegistered",[CoursesController::class, 'registerWithID'])->name("courses.checkIfRegistered");
 Route::get("/courses/registerWithID/{idCourse}",[CoursesController::class, 'registerWithIDForm'])->name("courses.registerWithIDForm");
 
 Route::get("/qrcode",[CoursesController::class, 'qr_qenerate'])->name("courses.qrcode");
 
-Route::get("/runners/rankingMain",RunnersController::class)->name("rankingMain");
-Route::post("/runners/lookInto",[RunnersController::class,'lookInto'])->name("runners.LookInto");
+Route::get("/runners/rankingMain",[RunnersController::class, 'rankingMain'])->name("rankingMain");
+Route::post("/runners/lookInto",[RunnersController::class,'lookInto'])->name("runners.lookInto");
+Route::get("/runners/ranking20",[RunnersController::class,'ranking20'])->name("ranking20");
+Route::get("/runners/ranking30",[RunnersController::class, 'ranking30'])->name("ranking30");
+Route::get("/runners/ranking40",[RunnersController::class, 'ranking40'])->name("ranking40");
+Route::get("/runners/ranking50",[RunnersController::class, 'ranking50'])->name("ranking50");
+Route::get("/runners/ranking60",[RunnersController::class, 'ranking60'])->name("ranking60");
+
