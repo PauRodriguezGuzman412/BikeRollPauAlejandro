@@ -91,7 +91,7 @@ class RunnersController extends Controller
 
     public function rankingMain()
     {
-        $runners= Runners::get();
+        $runners= Runners::orderby('ranking_points', 'desc')->get();
         return view('Runners.rankingMain',[
             'runners' => $runners,
         ]);
@@ -100,12 +100,13 @@ class RunnersController extends Controller
     public function checkIfRegistered(Request $request) {
         $runners = Runners::where('dni', $request->input('dni'))->get();
     }
+    
     public function ranking20()
     {   
         $today= date("Y-m-d");
         $date = strtotime('-20 year',strtotime($today));
         $date = date("Y-m-d", $date);
-        $runners= Runners::where('date_of_birth', '>=', $date)->get();
+        $runners= Runners::where('date_of_birth', '>=', $date)->orderby('ranking_points', 'desc')->get();
 
         return view('Runners.ranking20', [
             'runners' => $runners,
@@ -116,7 +117,7 @@ class RunnersController extends Controller
         $today= date("Y-m-d");
         $date = strtotime('-30 year',strtotime($today));
         $date = date("Y-m-d", $date);
-        $runners= Runners::where('date_of_birth' , '>=', $date)->get();
+        $runners= Runners::where('date_of_birth', '>=', $date)->orderby('ranking_points', 'desc')->get();
         
         return view('Runners.ranking30', [
             'runners' => $runners,
@@ -127,7 +128,7 @@ class RunnersController extends Controller
         $today= date("Y-m-d");
         $date = strtotime('-40 year',strtotime($today));
         $date = date("Y-m-d", $date);
-        $runners= Runners::where('date_of_birth' , '>=', $date)->get();
+        $runners= Runners::where('date_of_birth', '>=', $date)->orderby('ranking_points', 'desc')->get();
 
         return view('Runners.ranking40', [
             'runners' => $runners,
@@ -138,7 +139,7 @@ class RunnersController extends Controller
         $today= date("Y-m-d");
         $date = strtotime('-50 year',strtotime($today));
         $date = date("Y-m-d", $date);
-        $runners= Runners::where('date_of_birth', '>=',$date)->get();
+        $runners= Runners::where('date_of_birth', '>=', $date)->orderby('ranking_points', 'desc')->get();
 
         return view('Runners.ranking50', [
             'runners' => $runners,
@@ -149,7 +150,7 @@ class RunnersController extends Controller
         $today= date("Y-m-d");
         $date = strtotime('-60 year',strtotime($today));
         $date = date("Y-m-d", $date);
-        $runners= Runners::where('date_of_birth', '>=',$date)->get();
+        $runners= Runners::where('date_of_birth', '>=', $date)->orderby('ranking_points', 'desc')->get();
 
         return view('Runners.ranking60', [
             'runners' => $runners,
