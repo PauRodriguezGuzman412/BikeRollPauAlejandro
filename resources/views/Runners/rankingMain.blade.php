@@ -11,7 +11,7 @@
         @csrf
         <div class="mb-4">
             <select name="filter">
-                <option value="id">Id</option>
+                <option value="dni">DNI</option>
                 <option value="name">Nombre</option>
                 <option value="surname">Apellido</option>
                 <option value="address">Dirección</option>
@@ -25,7 +25,7 @@
     </form>
     <table style="text-align: center">
         <thead>
-            <th>ID</th>
+            <th>DNI</th>
             <th>Nombre</th>
             <th>Apellido</th>
             <th>Fecha de nacimiento</th>
@@ -35,7 +35,7 @@
         </thead>
         @foreach ($runners as $runner)
             <tr>
-                <td>{{ $runner['id'] }}</td>
+                <td>{{ $runner['dni'] }}</td>
                 <td>{{ $runner['name'] }}</td>
                 <td>{{ $runner['surname'] }}</td>
                 <td>{{ $runner['date_of_birth'] }}</td>
