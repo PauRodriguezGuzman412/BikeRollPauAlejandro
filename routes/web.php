@@ -7,6 +7,7 @@ use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\SponsorsController;
 use App\Http\Controllers\RunnersController;
 use App\Http\Controllers\DropzoneController;
+use App\Http\Controllers\PayPalController;
 
 Route::get("/",IndexController::class)->name("index.index");
 
@@ -49,9 +50,9 @@ Route::get("/courses/finished/",[CoursesController::class, 'showFinished'])->nam
 Route::get("/courses/finished/pictures/{id}",[CoursesController::class, 'showPictures'])->name("courses.pictures");
 Route::post("/courses/register/{id}",[CoursesController::class, 'register'])->name("courses.register");
 Route::get("/courses/register/{idCourse}",[CoursesController::class, 'registerForm'])->name("courses.registerForm");
-Route::post("/courses/registerWithID/{id}/{userExists?}",[CoursesController::class, 'registerWithID'])->name("courses.registerWithID");
+Route::post("/courses/registerWithID/{id}",[CoursesController::class, 'registerWithID'])->name("courses.registerWithID");
 Route::post("/courses/checkIfRegistered",[CoursesController::class, 'registerWithID'])->name("courses.checkIfRegistered");
-Route::get("/courses/registerWithID/{idCourse}/{userExists?}",[CoursesController::class, 'registerWithIDForm'])->name("courses.registerWithIDForm");
+Route::get("/courses/registerWithID/{idCourse}/{userExists?}/{registerExists?}",[CoursesController::class, 'registerWithIDForm'])->name("courses.registerWithIDForm");
 
 Route::get("/qrcode",[CoursesController::class, 'qr_qenerate'])->name("courses.qrcode");
 
@@ -63,3 +64,6 @@ Route::get("/runners/ranking40",[RunnersController::class, 'ranking40'])->name("
 Route::get("/runners/ranking50",[RunnersController::class, 'ranking50'])->name("ranking50");
 Route::get("/runners/ranking60",[RunnersController::class, 'ranking60'])->name("ranking60");
 
+Route::get('/paywithpaypal',[PayPalController::class,'payWithPaypal'])->name('paywithpaypal');
+Route::post('/paypal',[PayPalController::class,'postPaymentWithpaypal'])->name('paypalPayment');
+Route::get('/paypal/status',[PayPalController::class,'getPaymentStatus'])->name('paypalStatus');

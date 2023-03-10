@@ -26,9 +26,14 @@
             </select><br>
         </div>
         <button type="submit" class="submitLogAdminButton">REGISTRARSE</button>
-        @if (isset($userExists))
+        @if ($userExists == 'false')
             <div id="notRegistered" class="notRegistered ms-4 mt-4 p-3 bg-danger bg-gradient rounded">
                 <p class="text-center text-white m-0">No se ha encontrado el DNI introducido. Quieres <a class="text-primary" href="{{ route('courses.registerForm', ['idCourse' => $idCourse]) }}">registarte</a>?</p>
+            </div>
+        @endif
+        @if ($registerExists == 'true')
+            <div id="notRegistered" class="notRegistered ms-4 mt-4 p-3 bg-danger bg-gradient rounded">
+                <p class="text-center text-white m-0">¡Ya estás registrado en esta carrera!</p>
             </div>
         @endif
     </form>
