@@ -29,6 +29,7 @@ class CoursesSeeder extends Seeder
                 'start_point' => '41.473782,2.084934999999973',
                 'promotion_banner' => 'resources/img/santCugat.png',
                 'sponsoring_money' => 500,
+                'price' => 49.99,
             ],
             [
                 'name' => 'Desafío 132 - Cicloturista',
@@ -41,6 +42,7 @@ class CoursesSeeder extends Seeder
                 'start_point' => '42.03039,-1.653715',
                 'promotion_banner' => 'resources/img/desafio132.png',
                 'sponsoring_money' => 1000,
+                'price' => 19.99,
             ],
             [
                 'name' => 'Brevet 400 km. Linares - LAGUNAS DE RUIDERA',
@@ -53,6 +55,7 @@ class CoursesSeeder extends Seeder
                 'start_point' => '38.09362,-3.635844',
                 'promotion_banner' => 'resources/img/brevet400km.png',
                 'sponsoring_money' => 2500,
+                'price' => 24.99,
             ],
             [
                 'name' => 'Mallorca Cycling Xperience Pirenaica',
@@ -74,6 +77,7 @@ class CoursesSeeder extends Seeder
                 'start_point' => '39.808032,3.116647',
                 'promotion_banner' => 'resources/img/xperiencePirenaica.png',
                 'sponsoring_money' => 3500,
+                'price' => 34.99,
             ],
             [
                 'name' => 'Marcha Ciclodeportiva La Gamba',
@@ -90,6 +94,7 @@ class CoursesSeeder extends Seeder
                 'start_point' => '38.8397598,0.0977513',
                 'promotion_banner' => 'resources/img/laGamba.png',
                 'sponsoring_money' => 750,
+                'price' => 39.99,
             ]
         ]);
     }

@@ -20,6 +20,7 @@ return new class extends Migration
             $table->date('start_date');
             $table->string('start_point');
             $table->string('promotion_banner');
+            $table->float('price');
             $table->integer('sponsoring_money');
             $table->time('course_duration')->nullable();
             $table->boolean('active')->default(1);

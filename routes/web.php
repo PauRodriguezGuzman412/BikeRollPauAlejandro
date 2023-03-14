@@ -65,5 +65,5 @@ Route::get("/runners/ranking50",[RunnersController::class, 'ranking50'])->name("
 Route::get("/runners/ranking60",[RunnersController::class, 'ranking60'])->name("ranking60");
 
 Route::get('/paywithpaypal',[PayPalController::class,'payWithPaypal'])->name('paywithpaypal');
-Route::post('/paypal',[PayPalController::class,'postPaymentWithpaypal'])->name('paypalPayment');
+Route::post('/paypal/{id}',[PayPalController::class,'postPaymentWithpaypal'])->name('paypalPayment');
 Route::get('/paypal/status',[PayPalController::class,'getPaymentStatus'])->name('paypalStatus');

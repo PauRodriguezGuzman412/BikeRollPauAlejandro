@@ -11,7 +11,7 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <div class="container d-flex flex-column justify-content-around align-items-center createRunnerformDiv">
     <h1 class="formTitle">REGISTRAR CORREDOR CON ID</h1>
-    <form id="registerWithIdForm" action="{{ route('courses.registerWithID', ['id' => $idCourse]) }}" method="POST">
+    <form id="registerWithIdForm" action="{{ route('paypalPayment', ['id' => $idCourse]) }}" method="POST">
         @csrf
         <div class="mb-4 runnerInput">
             <input id="dni" name="dni" type="text" value="{{ old('dni','') }}" placeholder="DNI"><br>
@@ -25,6 +25,7 @@
                 @endforeach
             </select><br>
         </div>
+        <input id="amount" type="text" class="form-control" name="amount" value="{{ $course['price'] }}" hidden>
         <button type="submit" class="submitLogAdminButton">REGISTRARSE</button>
         @if ($userExists == 'false')
             <div id="notRegistered" class="notRegistered ms-4 mt-4 p-3 bg-danger bg-gradient rounded">

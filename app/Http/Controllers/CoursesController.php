@@ -147,12 +147,14 @@ class CoursesController extends Controller
     public function registerWithIDForm($id,$userExists = '1',$registerExists = 'false')
     {
         $insurances = Insurances::get();
+        $course = Courses::where('id',$id)->first();
 
         return view('Courses.RegisterWithId', [
             'idCourse'   => $id,
             'userExists' => $userExists,
             'registerExists' => $registerExists,
             'insurances' => $insurances,
+            'course' => $course
         ]);
     }
 
@@ -176,6 +178,7 @@ class CoursesController extends Controller
                 $route = redirect()->route('courses.available');
             }else{
                 $insurances = Insurances::get();
+                $course = Courses::where('id',$id)->first();
     
                 return redirect()->route('courses.registerWithIDForm',['idCourse' => $id, 'userExists' => '1', 'registerExists' => 'true']);
             }
@@ -183,6 +186,8 @@ class CoursesController extends Controller
         }   
         else {
             $insurances = Insurances::get();
+
+            $course = Courses::where('id',$id)->first();
             return redirect()->route('courses.registerWithIDForm',['idCourse' => $id, 'userExists' => 'false']);
         }
         

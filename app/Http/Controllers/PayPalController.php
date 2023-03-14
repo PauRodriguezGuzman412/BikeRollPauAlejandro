@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests;
 use Illuminate\Http\Request;
+use App\Models\Courses;
+use App\Models\CoursesRegister;
+use App\Models\Runners;
+use App\Models\Insurances;
 use Validator;
 use URL;
 use Session;
@@ -39,66 +43,75 @@ class PayPalController extends Controller
         return view('paywithpaypal');
     }
 
-    public function postPaymentWithpaypal(Request $request)
+    public function postPaymentWithpaypal($id,Request $request, Runners $runners, CoursesRegister $register)
     {
-        $payer = new Payer();
-        $payer->setPaymentMethod('paypal');
+        $runners = Runners::where('dni',$request['dni'])->get();
+        if(count($runners) > 0) {
+            $payer = new Payer();
+            $payer->setPaymentMethod('paypal');
 
-    	$item_1 = new Item();
+            $item_1 = new Item();
 
-        $item_1->setName('Product 1')
-            ->setCurrency('EUR')
-            ->setQuantity(1)
-            ->setPrice($request->get('amount'));
+            $item_1->setName('Product 1')
+                ->setCurrency('EUR')
+                ->setQuantity(1)
+                ->setPrice($request->get('amount'));
 
-        $item_list = new ItemList();
-        $item_list->setItems(array($item_1));
-        
-        $amount = new Amount();
-        $amount->setCurrency('EUR')
-            ->setTotal($request->get('amount'));
+            $item_list = new ItemList();
+            $item_list->setItems(array($item_1));
+            
+            $amount = new Amount();
+            $amount->setCurrency('EUR')
+                ->setTotal($request->get('amount'));
 
-        $transaction = new Transaction();
-        $transaction->setAmount($amount)
-            ->setItemList($item_list)
-            ->setDescription('Enter Your transaction description');
+            $transaction = new Transaction();
+            $transaction->setAmount($amount)
+                ->setItemList($item_list)
+                ->setDescription('Enter Your transaction description');
 
-        $redirect_urls = new RedirectUrls();
-        $redirect_urls->setReturnUrl(URL::route('paypalStatus'))
-            ->setCancelUrl(URL::route('paypalStatus'));
+            $redirect_urls = new RedirectUrls();
+            $redirect_urls->setReturnUrl(URL::route('paypalStatus'))
+                ->setCancelUrl(URL::route('paypalStatus'));
 
-        $payment = new Payment();
-        $payment->setIntent('Sale')
-            ->setPayer($payer)
-            ->setRedirectUrls($redirect_urls)
-            ->setTransactions(array($transaction));            
-        try {
-            $payment->create($this->_api_context);
-        } catch (\PayPal\Exception\PPConnectionException $ex) {
-            if (\Config::get('app.debug')) {
-                \Session::put('error','Connection timeout');
-                return Redirect::route('paywithpaypal');                
-            } else {
-                \Session::put('error','Some error occur, sorry for inconvenient');
-                return Redirect::route('paywithpaypal');                
+            $payment = new Payment();
+            $payment->setIntent('Sale')
+                ->setPayer($payer)
+                ->setRedirectUrls($redirect_urls)
+                ->setTransactions(array($transaction));            
+            try {
+                $payment->create($this->_api_context);
+            } catch (\PayPal\Exception\PPConnectionException $ex) {
+                if (\Config::get('app.debug')) {
+                    \Session::put('error','Connection timeout');
+                    return Redirect::route('paywithpaypal');                
+                } else {
+                    \Session::put('error','Some error occur, sorry for inconvenient');
+                    return Redirect::route('paywithpaypal');                
+                }
             }
-        }
 
-        foreach($payment->getLinks() as $link) {
-            if($link->getRel() == 'approval_url') {
-                $redirect_url = $link->getHref();
-                break;
+            foreach($payment->getLinks() as $link) {
+                if($link->getRel() == 'approval_url') {
+                    $redirect_url = $link->getHref();
+                    break;
+                }
             }
-        }
-        
-        Session::put('paypal_payment_id', $payment->getId());
+            
+            Session::put('paypal_payment_id', $payment->getId());
 
-        if(isset($redirect_url)) {            
-            return Redirect::away($redirect_url);
-        }
+            if(isset($redirect_url)) {            
+                return Redirect::away($redirect_url);
+            }
 
-        \Session::put('error','Unknown error occurred');
-    	return Redirect::route('paywithpaypal');
+            \Session::put('error','Unknown error occurred');
+            return Redirect::route('paywithpaypal');
+        }
+        else {
+            $insurances = Insurances::get();
+
+            $course = Courses::where('id',$id)->first();
+            return redirect()->route('courses.registerWithIDForm',['idCourse' => $id, 'userExists' => 'false']);
+        }
     }
 
     public function getPaymentStatus(Request $request)
@@ -117,7 +130,26 @@ class PayPalController extends Controller
         
         if ($result->getState() == 'approved') {         
             \Session::put('success','Payment success !!');
-            return Redirect::route('paywithpaypal');
+            $runners = Runners::where('dni',$request['dni'])->first();
+            $coursesRegister = CoursesRegister::where('dni_runners',$request['dni'])->first();
+            if($runners && !$coursesRegister){
+                $idInsurance = Insurances::where('CIF', $request['insurance'])->first();
+                // $qr = QrCode::generate($id,$runnersDataValited['dni']);
+    
+                $register->create([
+                    'id_courses' => $id,
+                    'dni_runners' => $request['dni'],
+                    'dorsal'     => 1,
+                    'insurance'  => $idInsurance['id'],
+                ]);
+    
+                $route = redirect()->route('courses.available');
+            }else{
+                $insurances = Insurances::get();
+                $course = Courses::where('id',$id)->first();
+    
+                return redirect()->route('courses.registerWithIDForm',['idCourse' => $id, 'userExists' => '1', 'registerExists' => 'true']);
+            }
         }
 
         \Session::put('error','Payment failed !!');
