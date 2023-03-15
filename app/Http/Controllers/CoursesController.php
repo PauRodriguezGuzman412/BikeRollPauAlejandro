@@ -171,7 +171,7 @@ class CoursesController extends Controller
                 $register->create([
                     'id_courses' => $id,
                     'dni_runners' => $request['dni'],
-                    'dorsal'     => 1,
+                    //'dorsal'     => 1,
                     'insurance'  => $idInsurance['id'],
                 ]);
     
