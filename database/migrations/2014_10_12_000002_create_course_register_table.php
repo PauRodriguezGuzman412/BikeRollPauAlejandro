@@ -14,7 +14,7 @@ return new class extends Migration
             $table->foreign('id_courses')->references('id')->on('courses');
             $table->string('dni_runners');
             $table->foreign('dni_runners')->references('dni')->on('runners');
-            $table->increments('dorsal');
+            $table->integer('dorsal');
             $table->unsignedBigInteger('insurance');
             $table->foreign('insurance')->references('id')->on('insurances');
             $table->integer('points')->nullable();
