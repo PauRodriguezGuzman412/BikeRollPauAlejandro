@@ -13,9 +13,9 @@ use Illuminate\Support\Facades\Storage;
 // use Endroid\QrCode\Color\Color;
 // use Endroid\QrCode\Encoding\Encoding;
 // use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelLow;
-// use SimpleSoftwareIO\QrCode\Facades\QrCode;
+use SimpleSoftwareIO\QrCode\Facades\QrCode;
 // use Endroid\QrCode\Label\Label;
-// use Endroid\QrCode\QrCode;
+//use Endroid\QrCode\QrCode;
 // use Endroid\QrCode\Logo\Logo;
 // use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
 // use Endroid\QrCode\Writer\PngWriter;
@@ -131,7 +131,7 @@ class CoursesController extends Controller
         $runners->create($runnersDataValidated);
 
         $idInsurance = Insurances::where('CIF', $request['insurance'])->first();
-        // $qr = QrCode::generate($id,$runnersDataValidated['dni']);
+        $qr = QrCode::generate($id,$runnersDataValidated['dni']);
 
         $register->create([
             'id_courses' => $id,
@@ -166,7 +166,7 @@ class CoursesController extends Controller
             $coursesRegister = CoursesRegister::where('dni_runners',$request['dni'])->first();
             if($runners && !$coursesRegister){
                 $idInsurance = Insurances::where('CIF', $request['insurance'])->first();
-                // $qr = QrCode::generate($id,$runnersDataValited['dni']);
+                $qr = QrCode::generate($id,$request['dni']);
     
                 $register->create([
                     'id_courses' => $id,
@@ -195,7 +195,8 @@ class CoursesController extends Controller
     }
 
     public function qr_qenerate()
-    {
-        return view('qrCode');
+    {   
+        $qr=QrCode::size(100)->generate("HOLA");
+        return view('qrCode', ['qr'=>$qr]);
     }
 }
