@@ -165,7 +165,7 @@ class CoursesController extends Controller
             $runners = Runners::where('dni',$request['dni'])->first();
             $coursesRegister = CoursesRegister::where('dni_runners',$request['dni'])->first();
             if($runners && !$coursesRegister){
-                $idInsurance = Insurances::where('CIF', $request['insurance'])->first();
+                $idInsurance = Insurances::where('id', $request['insurance'])->first();
                 $qr = QrCode::generate($id,$request['dni']);
     
                 $register->create([
