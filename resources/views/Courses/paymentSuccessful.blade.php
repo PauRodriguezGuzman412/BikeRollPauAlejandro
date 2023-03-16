@@ -10,5 +10,5 @@
 
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <div class="container">
-    <p>You succesfully registered for course {{$id}} :3</p>
+    <p>You succesfully registered :3</p>
 </div>

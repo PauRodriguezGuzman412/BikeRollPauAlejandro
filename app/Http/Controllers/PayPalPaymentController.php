@@ -15,6 +15,7 @@ class PayPalPaymentController extends Controller
     {
         $runners = Runners::where('dni',$request['dni'])->get();
         if(count($runners) > 0) {
+            $course = Courses::where('id',$id)->first();
             $runners = Runners::where('dni',$request['dni'])->first();
             $coursesRegister = CoursesRegister::where('dni_runners',$request['dni'])->first();
             if($runners && !$coursesRegister){
@@ -22,25 +23,25 @@ class PayPalPaymentController extends Controller
                 $product = [];
                 $product['items'] = [
                     [
-                        'name' => 'Nike Joyride 2',
-                        'price' => 112,
-                        'desc'  => 'Running shoes for Men',
-                        'qty' => 2
+                        'name' => $course['name'],
+                        'price' => $course['price'],
+                        'desc'  => $course['description'],
+                        'qty' => 1
                     ]
                 ];
         
                 $product['invoice_id'] = 1;
-                $product['invoice_description'] = "Order #{$product['invoice_id']} Bill";
+                $product['invoice_description'] = "Inscripción en ".$course['name'];
                 $product['return_url'] = route('success.payment',['id' => $id, 'dni' => $request['dni'], 'insurance_id' => $request['insurance']]);
                 $product['cancel_url'] = route('cancel.payment');
-                $product['total'] = 224;
+                $product['total'] = $course['price'];
         
                 $paypalModule = new ExpressCheckout;
         
-                $res = $paypalModule->setExpressCheckout($product);
                 $res = $paypalModule->setExpressCheckout($product, true);
         
                 return redirect($res['paypal_link']);
+
             }else{
                 $insurances = Insurances::get();
                 $course = Courses::where('id',$id)->first();
