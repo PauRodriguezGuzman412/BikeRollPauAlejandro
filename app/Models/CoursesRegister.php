@@ -17,6 +17,7 @@ class CoursesRegister extends Model
         'dorsal',
         'insurance',
         'points',
+        'data'
     ];
 
     // public function validationRules(){

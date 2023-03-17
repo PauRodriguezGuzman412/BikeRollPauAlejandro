@@ -131,13 +131,14 @@ class CoursesController extends Controller
         $runners->create($runnersDataValidated);
 
         $idInsurance = Insurances::where('CIF', $request['insurance'])->first();
-        $qr = QrCode::generate($id,$runnersDataValidated['dni']);
-
+        $json = json_encode([$id,$runnersDataValidated['dni']]);
+        $qr = QrCode::generate($json);
         $register->create([
             'id_courses' => $id,
             'dni_runners' => $runnersDataValidated['dni'],
             'dorsal'     => 1,
             'insurance'  => $idInsurance['id'],
+            'data'         => $qr
         ]);
 
         return redirect()->route('courses.available');
@@ -166,13 +167,16 @@ class CoursesController extends Controller
             $coursesRegister = CoursesRegister::where('dni_runners',$request['dni'])->first();
             if($runners && !$coursesRegister){
                 $idInsurance = Insurances::where('CIF', $request['insurance'])->first();
-                $qr = QrCode::generate($id,$request['dni']);
+                $json = json_encode([$id,$request['dni']]);
+                $qr = QrCode::generate($json);
+                $path1 = Storage::putFile('QRImg', $qr);
     
                 $register->create([
                     'id_courses' => $id,
                     'dni_runners' => $request['dni'],
-                    //'dorsal'     => 1,
+                    'dorsal'     => 1,
                     'insurance'  => $idInsurance['id'],
+                    'data'         => $path1
                 ]);
     
                 $route = redirect()->route('courses.available');
@@ -180,8 +184,9 @@ class CoursesController extends Controller
                 $insurances = Insurances::get();
                 $course = Courses::where('id',$id)->first();
     
-                return redirect()->route('courses.registerWithIDForm',['idCourse' => $id, 'userExists' => '1', 'registerExists' => 'true']);
+                $route = redirect()->route('courses.registerWithIDForm',['idCourse' => $id, 'userExists' => '1', 'registerExists' => 'true']);
             }
+            return $route;
 
         }   
         else {
@@ -196,7 +201,8 @@ class CoursesController extends Controller
 
     public function qr_qenerate()
     {   
-        $qr=QrCode::size(100)->generate("HOLA");
+        $qr = CoursesRegister::where('id',1)->first();
+        //$qr=QrCode::size(100)->generate("HOLA");
         return view('qrCode', ['qr'=>$qr]);
     }
 }
