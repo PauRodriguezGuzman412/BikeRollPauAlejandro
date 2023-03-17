@@ -29,7 +29,7 @@ class Sponsors extends Model
             'address'            => 'required',
             'principal_page'     => 'required',
         ];
-        
+
     }
 
     public function id(){

@@ -5,17 +5,16 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class CoursesRegister extends Model
+class SponsorCourses extends Model
 {
     use HasFactory;
 
-    protected $table= 'courses_register';
+    protected $table= 'sponsored_courses';
+
+    public $timestamps = false;
 
     protected $fillable = [
-        'id_courses',
-        'dni_runners',
-        'dorsal',
-        'insurance',
-        'points',
+        'course_id',
+        'sponsor_id',
     ];
 }
