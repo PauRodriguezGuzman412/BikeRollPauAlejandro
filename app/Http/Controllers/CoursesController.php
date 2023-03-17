@@ -131,8 +131,13 @@ class CoursesController extends Controller
         $runners->create($runnersDataValidated);
 
         $idInsurance = Insurances::where('CIF', $request['insurance'])->first();
+<<<<<<< Updated upstream
         $json = json_encode([$id,$runnersDataValidated['dni']]);
         $qr = QrCode::generate($json);
+=======
+        $qr = QrCode::generate($id,$runnersDataValidated['dni']);
+
+>>>>>>> Stashed changes
         $register->create([
             'id_courses' => $id,
             'dni_runners' => $runnersDataValidated['dni'],
@@ -141,7 +146,7 @@ class CoursesController extends Controller
             'data'         => $qr
         ]);
 
-        return redirect()->route('courses.available');
+        return redirect()->route('qrCode');
     }
 
 
@@ -167,9 +172,13 @@ class CoursesController extends Controller
             $coursesRegister = CoursesRegister::where('dni_runners',$request['dni'])->first();
             if($runners && !$coursesRegister){
                 $idInsurance = Insurances::where('CIF', $request['insurance'])->first();
+<<<<<<< Updated upstream
                 $json = json_encode([$id,$request['dni']]);
                 $qr = QrCode::generate($json);
                 $path1 = Storage::putFile('QRImg', $qr);
+=======
+                $qr = QrCode::generate($id,$request['dni']);
+>>>>>>> Stashed changes
     
                 $register->create([
                     'id_courses' => $id,
@@ -179,15 +188,23 @@ class CoursesController extends Controller
                     'data'         => $path1
                 ]);
     
-                $route = redirect()->route('courses.available');
+                $route = redirect()->route('qrCode',[
+                    'qr' => $qr,
+                ]);
+                
             }else{
                 $insurances = Insurances::get();
                 $course = Courses::where('id',$id)->first();
     
                 $route = redirect()->route('courses.registerWithIDForm',['idCourse' => $id, 'userExists' => '1', 'registerExists' => 'true']);
             }
+            dd();
             return $route;
+<<<<<<< Updated upstream
 
+=======
+        
+>>>>>>> Stashed changes
         }   
         else {
             $insurances = Insurances::get();
@@ -206,3 +223,5 @@ class CoursesController extends Controller
         return view('qrCode', ['qr'=>$qr]);
     }
 }
+
+?>
