@@ -7,6 +7,7 @@ use App\Models\Insurances;
 use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use PayPal;
+use PDF;
 use Srmklive\PayPal\Services\ExpressCheckout;
 
 class PayPalPaymentController extends Controller
@@ -30,6 +31,8 @@ class PayPalPaymentController extends Controller
                     ]
                 ];
         
+                
+
                 $product['invoice_id'] = 1;
                 $product['invoice_description'] = "Inscripción en ".$course['name'];
                 $product['return_url'] = route('success.payment',['id' => $id, 'dni' => $request['dni'], 'insurance_id' => $request['insurance']]);
@@ -89,9 +92,23 @@ class PayPalPaymentController extends Controller
                 'insurance'  => $insurance_id,
             ]);
 
-            return view('Courses.paymentSuccessful', ['id' => $id, 'dni' => $dni]);
+            return redirect()->route('payment.summary', ['course_id' => $id, 'dni' => $dni, 'insurance_id' => $insurance_id]);
         }
   
         dd('Error occured!');
     }
+
+    public function paymentSummary($id,$dni,$insurance_id) {
+
+        $course = Courses::where('id',$id)->first();
+        $runner = Runners::where('dni',$dni)->first();
+        $insurance = Insurances::where('id',$insurance_id)->first();
+
+        return view('Courses.paymentSuccessful', [
+            'course' => $course,
+            'runner' => $runner,
+            'insurance' => $insurance,
+        ]);
+    }
+
 }

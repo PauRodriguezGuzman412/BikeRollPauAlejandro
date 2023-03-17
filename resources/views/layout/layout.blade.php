@@ -10,6 +10,7 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
 <link rel="stylesheet" href="{{ asset('css/app.css') }}" />
+<link href='http://fonts.googleapis.com/css?family=Lato:400,700' rel='stylesheet' type='text/css'>
 </head>
     <header>
         @yield('header')

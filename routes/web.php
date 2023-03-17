@@ -8,6 +8,7 @@ use App\Http\Controllers\SponsorsController;
 use App\Http\Controllers\RunnersController;
 use App\Http\Controllers\DropzoneController;
 use App\Http\Controllers\PayPalPaymentController;
+use App\Http\Controllers\PDFController;
 
 Route::get("/",IndexController::class)->name("index.index");
 
@@ -67,3 +68,6 @@ Route::get("/runners/ranking60",[RunnersController::class, 'ranking60'])->name("
 Route::post('handle-payment/{id}', [PayPalPaymentController::class,'handlePayment'])->name('make.payment');
 Route::get('cancel-payment', [PayPalPaymentController::class,'paymentCancel'])->name('cancel.payment');
 Route::get('payment-success/{id}/{dni}/{insurance_id}', [PayPalPaymentController::class,'paymentSuccess'])->name('success.payment');
+Route::get('payment-summary/{course_id}/{dni}/{insurance_id}', [PayPalPaymentController::class,'paymentSummary'])->name('payment.summary');
+
+Route::get('payment-summary/generate-pdf',[PDFController::class,'generatePDF'])->name('payment.generatePDF');

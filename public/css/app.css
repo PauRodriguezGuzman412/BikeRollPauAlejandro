@@ -1,5 +1,10 @@
+@font-face {
+    font-family: Poppins;
+    src: url('/Poppins/Poppins-Regular.tff');
+}
+
 * {
-    font-family:'Poppins', sans-serif;
+    font-family:'Lato', sans-serif;
 }
 
 h5{
