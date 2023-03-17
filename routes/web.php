@@ -7,7 +7,7 @@ use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\SponsorsController;
 use App\Http\Controllers\RunnersController;
 use App\Http\Controllers\DropzoneController;
-use App\Http\Controllers\PayPalController;
+use App\Http\Controllers\PayPalPaymentController;
 
 Route::get("/",IndexController::class)->name("index.index");
 
@@ -64,6 +64,6 @@ Route::get("/runners/ranking40",[RunnersController::class, 'ranking40'])->name("
 Route::get("/runners/ranking50",[RunnersController::class, 'ranking50'])->name("ranking50");
 Route::get("/runners/ranking60",[RunnersController::class, 'ranking60'])->name("ranking60");
 
-Route::get('/paywithpaypal',[PayPalController::class,'payWithPaypal'])->name('paywithpaypal');
-Route::post('/paypal/{id}',[PayPalController::class,'postPaymentWithpaypal'])->name('paypalPayment');
-Route::get('/paypal/status',[PayPalController::class,'getPaymentStatus'])->name('paypalStatus');
+Route::post('handle-payment/{id}', [PayPalPaymentController::class,'handlePayment'])->name('make.payment');
+Route::get('cancel-payment', [PayPalPaymentController::class,'paymentCancel'])->name('cancel.payment');
+Route::get('payment-success/{id}/{dni}/{insurance_id}', [PayPalPaymentController::class,'paymentSuccess'])->name('success.payment');
