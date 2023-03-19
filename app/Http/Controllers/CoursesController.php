@@ -145,7 +145,7 @@ class CoursesController extends Controller
     }
 
 
-    public function registerWithIDForm($id,$userExists = '1',$registerExists = 'false')
+    public function registerWithIDForm($id,$userExists = '1',$registerExists = 'false', $insuranceNeeded = 'false')
     {
         $insurances = Insurances::get();
         $course = Courses::where('id',$id)->first();
@@ -154,6 +154,7 @@ class CoursesController extends Controller
             'idCourse'   => $id,
             'userExists' => $userExists,
             'registerExists' => $registerExists,
+            'insuranceNeeded' => $insuranceNeeded,
             'insurances' => $insurances,
             'course' => $course
         ]);

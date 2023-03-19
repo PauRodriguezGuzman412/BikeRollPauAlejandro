@@ -7,10 +7,6 @@
     font-family:'Lato', sans-serif;
 }
 
-h5{
-    background-color: red;
-}
-
 body { 
     height:100vh;
     background-color: beige !important;
@@ -239,8 +235,6 @@ input:hover{
     outline: 1px solid blue;
 }
 
-<<<<<<< Updated upstream
-=======
   
   /* Create four equal columns that sits next to each other */
   .column {
@@ -254,4 +248,16 @@ input:hover{
     vertical-align: middle;
     width: 100%;
   }
->>>>>>> Stashed changes
+
+
+   /* Main Page */
+
+.bannerImg {
+    width:40%;
+    height:40%;
+    object-fit: contain;
+}
+
+.principalSponsorImg {
+    width:40%;
+}

@@ -14,10 +14,10 @@
         <div class="row justify-content-center bg-white p-5">
             <div class="row justify-content-center">
                 <p class="text-center">¡Te has registrado correctamente en la carrera!</p>
-                <a href="{{ route('payment.generatePDF') }}" class="btn btn-info w-25 mt-2">Generar PDF</a>
+                <a href="{{ route('payment.generatePDF',['course_id' => $course_id,'runner_id' => $runner_id,'insurance_id' => $insurance_id ]) }}" class="btn btn-info w-25 mt-2">Generar PDF</a>
             </div>
             <div class="row justify-content-center">
-                <a class="btn btn-primary w-50 mt-2">Volver a página principal</a>
+                <a href="{{ route('courses.available') }}" class="btn btn-primary w-50 mt-2">Volver a página principal</a>
             </div>
         </div>
     </div>

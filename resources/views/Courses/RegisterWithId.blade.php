@@ -37,6 +37,16 @@
                 <p class="text-center text-white m-0">¡Ya estás registrado en esta carrera!</p>
             </div>
         @endif
+        @if ($insuranceNeeded == 'true')
+            <div id="notRegistered" class="notRegistered ms-4 mt-4 p-3 bg-danger bg-gradient rounded">
+                <p class="text-center text-white m-0">No estás federado, por favor, elige una de las aseguradoras</p>
+            </div>
+        @endif
+        @if ($insuranceNeeded == 'noNeed')
+            <div id="notRegistered" class="notRegistered ms-4 mt-4 p-3 bg-danger bg-gradient rounded">
+                <p class="text-center text-white m-0">No necesitas aseguradora al estar federado</p>
+            </div>
+        @endif
     </form>
     <a class="returnFormButton" href="{{ route('courses.available') }}">VOLVER A PÁGINA PRINCIPAL</a>
 </div>
