@@ -11,25 +11,28 @@
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <div class="container d-flex flex-column justify-content-around align-items-center createRunnerformDiv">
         <h1 class="formTitle">EDITAR CORREDOR</h1>
-        <form action="{{ route('runners.update', $runner['id']) }}" method="POST">
+        <form action="{{ route('runners.update', $runner['dni']) }}" method="POST">
             @csrf
             @method('PUT')
-    
+
+            <div class="mb-4 runnerInput">
+                <input name="dni" type="text" value="{{ old('dni',$runner['dni']) }}" placeholder="DNI"><br>
+            </div>
             <div class="mb-4 runnerInput">
                 <input name="name" type="text" value="{{ old('name',$runner['name']) }}" placeholder="Nombre"><br>
             </div>
             <div class="mb-4 runnerInput">
                 <input name="surname" type="text" value="{{ old('surname',$runner['surname']) }}" placeholder="Apellidos"><br>
             </div>
-    
+
             <div class="mb-4 runnerInput">
                 <input name="address" type="text" value="{{ old('address',$runner['address']) }}" placeholder="Dirección"><br>
             </div>
-    
+
             <div class="mb-4 runnerInput">
                 <input name="date_of_birth" type="text" value="{{ old('date_of_birth',$runner['date_of_birth']) }}" placeholder="Fecha de nacimiento" onfocus="(this.type='date')" onblur="checkBirthDate(this)"><br>
             </div>
-    
+
             <div class="mb-4 runnerInput">
                 <select name="federated" type="number" onchange="enableFederatedNumber(this);">
                     <option value="{{ old('federated',$runner['federated']) }}" selected >Actual: {{ $runner['federated'] }} </option>

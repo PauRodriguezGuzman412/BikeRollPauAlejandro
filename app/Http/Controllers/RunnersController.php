@@ -31,29 +31,29 @@ class RunnersController extends Controller
         return redirect()->route('runners');
     }
 
-    public function edit($id)
+    public function edit($dni)
     {
-        $runner= Runners::where('id', $id)->first();
+        $runner= Runners::where('dni', $dni)->first();
 
         return view('Runners.edit', [
             'runner' => $runner,
         ]);
     }
 
-    public function update(Request $request, Runners $runners, $id)
+    public function update(Request $request, Runners $runners, $dni)
     {
         $runnersDataValidated= $request->validate($runners->validationRules());
 
-        Runners::where('id', $id)->update($runnersDataValidated);
+        Runners::where('dniid', $dni)->update($runnersDataValidated);
 
         return redirect()->route('runners');
 
     }
 
-    public function delete(Request $request, Runners $courses, $id,$active)
-    {   
+    public function delete(Request $request, Runners $courses, $dni,$active)
+    {
         if($active == 0) {
-            Runners::where('id', $id)->update(['active' => '1']);
+            Runners::where('dni', $dni)->update(['active' => '1']);
             $runners= Runners::get();
             return redirect()->route('runners');
 
@@ -62,7 +62,7 @@ class RunnersController extends Controller
         $runners= Runners::get();
         return redirect()->route('runners');
 
-        
+
     }
 
     public function search(Request $request)
@@ -100,9 +100,9 @@ class RunnersController extends Controller
     public function checkIfRegistered(Request $request) {
         $runners = Runners::where('dni', $request->input('dni'))->get();
     }
-    
+
     public function ranking20()
-    {   
+    {
         $today= date("Y-m-d");
         $date = strtotime('-20 year',strtotime($today));
         $date = date("Y-m-d", $date);
@@ -113,18 +113,18 @@ class RunnersController extends Controller
         ]);
     }
     public function ranking30()
-    {   
+    {
         $today= date("Y-m-d");
         $date = strtotime('-30 year',strtotime($today));
         $date = date("Y-m-d", $date);
         $runners= Runners::where('date_of_birth', '>=', $date)->orderby('ranking_points', 'desc')->get();
-        
+
         return view('Runners.ranking30', [
             'runners' => $runners,
         ]);
     }
     public function ranking40()
-    {   
+    {
         $today= date("Y-m-d");
         $date = strtotime('-40 year',strtotime($today));
         $date = date("Y-m-d", $date);
@@ -135,7 +135,7 @@ class RunnersController extends Controller
         ]);
     }
     public function ranking50()
-    {   
+    {
         $today= date("Y-m-d");
         $date = strtotime('-50 year',strtotime($today));
         $date = date("Y-m-d", $date);
@@ -146,7 +146,7 @@ class RunnersController extends Controller
         ]);
     }
     public function ranking60()
-    {   
+    {
         $today= date("Y-m-d");
         $date = strtotime('-60 year',strtotime($today));
         $date = date("Y-m-d", $date);

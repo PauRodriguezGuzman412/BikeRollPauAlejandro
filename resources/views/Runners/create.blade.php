@@ -15,6 +15,9 @@
         @csrf
 
         <div class="mb-4 runnerInput">
+            <input name="dni" type="text" value="{{ old('dni','') }}" placeholder="DNI"><br>
+        </div>
+        <div class="mb-4 runnerInput">
             <input name="name" type="text" value="{{ old('name','') }}" placeholder="Nombre"><br>
         </div>
         <div class="mb-4 runnerInput">

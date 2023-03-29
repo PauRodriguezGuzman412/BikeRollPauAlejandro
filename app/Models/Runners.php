@@ -11,8 +11,6 @@ class Runners extends Model
 
     protected $table= 'runners';
 
-    private $id;
-
 
     protected $fillable = [
         'name',
@@ -34,9 +32,5 @@ class Runners extends Model
             'federated'             => 'required',
             'federated_num'         => 'nullable',
         ];
-    }
-
-    public function id(){
-        return $this->id;
     }
 }
