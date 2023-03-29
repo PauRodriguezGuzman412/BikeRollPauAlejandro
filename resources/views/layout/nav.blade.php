@@ -6,6 +6,7 @@
   <li class="nav-item dropdown active">
     <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="{{ route('rankingMain') }}" role="button" aria-expanded="false">Clasificaciones</a>
     <ul class="dropdown-menu">
+      <li><a class="dropdown-item" href="{{ route('rankingMain') }}">General</a></li>
       <li><a class="dropdown-item" href="{{ route('ranking20') }}">ranking 20</a></li>
       <li><a class="dropdown-item" href="{{ route('ranking30') }}">ranking 30</a></li>
       <li><a class="dropdown-item" href="{{ route('ranking40') }}">ranking 40</a></li>

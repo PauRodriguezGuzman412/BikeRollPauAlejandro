@@ -2,29 +2,11 @@
 
 @section('header')
     @include('layout.header')
-
-@section('component')
     @include('layout.nav')
-    
+
 @section('component')
 
 <div class="container d-flex flex-column justify-content-center align-items-center runnersTable">
-    <form action="{{ route('runners.lookInto') }}" method="POST">
-        @csrf
-        <div class="mb-4">
-            <select name="filter">
-                <option value="dni">DNI</option>
-                <option value="name">Nombre</option>
-                <option value="surname">Apellido</option>
-                <option value="address">Dirección</option>
-                <option value="date_of_birth">Fecha de nacimiento</option>
-                <option value="federated">Federado</option>
-                <option value="federated_num">NºFederado</option>
-            </select>
-            <input name="searchText" type="text"><br>
-        <button type="submit" class="">BUSCAR</button>
-    </div>
-    </form>
     <table style="text-align: center">
         <thead>
             <th>DNI</th>

@@ -209,6 +209,13 @@ class CoursesController extends Controller
         //$qr=QrCode::size(100)->generate("HOLA");
         return view('qrCode', ['qr'=>$qr]);
     }
+
+    public function qr_show()
+    {   
+        $qr = Storage::table('courses_register')->value('data');
+        //$qr=QrCode::size(100)->generate("HOLA");
+        return view('qrShow', ['qr'=>$qr]);
+    }
 }
 
 ?>
