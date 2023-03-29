@@ -19,7 +19,7 @@ class AdminController extends Controller
     {
         return view('logAdmin');
     }
-    
+
     public function validateAdminCredentials(Request $request, Admin $admin) {
         $credentials = $request->validate([
             'username' => ['required'],
@@ -27,7 +27,7 @@ class AdminController extends Controller
         ]);
         if(Auth::attempt($credentials)) {
            $token = $request->session();
-            
+
             return view('adminIndex');
         }
         return back()->withErrors([
@@ -37,5 +37,15 @@ class AdminController extends Controller
 
     public function index() {
         return view('adminIndex');
+    }
+    public function logout(Request $request)
+    {
+        Auth::logout();
+
+        $request->session()->invalidate();
+
+        $request->session()->regenerateToken();
+
+        return redirect(route('index.index'));
     }
 }

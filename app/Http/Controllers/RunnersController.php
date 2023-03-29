@@ -6,6 +6,7 @@ use App\Models\Runners;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Routing\Route;
+use Illuminate\Support\Facades\Gate;
 
 class RunnersController extends Controller
 {

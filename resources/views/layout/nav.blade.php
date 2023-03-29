@@ -21,6 +21,9 @@
   <li class="nav-item">
     <a class="nav-link disabled">Disabled</a>
   </li>
+  <li class="nav-item">
+    <a class="nav-link" href="{{ route('admin.logout') }}">LogOut</a>
+  </li>
 </ul>
 </div>
 

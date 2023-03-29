@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\IndexController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CoursesController;
@@ -12,38 +13,38 @@ use App\Http\Controllers\PDFController;
 
 Route::get("/",IndexController::class)->name("index.index");
 
-
 Route::get("/admin",AdminController::class)->name("admin");
 Route::post('/admin/validate',[AdminController::class,'validateAdminCredentials'])->name('admin.validate');
 Route::get("/admin/index",[AdminController::class, 'index'])->name("admin.index");
+Route::get("/admin/logout",[AdminController::class,'logout'])->name("admin.logout");
 
-Route::get("/admin/courses",CoursesController::class)->name("courses");
-Route::get("/admin/courses/create",[CoursesController::class,'create'])->name("courses.create");
-Route::post("/admin/courses",[CoursesController::class, 'store'])->name("courses.store");
-Route::get("/admin/courses/edit/{id}",[CoursesController::class,'edit'])->name("courses.edit");
-Route::put("/admin/courses/update/{id}",[CoursesController::class, 'update'])->name("courses.update");
-Route::get("/admin/courses/delete/{id}/{active}",[CoursesController::class, 'delete'])->name("courses.delete");
+Route::get("/admin/courses",CoursesController::class)->middleware(['auth','isAdmin'])->name("courses");
+Route::get("/admin/courses/create",[CoursesController::class,'create'])->middleware(['auth','isAdmin'])->name("courses.create");
+Route::post("/admin/courses",[CoursesController::class, 'store'])->middleware(['auth','isAdmin'])->name("courses.store");
+Route::get("/admin/courses/edit/{id}",[CoursesController::class,'edit'])->middleware(['auth','isAdmin'])->name("courses.edit");
+Route::put("/admin/courses/update/{id}",[CoursesController::class, 'update'])->middleware(['auth','isAdmin'])->name("courses.update");
+Route::get("/admin/courses/delete/{id}/{active}",[CoursesController::class, 'delete'])->middleware(['auth','isAdmin'])->name("courses.delete");
 
-Route::get('dropzone/{id}', [DropzoneController::class, 'dropzone'])->name('dropzone');
-Route::post('dropzone/store/{id}', [DropzoneController::class, 'dropzoneStore'])->name('dropzone.store');
+Route::get('dropzone/{id}', [DropzoneController::class, 'dropzone'])->middleware(['auth','isAdmin'])->name('dropzone');
+Route::post('dropzone/store/{id}', [DropzoneController::class, 'dropzoneStore'])->middleware(['auth','isAdmin'])->name('dropzone.store');
 
 Route::get("/admin/aseguradoras",[AdminController::class,'indexAseguradoras'])->name("admin.aseguradoras.index");
 Route::post("/admin/aseguradoras",[AdminController::class, 'storeAseguradoras'])->name("admin.aseguradoras.store");
 
-Route::get("/admin/sponsors",SponsorsController::class)->name("sponsors");
-Route::get("/admin/sponsors/create",[SponsorsController::class,'create'])->name("sponsors.create");
-Route::post("/admin/sponsors",[SponsorsController::class, 'store'])->name("sponsors.store");
-Route::get("/admin/sponsors/edit/{id}",[SponsorsController::class,'edit'])->name("sponsors.edit");
-Route::put("/admin/sponsors/update/{id}",[SponsorsController::class, 'update'])->name("sponsors.update");
-Route::get("/admin/sponsors/delete/{id}/{active}",[SponsorsController::class, 'delete'])->name("sponsors.delete");
+Route::get("/admin/sponsors",SponsorsController::class)->middleware(['auth','isAdmin'])->name("sponsors");
+Route::get("/admin/sponsors/create",[SponsorsController::class,'create'])->middleware(['auth','isAdmin'])->name("sponsors.create");
+Route::post("/admin/sponsors",[SponsorsController::class, 'store'])->middleware(['auth','isAdmin'])->name("sponsors.store");
+Route::get("/admin/sponsors/edit/{id}",[SponsorsController::class,'edit'])->middleware(['auth','isAdmin'])->name("sponsors.edit");
+Route::put("/admin/sponsors/update/{id}",[SponsorsController::class, 'update'])->middleware(['auth','isAdmin'])->name("sponsors.update");
+Route::get("/admin/sponsors/delete/{id}/{active}",[SponsorsController::class, 'delete'])->middleware(['auth','isAdmin'])->name("sponsors.delete");
 
-Route::get("/admin/runners",RunnersController::class)->name("runners");
-Route::get("/admin/runners/create",[RunnersController::class,'create'])->name("runners.create");
-Route::post("/admin/runners",[RunnersController::class, 'store'])->name("runners.store");
-Route::get("/admin/runners/edit/{id}",[RunnersController::class,'edit'])->name("runners.edit");
-Route::post("/admin/runners/search",[RunnersController::class,'search'])->name("runners.search");
-Route::put("/admin/runners/update/{id}",[RunnersController::class, 'update'])->name("runners.update");
-Route::get("/admin/runners/delete/{id}/{active}",[RunnersController::class, 'delete'])->name("runners.delete");
+Route::get("/admin/runners",RunnersController::class)->middleware(['auth','isAdmin'])->name("runners");
+Route::get("/admin/runners/create",[RunnersController::class,'create'])->middleware(['auth','isAdmin'])->name("runners.create");
+Route::post("/admin/runners",[RunnersController::class, 'store'])->middleware(['auth','isAdmin'])->name("runners.store");
+Route::get("/admin/runners/edit/{id}",[RunnersController::class,'edit'])->middleware(['auth','isAdmin'])->name("runners.edit");
+Route::post("/admin/runners/search",[RunnersController::class,'search'])->middleware(['auth','isAdmin'])->name("runners.search");
+Route::put("/admin/runners/update/{id}",[RunnersController::class, 'update'])->middleware(['auth','isAdmin'])->name("runners.update");
+Route::get("/admin/runners/delete/{id}/{active}",[RunnersController::class, 'delete'])->middleware(['auth','isAdmin'])->name("runners.delete");
 
 
 Route::get("/courses/available",[CoursesController::class, 'showAvailable'])->name("courses.available");
