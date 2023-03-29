@@ -8,6 +8,7 @@ use App\Http\Controllers\SponsorsController;
 use App\Http\Controllers\RunnersController;
 use App\Http\Controllers\DropzoneController;
 use App\Http\Controllers\PayPalPaymentController;
+use App\Http\Controllers\PDFController;
 
 Route::get("/",IndexController::class)->name("index.index");
 
@@ -52,7 +53,7 @@ Route::post("/courses/register/{id}",[CoursesController::class, 'register'])->na
 Route::get("/courses/register/{idCourse}",[CoursesController::class, 'registerForm'])->name("courses.registerForm");
 Route::post("/courses/registerWithID/{id}",[CoursesController::class, 'registerWithID'])->name("courses.registerWithID");
 Route::post("/courses/checkIfRegistered",[CoursesController::class, 'registerWithID'])->name("courses.checkIfRegistered");
-Route::get("/courses/registerWithID/{idCourse}/{userExists?}/{registerExists?}",[CoursesController::class, 'registerWithIDForm'])->name("courses.registerWithIDForm");
+Route::get("/courses/registerWithID/{idCourse}/{userExists?}/{registerExists?}/{insuranceNeeded?}",[CoursesController::class, 'registerWithIDForm'])->name("courses.registerWithIDForm");
 
 Route::get("/courses/register/qrcode",[CoursesController::class, 'qr_qenerate'])->name("qrCode");
 
@@ -66,4 +67,7 @@ Route::get("/runners/ranking60",[RunnersController::class, 'ranking60'])->name("
 
 Route::post('handle-payment/{id}', [PayPalPaymentController::class,'handlePayment'])->name('make.payment');
 Route::get('cancel-payment', [PayPalPaymentController::class,'paymentCancel'])->name('cancel.payment');
-Route::get('payment-success/{id}/{dni}/{insurance_id}', [PayPalPaymentController::class,'paymentSuccess'])->name('success.payment');
+Route::get('payment-success/{id}/{dni}/{insurance_id?}', [PayPalPaymentController::class,'paymentSuccess'])->name('success.payment');
+Route::get('payment-summary/{course_id}/{dni}/{insurance_id?}', [PayPalPaymentController::class,'paymentSummary'])->name('payment.summary');
+
+Route::get('payment-summary/generate-pdf/{course_id}/{runner_id}/{insurance_id}',[PDFController::class,'generatePDF'])->name('payment.generatePDF');

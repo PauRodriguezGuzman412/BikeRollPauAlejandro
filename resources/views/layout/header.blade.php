@@ -6,7 +6,7 @@
 <header>
     <div class="container">
         <div class="d-flex flex-column justify-content-center align-items-center">
-            <img class="webLogo" src="{{ asset('img/bikeroll.png') }}" >
+            <a href="{{ route('index.index') }}"><img class="webLogo" src="{{ asset('img/bikeroll.png') }}" ></a>
         </div>
     </div>
 </header>

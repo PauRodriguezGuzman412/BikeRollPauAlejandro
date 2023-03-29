@@ -33,11 +33,16 @@ class SponsorsController extends Controller
                 $courseArray[] = str_split($key, 7)[1];
             }
         }
-
         $sponsorStored = $request->validate($sponsor->validationSponsor());
 
-        $path = Storage::putFile('sponsorsImg', $request->file('logo'));
-        $sponsorStored['logo'] = $path;
+        $image = $request->file('logo');
+
+        $imageName = $image->getClientOriginalName();
+        
+        $image->move(public_path('sponsorsImg'), $imageName);
+        $sponsorStored['logo'] = 'sponsorsImg/'. $imageName;
+
+        dd("uwu");
 
         if($sponsorStored['principal_page']=='on'){
             $sponsorStored['principal_page']=true;
@@ -72,8 +77,13 @@ class SponsorsController extends Controller
         }
         $sponsorStored = $request->validate($sponsors->validationSponsor());
 
-        $path = Storage::putFile('sponsorsImg', $request->file('logo'));
-        $sponsorStored['logo'] = $path;
+        $image = $request->file('logo');
+
+        $imageName = $image->getClientOriginalName();
+        
+        $image->move(public_path('sponsorsImg'), $imageName);
+
+        $sponsorStored['logo'] = 'sponsorsImg/'. $imageName;
 
         Sponsors::where('id', $id)->update($sponsorStored);
 

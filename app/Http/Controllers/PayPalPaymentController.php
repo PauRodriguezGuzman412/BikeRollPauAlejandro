@@ -7,19 +7,28 @@ use App\Models\Insurances;
 use Illuminate\Http\Request;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
 use PayPal;
+use PDF;
 use Srmklive\PayPal\Services\ExpressCheckout;
 
 class PayPalPaymentController extends Controller
 {
     public function handlePayment($id, Request $request)
     {
+        
         $runners = Runners::where('dni',$request['dni'])->get();
+        
         if(count($runners) > 0) {
             $course = Courses::where('id',$id)->first();
-            $runners = Runners::where('dni',$request['dni'])->first();
-            $coursesRegister = CoursesRegister::where('dni_runners',$request['dni'])->first();
-            if($runners && !$coursesRegister){
-                $idInsurance = Insurances::where('id', $request['insurance'])->first();
+            $runner = Runners::where('dni',$request['dni'])->first();
+            if($request['insurance'] == null && $runner['federated'] == 'OPEN') {
+                return redirect()->route('courses.registerWithIDForm',['idCourse' => $id, 'userExists' => '1', 'registerExists' => 'false', 'insuranceNeeded' => 'true']);
+            }
+            if($request['insurance'] != null && $runner['federated'] == 'PRO') {
+                return redirect()->route('courses.registerWithIDForm',['idCourse' => $id, 'userExists' => '1', 'registerExists' => 'false', 'insuranceNeeded' => 'noNeed']);
+            }
+            $coursesRegister = CoursesRegister::where('dni_runners',$request['dni'])->where('id_courses',$id)->first();
+            if($runner && !$coursesRegister){
+                $insurance = Insurances::where('id', $request['insurance'])->first();
                 $product = [];
                 $product['items'] = [
                     [
@@ -27,18 +36,26 @@ class PayPalPaymentController extends Controller
                         'price' => $course['price'],
                         'desc'  => $course['description'],
                         'qty' => 1
+                    ],
+                    [
+                        'name' =>'Aseguradora: '. $insurance['name'],
+                        'price' => $insurance['price'],
+                        'desc'  => 'Pago por aseguradora',
+                        'qty' => 1
                     ]
                 ];
         
+                
+
                 $product['invoice_id'] = 1;
                 $product['invoice_description'] = "Inscripción en ".$course['name'];
                 $product['return_url'] = route('success.payment',['id' => $id, 'dni' => $request['dni'], 'insurance_id' => $request['insurance']]);
                 $product['cancel_url'] = route('cancel.payment');
-                $product['total'] = $course['price'];
+                $product['total'] = $course['price'] + $insurance['price'];
         
                 $paypalModule = new ExpressCheckout;
         
-                $res = $paypalModule->setExpressCheckout($product, true);
+                $res = $paypalModule->setExpressCheckout($product);
         
                 return redirect($res['paypal_link']);
 
@@ -89,9 +106,19 @@ class PayPalPaymentController extends Controller
                 'insurance'  => $insurance_id,
             ]);
 
-            return view('Courses.paymentSuccessful', ['id' => $id, 'dni' => $dni]);
+            return redirect()->route('payment.summary', ['course_id' => $id, 'dni' => $dni, 'insurance_id' => $insurance_id]);
         }
   
         dd('Error occured!');
     }
+
+    public function paymentSummary($id,$dni,$insurance_id) {
+
+        return view('Courses.paymentSuccessful', [
+            'course_id' => $id,
+            'runner_id' => $dni,
+            'insurance_id' => $insurance_id,
+        ]);
+    }
+
 }
