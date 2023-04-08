@@ -38,11 +38,9 @@ class SponsorsController extends Controller
         $image = $request->file('logo');
 
         $imageName = $image->getClientOriginalName();
-        
+
         $image->move(public_path('sponsorsImg'), $imageName);
         $sponsorStored['logo'] = 'sponsorsImg/'. $imageName;
-
-        dd("uwu");
 
         if($sponsorStored['principal_page']=='on'){
             $sponsorStored['principal_page']=true;
@@ -69,7 +67,6 @@ class SponsorsController extends Controller
 
     public function update(Request $request, Sponsors $sponsors, SponsorCourses $sponsorCourses, $id)
     {
-        var_dump($request['principal_page']);
         if($request['principal_page']== "on"){
             $request['principal_page']= true;
         }else{
@@ -80,7 +77,7 @@ class SponsorsController extends Controller
         $image = $request->file('logo');
 
         $imageName = $image->getClientOriginalName();
-        
+
         $image->move(public_path('sponsorsImg'), $imageName);
 
         $sponsorStored['logo'] = 'sponsorsImg/'. $imageName;

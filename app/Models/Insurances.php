@@ -10,4 +10,22 @@ class Insurances extends Model
     use HasFactory;
 
     protected $table= 'insurances';
+
+    protected $fillable = [
+        'CIF',
+        'name',
+        'address',
+        'price',
+        'active',
+    ];
+
+    public function validationInsurances(){
+        return [
+            'CIF'               => 'required',
+            'name'              => 'required',
+            'address'           => 'required',
+            'price'            => 'required',
+        ];
+
+    }
 }

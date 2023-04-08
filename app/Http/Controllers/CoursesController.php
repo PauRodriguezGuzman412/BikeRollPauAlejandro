@@ -164,56 +164,59 @@ class CoursesController extends Controller
     {
         $runners = Runners::where('dni',$request['dni'])->get();
         if(count($runners) > 0) {
-            $runners = Runners::where('dni',$request['dni'])->first();
+            $runners         = Runners::where('dni',$request['dni'])->first();
             $coursesRegister = CoursesRegister::where('dni_runners',$request['dni'])->first();
             if($runners && !$coursesRegister){
                 $idInsurance = Insurances::where('CIF', $request['insurance'])->first();
-                $json = json_encode([$id,$request['dni']]);
-                $qr = QrCode::generate($json);
+                $json  = json_encode([$id,$request['dni']]);
+                $qr    = QrCode::generate($json);
                 $path1 = Storage::putFile('QRImg', $qr);
-    
+                dd($path1);
+
                 $register->create([
-                    'id_courses' => $id,
+                    'id_courses'  => $id,
                     'dni_runners' => $request['dni'],
-                    'dorsal'     => 1,
-                    'insurance'  => $idInsurance['id'],
-                    'data'         => $path1
+                    'dorsal'      => 1,
+                    'insurance'   => $idInsurance['id'],
+                    'data'        => $path1
                 ]);
-    
+
                 $route = redirect()->route('qrCode',[
                     'qr' => $qr,
                 ]);
-                
+
             }else{
                 $insurances = Insurances::get();
                 $course = Courses::where('id',$id)->first();
-    
+
                 $route = redirect()->route('courses.registerWithIDForm',['idCourse' => $id, 'userExists' => '1', 'registerExists' => 'true']);
             }
             dd();
             return $route;
-        }   
+        }
         else {
             $insurances = Insurances::get();
 
             $course = Courses::where('id',$id)->first();
             return redirect()->route('courses.registerWithIDForm',['idCourse' => $id, 'userExists' => 'false']);
         }
-        
+
 
     }
 
     public function qr_qenerate()
-    {   
+    {
         $qr = CoursesRegister::where('id',1)->first();
         //$qr=QrCode::size(100)->generate("HOLA");
         return view('qrCode', ['qr'=>$qr]);
     }
 
     public function qr_show()
-    {   
-        $qr = Storage::table('courses_register')->value('data');
-        //$qr=QrCode::size(100)->generate("HOLA");
+    {
+        $qr = CoursesRegister::query()->select('data')->get();
+        // $qr = Storage::table('courses_register')->value('data');
+        dd($qr);
+        // $qr=QrCode::size(100)->generate("HOLA");
         return view('qrShow', ['qr'=>$qr]);
     }
 }

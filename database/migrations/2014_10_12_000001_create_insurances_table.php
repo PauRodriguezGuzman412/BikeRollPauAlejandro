@@ -14,6 +14,7 @@ return new class extends Migration
             $table->string('name');
             $table->string('address');
             $table->float('price');
+            $table->boolean('active')->default(1);
             $table->timestamps();
             //TODO: Faltan relaciones
         });

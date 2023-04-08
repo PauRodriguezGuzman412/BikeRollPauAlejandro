@@ -6,6 +6,7 @@ use App\Http\Controllers\IndexController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\CoursesController;
 use App\Http\Controllers\SponsorsController;
+use App\Http\Controllers\InsurancesController;
 use App\Http\Controllers\RunnersController;
 use App\Http\Controllers\DropzoneController;
 use App\Http\Controllers\PayPalPaymentController;
@@ -37,6 +38,14 @@ Route::post("/admin/sponsors",[SponsorsController::class, 'store'])->middleware(
 Route::get("/admin/sponsors/edit/{id}",[SponsorsController::class,'edit'])->middleware(['auth','isAdmin'])->name("sponsors.edit");
 Route::put("/admin/sponsors/update/{id}",[SponsorsController::class, 'update'])->middleware(['auth','isAdmin'])->name("sponsors.update");
 Route::get("/admin/sponsors/delete/{id}/{active}",[SponsorsController::class, 'delete'])->middleware(['auth','isAdmin'])->name("sponsors.delete");
+
+Route::get("/admin/insurances",InsurancesController::class)->middleware(['auth','isAdmin'])->name("insurances");
+Route::get("/admin/insurances/create",[InsurancesController::class,'create'])->middleware(['auth','isAdmin'])->name("insurances.create");
+Route::post("/admin/insurances",[InsurancesController::class, 'store'])->middleware(['auth','isAdmin'])->name("insurances.store");
+Route::get("/admin/insurances/edit/{id}",[InsurancesController::class,'edit'])->middleware(['auth','isAdmin'])->name("insurances.edit");
+Route::put("/admin/insurances/update/{id}",[InsurancesController::class, 'update'])->middleware(['auth','isAdmin'])->name("insurances.update");
+Route::get("/admin/insurances/delete/{id}/{active}",[InsurancesController::class, 'delete'])->middleware(['auth','isAdmin'])->name("insurances.delete");
+
 
 Route::get("/admin/runners",RunnersController::class)->middleware(['auth','isAdmin'])->name("runners");
 Route::get("/admin/runners/create",[RunnersController::class,'create'])->middleware(['auth','isAdmin'])->name("runners.create");
