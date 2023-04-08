@@ -147,7 +147,7 @@ class CoursesController extends Controller
 
     public function registerWithIDForm($id,$userExists = '1',$registerExists = 'false', $insuranceNeeded = 'false')
     {
-        $insurances = Insurances::get();
+        $insurances = Insurances::whereNotIn('id',[1])->get();
         $course = Courses::where('id',$id)->first();
 
         return view('Courses.RegisterWithId', [

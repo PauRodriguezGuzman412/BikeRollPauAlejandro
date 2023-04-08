@@ -17,6 +17,12 @@ class InsurancesSeeder extends Seeder
     {
         DB::table('insurances')->insert([
             [
+                'CIF' => 'A85962542',
+                'name' => 'Federación Española de Ciclismo',
+                'address' => 'Passeig Collazo, 394, 24451, MELILLA',
+                'price' => 75,
+            ],
+            [
                 'CIF' => 'A08055741',
                 'name' => 'MAPFRE, SA',
                 'address' => 'CARRETERA POZUELO DE ALARCON, 52, 28222, MAJADAHONDA',

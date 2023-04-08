@@ -18,7 +18,7 @@ return new class extends Migration
             $table->unsignedBigInteger('insurance');
             $table->foreign('insurance')->references('id')->on('insurances');
             $table->integer('points')->nullable();
-            $table->string('data');
+            $table->string('data')->nullable();
             $table->timestamps();
             //TODO: Se necesita un campo más, pero no sé cual
             // $table->foreign('dorsal')->references('dorsal')->on('runners');

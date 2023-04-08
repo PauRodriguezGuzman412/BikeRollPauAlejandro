@@ -17,7 +17,6 @@
         <title>Titulo @yield('title')</title>
     </header>
     <body class="antialiased">
-        @yield('nav')
         @yield('component')
     </body>
     <footer>
