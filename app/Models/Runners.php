@@ -11,16 +11,22 @@ class Runners extends Model
 
     protected $table= 'runners';
 
+    protected $primaryKey = 'dni';
 
     protected $fillable = [
-        'name',
         'dni',
+        'name',
         'surname',
         'address',
         'date_of_birth',
         'federated',
         'federated_num',
     ];
+
+    public function courses()
+    {
+        return $this->belongsToMany(Courses::class, 'courses_register', 'dni_runners', 'id_courses');
+    }
 
     public function validationRules(){
         return [

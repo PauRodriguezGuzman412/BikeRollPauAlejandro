@@ -25,6 +25,7 @@ Route::post("/admin/courses",[CoursesController::class, 'store'])->middleware(['
 Route::get("/admin/courses/edit/{id}",[CoursesController::class,'edit'])->middleware(['auth','isAdmin'])->name("courses.edit");
 Route::put("/admin/courses/update/{id}",[CoursesController::class, 'update'])->middleware(['auth','isAdmin'])->name("courses.update");
 Route::get("/admin/courses/delete/{id}/{active}",[CoursesController::class, 'delete'])->middleware(['auth','isAdmin'])->name("courses.delete");
+Route::get("/admin/courses/runners/{id}",[CoursesController::class,'runners'])->middleware(['auth','isAdmin'])->name("coursesRunners");
 
 Route::get('dropzone/{id}', [DropzoneController::class, 'dropzone'])->middleware(['auth','isAdmin'])->name('dropzone');
 Route::post('dropzone/store/{id}', [DropzoneController::class, 'dropzoneStore'])->middleware(['auth','isAdmin'])->name('dropzone.store');
@@ -65,8 +66,7 @@ Route::post("/courses/registerWithID/{id}",[CoursesController::class, 'registerW
 Route::post("/courses/checkIfRegistered",[CoursesController::class, 'registerWithID'])->name("courses.checkIfRegistered");
 Route::get("/courses/registerWithID/{idCourse}/{userExists?}/{registerExists?}/{insuranceNeeded?}",[CoursesController::class, 'registerWithIDForm'])->name("courses.registerWithIDForm");
 
-Route::get("/courses/register/qrcode",[CoursesController::class, 'qr_qenerate'])->name("qrCode");
-Route::get("/courses/show_qr",[CoursesController::class, 'qr_show'])->name("qrShow");
+Route::get("/courses/register/qrcode/{idCourse?}/{dniRunner?}/{time?}",[CoursesController::class, 'qr'])->name("qrCode");
 
 Route::get("/runners/rankingMain",[RunnersController::class, 'rankingMain'])->name("rankingMain");
 Route::post("/runners/lookInto",[RunnersController::class,'lookInto'])->name("runners.lookInto");

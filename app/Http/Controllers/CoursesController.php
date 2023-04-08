@@ -200,24 +200,39 @@ class CoursesController extends Controller
             $course = Courses::where('id',$id)->first();
             return redirect()->route('courses.registerWithIDForm',['idCourse' => $id, 'userExists' => 'false']);
         }
-
-
     }
 
-    public function qr_qenerate()
+    public function runners($id)
     {
-        $qr = CoursesRegister::where('id',1)->first();
-        //$qr=QrCode::size(100)->generate("HOLA");
-        return view('qrCode', ['qr'=>$qr]);
+        $runners = Courses::query()
+            ->where('id',$id)
+            ->with('runners')
+            ->first();
+
+        $runners = $runners->runners()->get();
+
+        return view('Courses.runners', [
+            'idCourse' => $id,
+            'runners'   => $runners,
+        ]);
     }
 
-    public function qr_show()
+    public function qr($idCourse, $dniRunner, $time)
     {
-        $qr = CoursesRegister::query()->select('data')->get();
-        // $qr = Storage::table('courses_register')->value('data');
-        dd($qr);
-        // $qr=QrCode::size(100)->generate("HOLA");
-        return view('qrShow', ['qr'=>$qr]);
+        //TODO: BORRAR Y REVISAR
+        dd("hola");
+
+        if (! isset($time)) {
+            CoursesRegister::query()
+                ->where('id_courses', $idCourse)
+                ->where('dni_runners', $dniRunner)
+                ->update('data', 0);
+        } else {
+            CoursesRegister::query()
+                ->where('id_courses', $idCourse)
+                ->where('dni_runners', $dniRunner)
+                ->update('data', now());
+        }
     }
 }
 

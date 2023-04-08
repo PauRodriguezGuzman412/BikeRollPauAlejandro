@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use App\Models\Runners;
 
 class Courses extends Model
 {
@@ -28,6 +29,12 @@ class Courses extends Model
         'sponsoring_money',
         'course_duration',
     ];
+
+    public function runners()
+    {
+        return $this->belongsToMany(Runners::class, 'courses_register', 'id_courses', 'dni_runners')
+                    ->withPivot('dorsal','insurance','data');
+    }
 
     public function validationRules(){
         return [
