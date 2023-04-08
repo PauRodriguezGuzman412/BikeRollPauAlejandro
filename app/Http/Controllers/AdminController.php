@@ -6,6 +6,7 @@ use App\Models\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Session;
 
 class AdminController extends Controller
 {
@@ -27,7 +28,8 @@ class AdminController extends Controller
         ]);
         if(Auth::attempt($credentials)) {
            $token = $request->session();
-
+            Session::put('username', $credentials['username']);
+            Session::put('password', $credentials['password']);
             return view('adminIndex');
         }
         return back()->withErrors([

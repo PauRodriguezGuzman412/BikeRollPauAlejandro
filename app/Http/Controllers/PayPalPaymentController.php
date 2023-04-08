@@ -28,36 +28,65 @@ class PayPalPaymentController extends Controller
             }
             $coursesRegister = CoursesRegister::where('dni_runners',$request['dni'])->where('id_courses',$id)->first();
             if($runner && !$coursesRegister){
-                $insurance = Insurances::where('id', $request['insurance'])->first();
-                $product = [];
-                $product['items'] = [
-                    [
-                        'name' => $course['name'],
-                        'price' => $course['price'],
-                        'desc'  => $course['description'],
-                        'qty' => 1
-                    ],
-                    [
-                        'name' =>'Aseguradora: '. $insurance['name'],
-                        'price' => $insurance['price'],
-                        'desc'  => 'Pago por aseguradora',
-                        'qty' => 1
-                    ]
-                ];
+                if($request['insurance'] != null) {
+                    $insurance = Insurances::where('id', $request['insurance'])->first();
+                    $product = [];
+                    $product['items'] = [
+                        [
+                            'name' => $course['name'],
+                            'price' => $course['price'],
+                            'desc'  => $course['description'],
+                            'qty' => 1
+                        ],
+                        [
+                            'name' =>'Aseguradora: '. $insurance['name'],
+                            'price' => $insurance['price'],
+                            'desc'  => 'Pago por aseguradora',
+                            'qty' => 1
+                        ]
+                    ];
 
 
 
-                $product['invoice_id'] = 1;
-                $product['invoice_description'] = "Inscripción en ".$course['name'];
-                $product['return_url'] = route('success.payment',['id' => $id, 'dni' => $request['dni'], 'insurance_id' => $request['insurance']]);
-                $product['cancel_url'] = route('cancel.payment');
-                $product['total'] = $course['price'] + $insurance['price'];
+                    $product['invoice_id'] = 1;
+                    $product['invoice_description'] = "Inscripción en ".$course['name'];
+                    $product['return_url'] = route('success.payment',['id' => $id, 'dni' => $request['dni'], 'insurance_id' => $request['insurance']]);
+                    $product['cancel_url'] = route('cancel.payment');
+                    $product['total'] = $course['price'] + $insurance['price'];
 
-                $paypalModule = new ExpressCheckout;
+                    $paypalModule = new ExpressCheckout;
 
-                $res = $paypalModule->setExpressCheckout($product);
+                    $res = $paypalModule->setExpressCheckout($product);
 
-                return redirect($res['paypal_link']);
+                    return redirect($res['paypal_link']);
+                }
+                else {
+                    $insurance = Insurances::where('CIF','A85962542')->first();
+                    $product = [];
+                    $product['items'] = [
+                        [
+                            'name' => $course['name'],
+                            'price' => $course['price'],
+                            'desc'  => $course['description'],
+                            'qty' => 1
+                        ],
+                    ];
+
+
+
+                    $product['invoice_id'] = 1;
+                    $product['invoice_description'] = "Inscripción en ".$course['name'];
+                    $product['return_url'] = route('success.payment',['id' => $id, 'dni' => $request['dni'], 'insurance' => $insurance['id']]);
+                    $product['cancel_url'] = route('cancel.payment');
+                    $product['total'] = $course['price'];
+
+                    $paypalModule = new ExpressCheckout;
+
+                    $res = $paypalModule->setExpressCheckout($product);
+
+                    return redirect($res['paypal_link']);
+                }
+                
 
             }else{
                 $insurances = Insurances::get();

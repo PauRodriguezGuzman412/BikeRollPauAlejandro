@@ -4,7 +4,6 @@
 
 @section('header')
     @include('layout.header')
-    @include('layout.nav')
 
 @section('component')
 <h1 class="text-center" >Próximas carreras</h1>
