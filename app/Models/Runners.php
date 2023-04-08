@@ -25,7 +25,8 @@ class Runners extends Model
 
     public function courses()
     {
-        return $this->belongsToMany(Courses::class, 'courses_register', 'dni_runners', 'id_courses');
+        return $this->belongsToMany(Courses::class, 'courses_register', 'dni_runners', 'id_courses')
+                    ->withPivot('dorsal','insurance','data');
     }
 
     public function validationRules(){

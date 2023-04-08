@@ -21,9 +21,11 @@
                 <td>{{ $runner['name'].' '.$runner['surname'] }}</td>
                 <td>{{ $runner->pivot->dorsal }}</td>
                 <td>
-                    {!! QrCode::size(100)
-                        ->generate(route('qrCode', ['idCourse' => $idCourse, 'dniRunner' => $runner['dni']]))
-                    !!}
+                    @if($course['course_duration'] != 0)
+                        {!! QrCode::size(100)
+                            ->generate(route('qrCode', ['idCourse' => $idCourse, 'dniRunner' => $runner['dni']]))
+                        !!}
+                    @endif
                 </td>
             </tr>
         @endforeach

@@ -204,35 +204,34 @@ class CoursesController extends Controller
 
     public function runners($id)
     {
-        $runners = Courses::query()
+        $course = Courses::query()
             ->where('id',$id)
             ->with('runners')
             ->first();
 
-        $runners = $runners->runners()->get();
+        $runners = $course->runners()->get();
 
         return view('Courses.runners', [
             'idCourse' => $id,
-            'runners'   => $runners,
-        ]);
+            'runners'  => $runners,
+            'course'   => $course,
+         ]);
     }
 
-    public function qr($idCourse, $dniRunner, $time)
+    public function qr($idCourse, $dniRunner, $time = null)
     {
-        //TODO: BORRAR Y REVISAR
-        dd("hola");
-
         if (! isset($time)) {
             CoursesRegister::query()
                 ->where('id_courses', $idCourse)
                 ->where('dni_runners', $dniRunner)
-                ->update('data', 0);
+                ->update(['data' => 0]);
         } else {
             CoursesRegister::query()
                 ->where('id_courses', $idCourse)
                 ->where('dni_runners', $dniRunner)
-                ->update('data', now());
+                ->update(['data' => now()]);
         }
+        //No te manda a ningún sitio porque esta función se llama con el escaneo del qr
     }
 }
 

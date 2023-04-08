@@ -66,7 +66,7 @@ Route::post("/courses/registerWithID/{id}",[CoursesController::class, 'registerW
 Route::post("/courses/checkIfRegistered",[CoursesController::class, 'registerWithID'])->name("courses.checkIfRegistered");
 Route::get("/courses/registerWithID/{idCourse}/{userExists?}/{registerExists?}/{insuranceNeeded?}",[CoursesController::class, 'registerWithIDForm'])->name("courses.registerWithIDForm");
 
-Route::get("/courses/register/qrcode/{idCourse?}/{dniRunner?}/{time?}",[CoursesController::class, 'qr'])->name("qrCode");
+Route::get("/courses/qrcode/{idCourse}/{dniRunner}/{time?}",[CoursesController::class, 'qr'])->name("qrCode");
 
 Route::get("/runners/rankingMain",[RunnersController::class, 'rankingMain'])->name("rankingMain");
 Route::post("/runners/lookInto",[RunnersController::class,'lookInto'])->name("runners.lookInto");
