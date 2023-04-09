@@ -15,7 +15,7 @@ return new class extends Migration
             $table->longText('description');
             $table->float('slope');
             $table->string('map_image');
-            $table->string('maxim_participants');
+            $table->int('maxim_participants');
             $table->float('km');
             $table->date('start_date');
             $table->string('start_point');

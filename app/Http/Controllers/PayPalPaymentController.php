@@ -50,7 +50,7 @@ class PayPalPaymentController extends Controller
 
                     $product['invoice_id'] = 1;
                     $product['invoice_description'] = "Inscripción en ".$course['name'];
-                    $product['return_url'] = route('success.payment',['id' => $id, 'dni' => $request['dni'], 'insurance_id' => $request['insurance']]);
+                    $product['return_url'] = route('success.payment',['id' => $id, 'dni' => $request['dni'], 'insurance_id' => $insurance['id']]);
                     $product['cancel_url'] = route('cancel.payment');
                     $product['total'] = $course['price'] + $insurance['price'];
 
@@ -76,7 +76,7 @@ class PayPalPaymentController extends Controller
 
                     $product['invoice_id'] = 1;
                     $product['invoice_description'] = "Inscripción en ".$course['name'];
-                    $product['return_url'] = route('success.payment',['id' => $id, 'dni' => $request['dni'], 'insurance' => $insurance['id']]);
+                    $product['return_url'] = route('success.payment',['id' => $id, 'dni' => $request['dni'], 'insurance_id' => $insurance['id']]);
                     $product['cancel_url'] = route('cancel.payment');
                     $product['total'] = $course['price'];
 

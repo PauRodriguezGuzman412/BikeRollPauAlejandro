@@ -79,7 +79,19 @@ class CoursesController extends Controller
 
     public function showAvailable()
     {
-        $courses= Courses::where('start_date', '<', date('Y-m-d'))->where('active', 1)->get();
+        $courses= Courses::where('start_date', '>', date('Y-m-d'))->where('active', 1)->get();
+
+        $availableCourses = array();
+
+        foreach($courses as $course) {
+            $number = CoursesRegister::where('id_courses', $course->id)->get()->count();
+            if ($number >= $course->maxim_participants) {
+                $course['available'] = 0;
+            }
+            else {
+                $course['available'] = 1;
+            }
+        }
 
         return view('Courses.showAvailable', [
             'courses' => $courses,

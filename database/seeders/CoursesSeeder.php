@@ -25,9 +25,9 @@ class CoursesSeeder extends Seeder
                 'map_image' => '',
                 'maxim_participants' => 25,
                 'km' => 180,
-                'start_date' => '2021-04-01',
+                'start_date' => '2023-05-25',
                 'start_point' => '41.473782,2.084934999999973',
-                'promotion_banner' => 'bannersImg/santCugat.png',
+                'promotion_banner' => 'bannersImg/santcugatvallter2000.png',
                 'sponsoring_money' => 500,
                 'price' => 49.99,
             ],
@@ -38,7 +38,7 @@ class CoursesSeeder extends Seeder
                 'map_image' => '',
                 'maxim_participants' => 50,
                 'km' => 132,
-                'start_date' => '2023-03-26',
+                'start_date' => '2023-05-26',
                 'start_point' => '42.03039,-1.653715',
                 'promotion_banner' => 'bannersImg/desafio132.png',
                 'sponsoring_money' => 1000,
@@ -46,12 +46,16 @@ class CoursesSeeder extends Seeder
             ],
             [
                 'name' => 'Brevet 400 km. Linares - LAGUNAS DE RUIDERA',
-                'description' => 'Prueba catalagoda como EXCURSION PERSONAL. Se trata de un Brevet de Randonneurs Mondieux. Homologada por el Audax Club Parisien ',
+                'description' => 'Ciclomaratón- Brevet Randonneur de 200 km.
+                Homologada para poder inscribirse en la Super Brevet Marid Gijon Madrid
+                Homologada para la obtención del diploma Randonneur 5000 y 10000
+                Homologada para el campeonato nacional de Randonneur Españoles. Se trata de una Excursión personal, donde el organizador al final si se realiza según el reglamento certifica con una homologación haber realizado la prueba.
+                Si se quiere tener un recuerdo de esta participación se debe solicitar y abonar una medalla que se dará o enviará a final de año',
                 'slope' => 2936,
                 'map_image' => '',
                 'maxim_participants' => 50,
                 'km' => 400,
-                'start_date' => '2021-04-08',
+                'start_date' => '2023-05-21',
                 'start_point' => '38.09362,-3.635844',
                 'promotion_banner' => 'bannersImg/brevet400km.png',
                 'sponsoring_money' => 2500,
@@ -73,7 +77,7 @@ class CoursesSeeder extends Seeder
                 'map_image' => '',
                 'maxim_participants' => 50,
                 'km' => 740,
-                'start_date' => '2021-04-09',
+                'start_date' => '2023-05-19',
                 'start_point' => '39.808032,3.116647',
                 'promotion_banner' => 'bannersImg/xperiencePirenaica.png',
                 'sponsoring_money' => 3500,
