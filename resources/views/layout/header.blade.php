@@ -25,10 +25,10 @@
           <li class="nav-item fs-5 me-3">
             <a class="nav-link" href="{{ route('courses.finished') }}">Galería de imágenes</a>
           </li>
-          @if(Session::has('username')) 
-          <li class="nav-item fs-5 me-3">
-            <a class="nav-link" href="{{ route('admin.logout') }}">Log Out</a>
-          </li>
+          @if(isset(Auth::user()->username) && Auth::user()->username == 'admin')
+            <li class="nav-item fs-5 me-3">
+                <a class="nav-link" href="{{ route('admin.logout') }}">Log Out</a>
+            </li>
           @endif
     </nav>
 </header>

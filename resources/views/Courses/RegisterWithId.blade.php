@@ -19,7 +19,6 @@
         <div class="mb-4 runnerInput">
             <select name="insurance" type="number" value="{{ old('insurance','') }}">
                 <option value="" selected disabled >Selecciona una aseguradora</option>
-                {{-- TODO: Hacer que cada carrera eliga sus aseguradoras --}}
                 @foreach ($insurances as $insurance)
                     <option value="{{ $insurance['id'] }}">{{ $insurance['name'] }}</option>
                 @endforeach

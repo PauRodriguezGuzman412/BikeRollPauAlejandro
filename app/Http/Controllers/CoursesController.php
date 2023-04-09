@@ -131,17 +131,15 @@ class CoursesController extends Controller
         $runners->create($runnersDataValidated);
 
         $idInsurance = Insurances::where('CIF', $request['insurance'])->first();
-        $json = json_encode([$id,$runnersDataValidated['dni']]);
-        $qr = QrCode::generate($json);
         $register->create([
-            'id_courses' => $id,
+            'id_courses'  => $id,
             'dni_runners' => $runnersDataValidated['dni'],
-            'dorsal'     => 1,
-            'insurance'  => $idInsurance['id'],
-            'data'         => $qr
+            'dorsal'      => 1,
+            'insurance'   => $idInsurance['id'],
+            'data'        => null
         ]);
 
-        return redirect()->route('qrCode');
+        return redirect()->route('index.index');
     }
 
 
@@ -169,29 +167,23 @@ class CoursesController extends Controller
             if($runners && !$coursesRegister){
                 $idInsurance = Insurances::where('CIF', $request['insurance'])->first();
                 $json  = json_encode([$id,$request['dni']]);
-                $qr    = QrCode::generate($json);
-                $path1 = Storage::putFile('QRImg', $qr);
-                dd($path1);
 
                 $register->create([
                     'id_courses'  => $id,
                     'dni_runners' => $request['dni'],
                     'dorsal'      => 1,
                     'insurance'   => $idInsurance['id'],
-                    'data'        => $path1
+                    'data'        => null
                 ]);
 
-                $route = redirect()->route('qrCode',[
-                    'qr' => $qr,
-                ]);
 
+                $route = redirect()->route('index.index');
             }else{
                 $insurances = Insurances::get();
                 $course = Courses::where('id',$id)->first();
 
                 $route = redirect()->route('courses.registerWithIDForm',['idCourse' => $id, 'userExists' => '1', 'registerExists' => 'true']);
             }
-            dd();
             return $route;
         }
         else {
@@ -220,17 +212,17 @@ class CoursesController extends Controller
 
     public function qr($idCourse, $dniRunner, $time = null)
     {
-        if (! isset($time)) {
-            CoursesRegister::query()
-                ->where('id_courses', $idCourse)
-                ->where('dni_runners', $dniRunner)
-                ->update(['data' => 0]);
-        } else {
-            CoursesRegister::query()
-                ->where('id_courses', $idCourse)
-                ->where('dni_runners', $dniRunner)
-                ->update(['data' => now()]);
-        }
+        $points = [50,40,30,20,10,0];
+
+        $pointsQuery = CoursesRegister::query()
+                        ->where('id_courses', $idCourse)
+                        ->where('dni_runners', $dniRunner)
+                        ->count();
+
+        CoursesRegister::query()
+            ->where('id_courses', $idCourse)
+            ->where('dni_runners', $dniRunner)
+            ->update(['data' => now(), 'points' => $points[$pointsQuery - 1]]);
         //No te manda a ningún sitio porque esta función se llama con el escaneo del qr
     }
 }
