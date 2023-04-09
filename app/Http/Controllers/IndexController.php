@@ -11,11 +11,18 @@ class IndexController extends Controller
     public function __invoke(){
 
         $sponsors = Sponsors::where('principal_page', 1)->get();
-        
-        $courses = Courses::where('start_date','>', date('Y-m-d'))
+
+        $courses = Courses::query()
+                        ->where('start_date','>', date('Y-m-d'))
                         ->orderBy('start_date', 'asc')
                         ->take(4)
                         ->get();
-        return view('index',['recentCourses' => $courses, 'principalSponsors' => $sponsors]);
+
+        return view('index',
+            [
+                'recentCourses' => $courses,
+                'principalSponsors' => $sponsors
+            ]
+        );
     }
 }

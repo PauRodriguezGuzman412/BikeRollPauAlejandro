@@ -10,16 +10,7 @@ use App\Http\Controllers\Controller;
 use App\Models\FileUpload;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
-// use Endroid\QrCode\Color\Color;
-// use Endroid\QrCode\Encoding\Encoding;
-// use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelLow;
 use SimpleSoftwareIO\QrCode\Facades\QrCode;
-// use Endroid\QrCode\Label\Label;
-//use Endroid\QrCode\QrCode;
-// use Endroid\QrCode\Logo\Logo;
-// use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
-// use Endroid\QrCode\Writer\PngWriter;
-// use Endroid\QrCode\Writer\ValidationException;
 
 class CoursesController extends Controller
 {
