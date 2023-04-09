@@ -10,7 +10,7 @@
 body { 
     height:100vh;
     background-color: beige !important;
-    background: linear-gradient(to top right, rgb(67, 150, 92), rgb(62, 201, 85));
+    background-color: gainsboro !important;
     background-size: cover;
     background-size: no-repeat;
 
@@ -47,7 +47,7 @@ header {
 
 .formTitle {
     margin:5%;
-    font-size:24px;
+    font-size:28px;
     font-family:'Poppins', sans-serif;
 }
 

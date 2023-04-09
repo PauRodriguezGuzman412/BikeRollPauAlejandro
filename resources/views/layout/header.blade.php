@@ -6,21 +6,20 @@
 <header>
     <nav class="navbar fixed-top navbar-expand-lg navbar-dark bg-dark p-0">
         <a class="navbar-brand" href="{{ route('index.index') }}"><img src="{{ asset('img/bikeroll.png') }}" height="90px"></a>
-        <ul class="navbar-nav">
-          <li class="nav-item d-flex justify-content-center align-items-center">
-            <a class="nav-link fs-5 me-3" aria-current="page" href="{{ route('courses.available') }}">Carreras</a>
+        <ul class="navbar-nav d-flex h-100">
+          <li class="nav-item d-flex justify-content-center align-items-center fs-5 ms-2 me-3">
+            <a class="nav-link" aria-current="page" href="{{ route('courses.available') }}">Carreras</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle fs-5 me-3" data-bs-toggle="dropdown" href="{{ route('rankingMain') }}" role="button" aria-expanded="false">Clasificaciones</a>
-            <ul class="dropdown-menu">
+            <ul class="dropdown-menu dropdown-menu-dark">
               <li><a class="dropdown-item" href="{{ route('rankingMain') }}">General</a></li>
+              <li><hr class="dropdown-divider"></li>
               <li><a class="dropdown-item" href="{{ route('ranking20') }}">ranking 20</a></li>
               <li><a class="dropdown-item" href="{{ route('ranking30') }}">ranking 30</a></li>
               <li><a class="dropdown-item" href="{{ route('ranking40') }}">ranking 40</a></li>
               <li><a class="dropdown-item" href="{{ route('ranking50') }}">ranking 50</a></li>
               <li><a class="dropdown-item" href="{{ route('ranking60') }}">ranking 60</a></li>
-              <li><hr class="dropdown-divider"></li>
-              <li><a class="dropdown-item" href="#">Separated link</a></li>
             </ul>
           </li>
           <li class="nav-item fs-5 me-3">
