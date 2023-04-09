@@ -51,7 +51,7 @@ Route::get("/admin/insurances/delete/{id}/{active}",[InsurancesController::class
 Route::get("/admin/runners",RunnersController::class)->middleware(['auth','isAdmin'])->name("runners");
 Route::get("/admin/runners/create",[RunnersController::class,'create'])->middleware(['auth','isAdmin'])->name("runners.create");
 Route::post("/admin/runners",[RunnersController::class, 'store'])->middleware(['auth','isAdmin'])->name("runners.store");
-Route::get("/admin/runners/edit/{id}",[RunnersController::class,'edit'])->middleware(['auth','isAdmin'])->name("runners.edit");
+Route::get("/admin/runners/edit/{dni}",[RunnersController::class,'edit'])->middleware(['auth','isAdmin'])->name("runners.edit");
 Route::post("/admin/runners/search",[RunnersController::class,'search'])->middleware(['auth','isAdmin'])->name("runners.search");
 Route::put("/admin/runners/update/{id}",[RunnersController::class, 'update'])->middleware(['auth','isAdmin'])->name("runners.update");
 Route::get("/admin/runners/delete/{id}/{active}",[RunnersController::class, 'delete'])->middleware(['auth','isAdmin'])->name("runners.delete");
@@ -70,6 +70,8 @@ Route::get("/courses/qrcode/{idCourse}/{dniRunner}/{time?}",[CoursesController::
 
 Route::get("/runners/rankingMain",[RunnersController::class, 'rankingMain'])->name("rankingMain");
 Route::post("/runners/lookInto",[RunnersController::class,'lookInto'])->name("runners.lookInto");
+Route::get("/runners/rankingGenderMale",[RunnersController::class, 'rankingGenderMale'])->name("rankingGenderMale");
+Route::get("/runners/rankingGenderFemale",[RunnersController::class, 'rankingGenderFemale'])->name("rankingGenderFemale");
 Route::get("/runners/ranking20",[RunnersController::class,'ranking20'])->name("ranking20");
 Route::get("/runners/ranking30",[RunnersController::class, 'ranking30'])->name("ranking30");
 Route::get("/runners/ranking40",[RunnersController::class, 'ranking40'])->name("ranking40");

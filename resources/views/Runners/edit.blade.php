@@ -49,6 +49,15 @@
                     <input name="federated_num" type="text" value="{{ old('federated_num',$runner['federated_num']) }}" placeholder="Nº Federado" disabled><br>
                 </div>
             @endif
+
+            <div class="mb-4 runnerInput">
+                <select name="gender" type="number" value="{{ old('gender',$runner['gender']) }}">
+                    <option value="" selected disabled >Selecciona una opción</option>
+                    <option value="male">Hombre</option>
+                    <option value="female">Mujer</option>
+                </select><br>
+            </div>
+
             <div class="mb-4 runnerInput">
                 <input name="ranking_points" type="number" value="{{ old('ranking_points',$runner['ranking_points']) }}" placeholder="puntos"><br>
             </div>

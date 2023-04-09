@@ -15,6 +15,8 @@
             <ul class="dropdown-menu dropdown-menu-dark">
               <li><a class="dropdown-item" href="{{ route('rankingMain') }}">General</a></li>
               <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="{{ route('rankingGenderMale') }}">ranking hombres</a></li>
+              <li><a class="dropdown-item" href="{{ route('rankingGenderFemale') }}">ranking mujeres</a></li>
               <li><a class="dropdown-item" href="{{ route('ranking20') }}">ranking 20</a></li>
               <li><a class="dropdown-item" href="{{ route('ranking30') }}">ranking 30</a></li>
               <li><a class="dropdown-item" href="{{ route('ranking40') }}">ranking 40</a></li>

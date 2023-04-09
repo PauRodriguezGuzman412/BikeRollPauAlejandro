@@ -41,10 +41,20 @@
         </div>
 
         <div class="mb-4 runnerInput">
+            <select name="gender" type="number" value="{{ old('gender','') }}">
+                <option value="" selected disabled >Selecciona un género</option>
+                <option value="male">Hombre</option>
+                <option value="female">Mujer</option>
+            </select><br>
+        </div>
+
+        <div class="mb-4 runnerInput">
             <input name="federated_num" type="text" value="{{ old('federated_num','') }}" placeholder="Nº Federado" disabled><br>
         </div>
         <button type="submit" class="submitLogAdminButton">AÑADIR CORREDOR</button>
     </form>
+
+
     <a class="returnFormButton" href="{{ route('runners') }}">VOLVER A PÁGINA PRINCIPAL</a>
 </div>
     @foreach ($errors->all() as $error)
