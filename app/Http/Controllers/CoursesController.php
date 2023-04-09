@@ -215,7 +215,7 @@ class CoursesController extends Controller
 
     public function qr($idCourse, $dniRunner, $time = null)
     {
-        $points = [50,40,30,20,10,0];
+        $points = [1000,900,800,700,600,500,400,300,200,100];
 
         $pointsQuery = CoursesRegister::query()
                         ->where('id_courses', $idCourse)
