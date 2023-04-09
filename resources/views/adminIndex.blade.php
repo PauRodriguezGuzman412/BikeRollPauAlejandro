@@ -27,14 +27,12 @@
             <img class="runnersImg" src="{{ asset('img/runners-icon.png') }}">
         </div>
     </a>
-
-    <a href="{{ route('runners') }}" class="adminLinks">
+    <a href="{{ route('insurances') }}" class="adminLinks">
         <div class= "d-flex flex-column align-items-center sectionDiv me-3">
             <p class="sectionTitle">ASEGURADORAS</p>
             <img class="runnersImg" src="{{ asset('img/insurance-icon.png') }}">
         </div>
     </a>
-    {{-- <a href="{{ route('runners') }}">Runners</a> --}}
 </div>
 @section('footer')
     @include('layout.footer')
