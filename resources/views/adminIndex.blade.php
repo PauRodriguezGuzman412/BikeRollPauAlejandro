@@ -21,12 +21,12 @@
         <img class="sponsorsImg" src="{{ asset('img/sponsors-icon.png') }}">
     </div>
     </a>
-    <a href="{{ route('runners') }}" class="adminLinks">
+    {{-- <a href="{{ route('runners') }}" class="adminLinks">
         <div class= "d-flex flex-column align-items-center sectionDiv me-3">
             <p class="sectionTitle">CORREDORES</p>
             <img class="runnersImg" src="{{ asset('img/runners-icon.png') }}">
         </div>
-    </a>
+    </a> --}}
     <a href="{{ route('insurances') }}" class="adminLinks">
         <div class= "d-flex flex-column align-items-center sectionDiv me-3">
             <p class="sectionTitle">ASEGURADORAS</p>
