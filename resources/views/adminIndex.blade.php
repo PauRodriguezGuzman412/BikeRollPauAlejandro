@@ -7,7 +7,6 @@
     @include('layout.nav')
 
 @section('component')
-
 <div class="container d-flex flex-row justify-content-around align-items-center adminIndexDiv">
     <a href="{{ route('courses') }}" class="adminLinks">
         <div class= "d-flex flex-column align-items-center sectionDiv me-3">

@@ -12,8 +12,8 @@
     <a class="createRunnerButton" href="{{ route('runners.create') }}">CREAR CORREDOR</a>
     <form action="{{ route('runners.search') }}" method="POST">
         @csrf
-        <div class="mb-4">
-            <select name="filter">
+        <div class="row mb-4">
+            <select class="w-25 form-control" name="filter">
                 <option value="id">Id</option>
                 <option value="name">Nombre</option>
                 <option value="surname">Apellido</option>
@@ -22,11 +22,11 @@
                 <option value="federated">Federado</option>
                 <option value="federated_num">NºFederado</option>
             </select>
-            <input name="searchText" type="text"><br>
-        <button type="submit" class="">BUSCAR</button>
+            <input class="w-50 ms-3 form-control rounded-0 rounded-start" name="searchText" type="text"><br>
+        <button type="submit" class="btn btn-success rounded-0 rounded-end searchButton">BUSCAR</button>
     </div>
     </form>
-    <table style="text-align: center">
+    <table class="border border-secondary" style="text-align: center">
         <thead>
             <th>Nombre</th>
             <th>Apellido</th>

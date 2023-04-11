@@ -154,6 +154,12 @@ a {
     width:100%;
 }
 
+/*general filters*/
+
+.searchButton {
+    width:10%;
+}
+
 /*general imgs*/
 
 .statusIcon {

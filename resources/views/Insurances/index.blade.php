@@ -8,7 +8,7 @@
 
 <div class="container d-flex flex-column justify-content-center align-items-center runnersTable">
     <a class="createRunnerButton" href="{{ route('insurances.create') }}">CREAR ASEGURADORA</a>
-    <table style="text-align: center">
+    <table class="border border-secondary" style="text-align: center">
         <thead>
             <th>ID</th>
             <th>CIF</th>
