@@ -96,6 +96,16 @@ class SponsorsController extends Controller
         }
         Sponsors::where('id', $id)->update(['active' => '0']);
         return redirect()->route('sponsors');
+    }
 
+    public function search(Request $request)
+    {
+        $filter = $request->input('filter');
+        $searchText = $request->input('searchText');
+        $sponsors= Sponsors::where($filter,'LIKE', '%'.$searchText.'%')->get();
+
+        return view('Sponsors.index', [
+            'sponsors' => $sponsors,
+        ]);
     }
 }

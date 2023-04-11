@@ -21,6 +21,25 @@
 
 <div class="container d-flex flex-column justify-content-center align-items-center">
     <a class="createRunnerButton" href="{{ route('courses.create') }}">CREAR CARRERA</a>
+    <form action="{{ route('courses.search') }}" method="POST">
+        @csrf
+        <div class="row mb-4">
+            <select class="w-25 form-control" name="filter">
+                <option value="id">Id</option>
+                <option value="name">Nombre</option>
+                <option value="description">Descripción</option>
+                <option value="slope">Desnivel</option>
+                <option value="maxim_participants">Máximo participantes</option>
+                <option value="km">Kilómetros</option>
+                <option value="start_date">Fecha inicio</option>
+                <option value="start_point">Punto de salida</option>
+                <option value="promotion_banner">Banner promoción</option>
+                <option value="course_duration">Duración Carrera</option>
+            </select>
+            <input class="w-50 ms-3 form-control rounded-0 rounded-start" name="searchText" type="text"><br>
+            <button type="submit" class="btn btn-success rounded-0 rounded-end searchButton">BUSCAR</button>
+        </div>
+    </form>
     <table class="border border-secondary" style="text-align: center">
         <thead>
             <th>ID</th>
