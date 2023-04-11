@@ -26,6 +26,7 @@ Route::get("/admin/courses/edit/{id}",[CoursesController::class,'edit'])->middle
 Route::put("/admin/courses/update/{id}",[CoursesController::class, 'update'])->middleware(['auth','isAdmin'])->name("courses.update");
 Route::get("/admin/courses/delete/{id}/{active}",[CoursesController::class, 'delete'])->middleware(['auth','isAdmin'])->name("courses.delete");
 Route::get("/admin/courses/runners/{id}",[CoursesController::class,'runners'])->middleware(['auth','isAdmin'])->name("coursesRunners");
+Route::post("/admin/courses/search",[CoursesController::class,'search'])->middleware(['auth','isAdmin'])->name("courses.search");
 
 Route::get('dropzone/{id}', [DropzoneController::class, 'dropzone'])->middleware(['auth','isAdmin'])->name('dropzone');
 Route::post('dropzone/store/{id}', [DropzoneController::class, 'dropzoneStore'])->middleware(['auth','isAdmin'])->name('dropzone.store');
@@ -39,6 +40,7 @@ Route::post("/admin/sponsors",[SponsorsController::class, 'store'])->middleware(
 Route::get("/admin/sponsors/edit/{id}",[SponsorsController::class,'edit'])->middleware(['auth','isAdmin'])->name("sponsors.edit");
 Route::put("/admin/sponsors/update/{id}",[SponsorsController::class, 'update'])->middleware(['auth','isAdmin'])->name("sponsors.update");
 Route::get("/admin/sponsors/delete/{id}/{active}",[SponsorsController::class, 'delete'])->middleware(['auth','isAdmin'])->name("sponsors.delete");
+Route::post("/admin/sponsors/search",[SponsorsController::class,'search'])->middleware(['auth','isAdmin'])->name("sponsors.search");
 
 Route::get("/admin/insurances",InsurancesController::class)->middleware(['auth','isAdmin'])->name("insurances");
 Route::get("/admin/insurances/create",[InsurancesController::class,'create'])->middleware(['auth','isAdmin'])->name("insurances.create");
@@ -46,7 +48,7 @@ Route::post("/admin/insurances",[InsurancesController::class, 'store'])->middlew
 Route::get("/admin/insurances/edit/{id}",[InsurancesController::class,'edit'])->middleware(['auth','isAdmin'])->name("insurances.edit");
 Route::put("/admin/insurances/update/{id}",[InsurancesController::class, 'update'])->middleware(['auth','isAdmin'])->name("insurances.update");
 Route::get("/admin/insurances/delete/{id}/{active}",[InsurancesController::class, 'delete'])->middleware(['auth','isAdmin'])->name("insurances.delete");
-
+Route::post("/admin/insurances/search",[InsurancesController::class,'search'])->middleware(['auth','isAdmin'])->name("insurances.search");
 
 Route::get("/admin/runners",RunnersController::class)->middleware(['auth','isAdmin'])->name("runners");
 Route::get("/admin/runners/create",[RunnersController::class,'create'])->middleware(['auth','isAdmin'])->name("runners.create");

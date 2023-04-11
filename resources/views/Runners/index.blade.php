@@ -14,7 +14,7 @@
         @csrf
         <div class="row mb-4">
             <select class="w-25 form-control" name="filter">
-                <option value="id">Id</option>
+                <option value="dni">DNI</option>
                 <option value="name">Nombre</option>
                 <option value="surname">Apellido</option>
                 <option value="address">Dirección</option>
@@ -23,8 +23,8 @@
                 <option value="federated_num">NºFederado</option>
             </select>
             <input class="w-50 ms-3 form-control rounded-0 rounded-start" name="searchText" type="text"><br>
-        <button type="submit" class="btn btn-success rounded-0 rounded-end searchButton">BUSCAR</button>
-    </div>
+            <button type="submit" class="btn btn-success rounded-0 rounded-end searchButton">BUSCAR</button>
+        </div>
     </form>
     <table class="border border-secondary" style="text-align: center">
         <thead>

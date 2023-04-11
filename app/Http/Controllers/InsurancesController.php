@@ -60,4 +60,15 @@ class InsurancesController extends Controller
         return redirect()->route('insurances');
 
     }
+
+    public function search(Request $request)
+    {
+        $filter = $request->input('filter');
+        $searchText = $request->input('searchText');
+        $insurances= Insurances::where($filter,'LIKE', '%'.$searchText.'%')->get();
+
+        return view('Insurances.index', [
+            'insurances' => $insurances,
+        ]);
+    }
 }

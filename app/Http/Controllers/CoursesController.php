@@ -233,6 +233,18 @@ class CoursesController extends Controller
             ->update(['ranking_points' => $points[$pointsQuery - 1]]);
         //No te manda a ningún sitio porque esta función se llama con el escaneo del qr
     }
+
+    public function search(Request $request)
+    {
+
+        $filter = $request->input('filter');
+        $searchText = $request->input('searchText');
+        $courses = Courses::where($filter,'LIKE', '%'.$searchText.'%')->get();
+
+        return view('Courses.index', [
+            'courses' => $courses,
+        ]);
+    }
 }
 
 ?>
