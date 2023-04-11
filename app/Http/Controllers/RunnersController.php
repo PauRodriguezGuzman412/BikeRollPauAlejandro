@@ -102,6 +102,24 @@ class RunnersController extends Controller
         $runners = Runners::where('dni', $request->input('dni'))->get();
     }
 
+    public function rankingGenderMale()
+    {
+        $runners= Runners::where('gender', 'male')->orderby('ranking_points', 'desc')->get();
+
+        return view('Runners.rankingGender', [
+            'runners' => $runners,
+        ]);
+    }
+
+    public function rankingGenderFemale()
+    {
+        $runners= Runners::where('gender', 'female')->orderby('ranking_points', 'desc')->get();
+
+        return view('Runners.rankingGender', [
+            'runners' => $runners,
+        ]);
+    }
+
     public function ranking20()
     {
         $today= date("Y-m-d");

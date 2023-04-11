@@ -35,6 +35,7 @@
             <th>Federado</th>
             <th>Nº Federado</th>
             <th>Puntos</th>
+            <th>Género</th>
             <th>Editar</th>
             <th>Estado</th>
         </thead>
@@ -47,6 +48,7 @@
                 <td>{{ $runner['federated'] }}</td>
                 <td>{{ $runner['federated_num'] }}</td>
                 <td>{{ $runner['ranking_points'] }}</td>
+                <td>{{ $runner['gender'] }}</td>
                 <td><a href="{{ route('runners.edit', $runner['dni']) }}"><img class="editIcon" src="{{ asset('img/editIcon.png') }}"></a></td>
                 @if ($runner['active'] == 1)
                     <td><a href="{{ route('runners.delete', ['id' => $runner['dni'], 'active' => $runner['active']]) }}"><img class="statusIcon" src="{{ asset('img/onIcon.png') }}"></a></td>

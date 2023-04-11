@@ -20,6 +20,7 @@ return new class extends Migration
             $table->integer('federated_num')->unique()->nullable();
             $table->boolean('active')->default(1);
             $table->integer('ranking_points')->default(0);
+            $table->enum('gender',["male","female"]);
             $table->timestamps();
         });
     }

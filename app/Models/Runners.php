@@ -11,6 +11,8 @@ class Runners extends Model
 
     protected $table= 'runners';
 
+    public $incrementing = false;
+
     protected $primaryKey = 'dni';
 
     protected $fillable = [
@@ -20,6 +22,7 @@ class Runners extends Model
         'address',
         'date_of_birth',
         'federated',
+        'gender',
         'federated_num',
     ];
 
@@ -37,6 +40,7 @@ class Runners extends Model
             'address'               => 'required',
             'date_of_birth'         => 'required',
             'federated'             => 'required',
+            'gender'                => 'required',
             'federated_num'         => 'nullable',
         ];
     }

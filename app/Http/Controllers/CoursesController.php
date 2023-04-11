@@ -226,6 +226,11 @@ class CoursesController extends Controller
             ->where('id_courses', $idCourse)
             ->where('dni_runners', $dniRunner)
             ->update(['data' => now(), 'points' => $points[$pointsQuery - 1]]);
+
+
+        Runners::query()
+            ->where('dni', $dniRunner)
+            ->update(['ranking_points' => $points[$pointsQuery - 1]]);
         //No te manda a ningún sitio porque esta función se llama con el escaneo del qr
     }
 }
