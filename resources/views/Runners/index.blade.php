@@ -14,7 +14,6 @@
         @csrf
         <div class="row mb-4">
             <select class="w-25 form-control" name="filter">
-                <option value="id">Id</option>
                 <option value="name">Nombre</option>
                 <option value="surname">Apellido</option>
                 <option value="address">Dirección</option>

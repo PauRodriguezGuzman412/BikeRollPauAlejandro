@@ -6,6 +6,17 @@
     @include('layout.header')
 
 @section('component')
+<script>
+    function showMore(e) {
+        if(e.previousSibling.style.display == 'none') {
+            e.previousSibling.style.display = "inline";
+            e.innerHTML = "...Leer menos";
+            return;
+        }
+        e.innerHTML = "...Leer más";
+        e.previousSibling.style.display = "none";
+    }
+</script>
     <h1 class="text-center display-2 mb-5" >PRÓXIMAS CARRERAS</h1>
     <div class="row d-flex justify-content-center">
         @foreach ($recentCourses as $course)
@@ -16,7 +27,7 @@
                 <h4>Precio de inscripción:
                     <span class="fw-bold"> {{ number_format($course->price, 2, ',', '.') }} €</span>
                 </h4>
-                <h5>{{ mb_strimwidth($course->description,0,300,"...") }}</h5>
+                <h5>{{ mb_strimwidth($course->description,0,300) }}<span class="more" style="display:none">{{substr($course->description,302)}}</span><a class="link" style="cursor:pointer;" onclick="showMore(this);">...Leer más</a></h5>
                 <div class="col d-flex justify-content-center">
                     <a href="{{ route('courses.registerWithIDForm',$course['id']) }}">
                         <button class="btn btn-primary p-2 fw-bold mt-4">Inscríbete ahora!</button>

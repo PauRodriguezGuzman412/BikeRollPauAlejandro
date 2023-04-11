@@ -15,14 +15,14 @@ return new class extends Migration
             $table->longText('description');
             $table->float('slope');
             $table->string('map_image');
-            $table->int('maxim_participants');
+            $table->integer('maxim_participants');
             $table->float('km');
             $table->date('start_date');
             $table->string('start_point');
             $table->string('promotion_banner');
             $table->float('price');
             $table->integer('sponsoring_money');
-            $table->time('course_duration')->nullable();
+            $table->time('course_duration')->default('00:00:00');
             $table->boolean('active')->default(1);
             $table->timestamps();
         });

@@ -7,6 +7,18 @@
     @include('layout.nav')
 
 @section('component')
+<script>
+    function showMore(e) {
+        if(e.previousSibling.style.display == 'none') {
+            e.previousSibling.style.display = "inline";
+            e.innerHTML = "...Leer menos";
+            return;
+        }
+        e.innerHTML = "...Leer más";
+        e.previousSibling.style.display = "none";
+    }
+</script>
+
 <div class="container d-flex flex-column justify-content-center align-items-center">
     <a class="createRunnerButton" href="{{ route('courses.create') }}">CREAR CARRERA</a>
     <table class="border border-secondary" style="text-align: center">
@@ -30,12 +42,12 @@
         @foreach ($courses as $course)
             <tr>
                 <td>{{ $course['id'] }}</td>
-                <td>{{ $course['description'] }}</td>
+                <td>{{ mb_strimwidth($course['description'],0,100) }}<span class="more" style="display:none">{{substr($course['description'],102)}}</span><a href="#" onclick="showMore(this);">...Leer más</a></td>
                 <td>{{ $course['slope'] }}</td>
                 <td><img src="{{ asset($course['map_image']) }}" alt="Mapa" width="50px"></td>
                 <td>{{ $course['maxim_participants'] }}</td>
                 <td>{{ $course['km'] }}</td>
-                <td>{{ $course['start_date'] }}</td>
+                <td>{{ date("d/m/Y",strtotime($course['start_date'])) }}</td>
                 <td>{{ $course['start_point'] }}</td>
                 <td><img src="{{ asset($course['promotion_banner']) }}" alt="Banner de promoción" width="50px"></td>
                 <td>{{ $course['sponsoring_money'] }}</td>
