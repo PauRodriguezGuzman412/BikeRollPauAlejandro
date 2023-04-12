@@ -71,10 +71,10 @@
         </div>
     </form>
 </div>
-    @foreach ($errors->all() as $error)
-            <div class="container">
-                <li class="alert alert-danger">{{ $error }}</li>
-            </div>
-        @endforeach
+@foreach ($errors->all() as $error)
+    <div class="container">
+        <li class="alert alert-danger">{{ $error }}</li>
+    </div>
+@endforeach
 @section('layout.footer')
 @include('layout.footer')

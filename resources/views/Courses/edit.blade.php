@@ -21,6 +21,9 @@
             <div class="col-sm-8 mb-4 runnerInput">
                 <input name="name" type="text" value="{{ old('name',$course['name']) }}" placeholder="Nombre">
             </div>
+            <div class="col-sm-8 mb-4 runnerInput">
+                <input name="price" type="int" value="{{ old('price',$course['price']) }}" placeholder="Precio">
+            </div>
         </div>
         <div class="d-flex flex-row justify-content-around me-4 runnerInput">
             <div class="col-sm-8 mb-4 runnerInput">
@@ -70,5 +73,10 @@
         </div>
     </form>
 </div>
+@foreach ($errors->all() as $error)
+    <div class="container">
+        <li class="alert alert-danger">{{ $error }}</li>
+    </div>
+@endforeach
 @section('footer')
 @include('layout.footer')

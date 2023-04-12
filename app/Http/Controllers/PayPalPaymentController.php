@@ -86,7 +86,7 @@ class PayPalPaymentController extends Controller
 
                     return redirect($res['paypal_link']);
                 }
-                
+
 
             }else{
                 $insurances = Insurances::get();
